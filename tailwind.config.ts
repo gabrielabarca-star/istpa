@@ -10,11 +10,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
+        headline: ['Poppins', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
+        'accent-yellow': '#FFD100',
+        'accent-pink': '#FF4F6E',
+        'accent-green': '#28A745',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
