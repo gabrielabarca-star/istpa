@@ -9,10 +9,10 @@ interface Benefit {
 }
 
 const benefits: Benefit[] = [
-  { icon: Award, title: "Calidad Educativa", description: "Programas licenciados y docentes expertos." },
-  { icon: Briefcase, title: "Alta Empleabilidad", description: "Convenios con las mejores empresas del país." },
-  { icon: Users, title: "Comunidad Fuerte", description: "Una red de más de 65,000 egresados." },
-  { icon: HeartHandshake, title: "Soporte Continuo", description: "Te acompañamos en cada paso de tu formación." },
+  { icon: Award, title: "Calidad Educativa", description: "Docentes altamente capacitados y con experiencia profesional." },
+  { icon: Briefcase, title: "Laboratorios modernos", description: "Laboratorios equipados con herramientas modernas." },
+  { icon: Users, title: "Trayectoria", description: "Instituto con trayectoria y reconocimiento de 33 años en la región." },
+  { icon: HeartHandshake, title: "Triunfa en 3 Años", description: "Termina tu carrera técnica profesional en 3 años." },
 ];
 
 const FlippableCard = ({ benefit }: { benefit: Benefit }) => {
@@ -45,7 +45,7 @@ export default function WhyUs() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            ¿Por qué elegir Carrión?
+            ¿Por qué elegir ISTPA?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Descubre las ventajas que nos convierten en tu mejor opción para un futuro exitoso.
@@ -58,10 +58,10 @@ export default function WhyUs() {
           </div>
           <div className="relative order-first h-96 w-full lg:order-none">
             <Image
-              src="https://picsum.photos/400/600?random=7"
-              alt="Estudiante sonriendo"
-              width={400}
-              height={600}
+              src="/img/estudiante.png"
+              alt="por que elegir ISTPA"
+              width={300}
+              height={500}
               className="mx-auto h-full w-auto rounded-lg object-cover"
               data-ai-hint="smiling student"
             />

@@ -1,15 +1,30 @@
 import Link from 'next/link';
-import { GraduationCap, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import Image from 'next/image'; // 1. IMPORTAR Image
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'; // 2. QUITAR GraduationCap
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-16 md:grid-cols-4 md:px-6">
         <div className="flex flex-col gap-4">
+          
+          {/* --- INICIO DE LA CORRECCIÓN --- */}
           <Link href="/" className="flex items-center gap-2">
-            <GraduationCap className="h-8 w-8" />
-            <span className="text-xl font-bold">Carrión Digital</span>
+            {/* IMPORTANTE: 
+              1. Cambia '/logo.png' por la ruta a tu logo (debe estar en la carpeta 'public').
+                 Ejemplo: '/img/mi-logo.svg'
+              2. Ajusta 'width' y 'height' a las dimensiones REALES de tu archivo de logo.
+            */}
+            <Image
+              src="/img/logoblanco.png"    // <- CAMBIA ESTO
+              alt="Logo ISTPA"    // <- CAMBIA ESTO (si es necesario)
+              width={120}         // <- CAMBIA ESTO (ancho real de tu imagen)
+              height={32}         // <- CAMBIA ESTO (alto real de tu imagen)
+              className="h-8 w-auto" // Esto mantiene la altura de 32px (h-8)
+            />
           </Link>
+          {/* --- FIN DE LA CORRECCIÓN --- */}
+
           <p className="text-sm text-primary-foreground/80">
             Formando profesionales para un futuro brillante.
           </p>
@@ -45,14 +60,14 @@ export default function Footer() {
           <address className="not-italic text-sm text-primary-foreground/80">
             <p>Jr. Lambayeque N° 416</p>
             <p>Puno, Puno, Perú</p>
-            <p className="mt-2">Email: info@carrion.edu.pe</p>
-            <p>Teléfono: (051) 123-456</p>
+            <p className="mt-2">Email: altiplano.puno@iest.edu.pe</p>
+            <p>Teléfono: (051)357708</p>
           </address>
         </div>
       </div>
       <div className="border-t border-primary-foreground/10 py-6">
         <p className="text-center text-sm text-primary-foreground/60">
-          © {new Date().getFullYear()} Carrión Digital. Todos los derechos reservados.
+          © {new Date().getFullYear()} ISTPA. Todos los derechos reservados.
         </p>
       </div>
     </footer>

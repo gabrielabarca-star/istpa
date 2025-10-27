@@ -16,21 +16,27 @@ import Autoplay from "embla-carousel-autoplay";
 const slides = [
   {
     href: "#",
-    src: "https://picsum.photos/1200/600?random=1",
+    src: "/img/carrusel.png",
     alt: "Estudiantes colaborando en un laboratorio",
     dataAiHint: "students laboratory",
+    width: 1200,
+    height: 600,
   },
   {
     href: "#",
-    src: "https://picsum.photos/1200/600?random=2",
+    src: "/img/carrusel2.png",
     alt: "Campus moderno del instituto",
     dataAiHint: "modern campus",
+    width: 1200,
+    height: 600,
   },
   {
     href: "#",
     src: "https://picsum.photos/1200/600?random=3",
     alt: "Alumna de enfermería sonriendo",
     dataAiHint: "nursing student",
+    width: 1200,
+    height: 600,
   },
 ];
 
@@ -61,7 +67,7 @@ export default function Hero() {
                       data-ai-hint={slide.dataAiHint}
                       priority={index === 0}
                     />
-                     <div className="absolute inset-0 bg-black/40" />
+                  
                   </CardContent>
                 </Card>
               </Link>
