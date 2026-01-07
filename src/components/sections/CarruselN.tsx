@@ -19,17 +19,17 @@ import 'swiper/css/navigation';
 const slidesData = [
   {
     id: 1,
-    src: '/img/Csabiduria.png',
+    src: '/img/carrusel.1.png',
     alt: 'Descripción del primer banner',
   },
   {
     id: 2,
-    src: '/img/news/test1 - braddy Gabriel Abarca abarca.jpg',
+    src: '/img/carrusel.2.png',
     alt: 'Descripción del segundo banner',
   },
   {
     id: 3,
-    src: '/banners/banner-3.jpg',
+    src: '/img/carrusel.3.png',
     alt: 'Descripción del tercer banner',
   },
 ];

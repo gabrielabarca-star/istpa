@@ -21,8 +21,8 @@ export default function GraduateProfilePharmacy() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="relative w-full max-w-sm mx-auto h-[480px]">
             <ImageFrame className="absolute top-0 left-0 w-full h-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[85%]">
-              <Image src="/img/perfil-farmacia.png" alt="Egresado de la carrera de Farmacia Técnica" layout="fill" objectFit="cover" className="rounded-3xl"/>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] h-[100%]">
+              <Image src="/img/perfil_egresado.png" alt="Egresado de la carrera de Farmacia Técnica" layout="fill" objectFit="cover" className="rounded-3xl"/>
             </div>
           </div>
           <div>

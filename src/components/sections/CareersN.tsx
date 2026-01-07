@@ -23,24 +23,24 @@ interface CareerCard {
 
 const cardData: CareerCard[] = [
   {
-    title: 'Contabilidad',
-    imageUrl: '/img/estudiante.png', 
+    title: 'CONTABILIDAD',
+    imageUrl: '/img/conta.estu.png', 
     buttonText: 'Conoce Nuestra Carrera',
     buttonLink: '/contabilidad',
     bgColor: 'bg-[#EF4444]', // Rojo
     titleColor: 'text-[#300404]',
   },
   {
-    title: 'Farmacia',
-    imageUrl: '/cards/card-cursos.png',
+    title: 'FARMACIA',
+    imageUrl: '/img/far.estu.png',
     buttonText: 'Conoce Nuestra Carrera',
     buttonLink: '/farmacia',
     bgColor: 'bg-[#09d3c5]', // azul
     titleColor: 'text-[#422006]',
   },
   {
-    title: 'Enfermeria',
-    imageUrl: '/cards/card-idiomas.png',
+    title: 'ENFERMERÍA',
+    imageUrl: '/img/enfer.estu.png',
     buttonText: 'Conoce Nuestra Carrera',
     buttonLink: '/enfermeria',
     bgColor: 'bg-[#3B82F6]', // Azul

@@ -30,14 +30,16 @@ export default function JobMarketPharmacy() {
     <section className="w-full bg-white py-16 sm:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="relative w-full max-w-md mx-auto aspect-[4/5]"><Image src="/img/campo-laboral-farmacia.jpg" alt="Profesional de farmacia en un laboratorio" layout="fill" objectFit="cover" className="rounded-3xl"/><OverlayIcon className="absolute bottom-6 right-6 w-12 h-12" /></div>
+          <div className="relative w-full max-w-md mx-auto aspect-[4/5]">
+          <Image src="/img/campo_laboral_farmacia.png" alt="Profesional de farmacia en un laboratorio" layout="fill" objectFit="cover" className="rounded-3xl"/>
+               <OverlayIcon className="absolute bottom-6 right-6 w-12 h-12" /></div>
           <div>
             <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>Campo Laboral</h2>
             <div className="w-20 h-1.5 mt-4" style={{ backgroundColor: colors.accent }}></div>
             <p className="mt-6 text-slate-600">Nuestros egresados se insertan rápidamente en el mercado laboral gracias a nuestra sólida formación.</p>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* --- INICIO DE LA CORRECCIÓN --- */}
+              
               {jobOpportunities.map((job, index) => {
                 // Asignamos el componente a una variable con Mayúscula
                 const IconComponent = job.icon; 
@@ -50,7 +52,7 @@ export default function JobMarketPharmacy() {
                   </div>
                 );
               })}
-              {/* --- FIN DE LA CORRECCIÓN --- */}
+           
               
             </div>
           </div>

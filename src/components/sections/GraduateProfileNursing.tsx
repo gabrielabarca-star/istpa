@@ -56,9 +56,9 @@ export default function GraduateProfileNursing() {
           {/* --- Columna Izquierda: Imagen con Marco --- */}
           <div className="relative w-full max-w-sm mx-auto h-[480px]">
             <ImageFrame className="absolute top-0 left-0 w-full h-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[85%]">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[98%] h-[100%]">
               <Image
-                src="/img/estudiante.png" // Asegúrate de que esta imagen exista en tu carpeta /public
+                src="/img/perfil_egresado_enfermeria.png" // Asegúrate de que esta imagen exista en tu carpeta /public
                 alt="Egresada de la carrera de Enfermería Técnica"
                 layout="fill"
                 objectFit="cover"

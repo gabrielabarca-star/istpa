@@ -43,7 +43,7 @@ export default function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 text-primary-foreground">
-        <Image src="/img/logoblanco.png" alt="Logo" width={500} height={500} className="h-60 w-60 object-contain" priority />
+        <Image src="/img/logotipo-altiplano.png" alt="Logo" width={500} height={500} className="h-60 w-60 object-contain" priority />
         </Link>
         <nav className="hidden items-center gap-6 text-lg font-medium text-primary-foreground md:flex">
           <Link href="/nosotros" className={navLinkClasses}>
@@ -115,23 +115,27 @@ export default function Header() {
       <Link href="#" className="hover:text-secondary pl-4">Atención al estudiante</Link>
       <h3 className="font-semibold text-xl mt-4">Docentes</h3>
       <Link href="#" className="hover:text-secondary pl-4">Intanet</Link>
+      <Link href="/docentes" className="hover:text-secondary pl-4">Nuestros Docentes</Link>
       <h3 className="font-semibold text-xl">Servicio Estudiantil</h3>
-      <Link href="#" className="hover:text-secondary pl-4">Bienestar y empleabilidad</Link>
-      <Link href="#" className="hover:text-secondary pl-4">Topico</Link>
-      <Link href="#" className="hover:text-secondary pl-4">Biblioteca</Link>
+      <Link href="/bienestar" className="hover:text-secondary pl-4">Bienestar y empleabilidad</Link>
+      <Link href="/topico" className="hover:text-secondary pl-4">Topico</Link>
+      <Link href="/biblioteca" className="hover:text-secondary pl-4">Biblioteca</Link>
+      <Link href="/beca" className="hover:text-secondary pl-4">Beca</Link>
 
     </div>
     {/* Columna 3 */}
     <div className="flex flex-col gap-4">
       <h3 className="font-semibold text-xl">Egresados</h3>
-      <Link href="#" className="hover:text-secondary pl-4">Titulación</Link>
-      <Link href="#" className="hover:text-secondary pl-4">Rumbo al título profesional</Link>
+      <Link href="/modalidad_titulacion" className="hover:text-secondary pl-4"> Modalidad de Titulación</Link>
+      <Link href="/Rumbo_titulo" className="hover:text-secondary pl-4">Rumbo al título profesional</Link>
       <Link href="#" className="hover:text-secondary pl-4">Ceremonia de graduación</Link>
       <Link href="#" className="hover:text-secondary pl-4">Encuentro de Egresados</Link>
       <Link href="#" className="hover:text-secondary pl-4">Egresados con éxito</Link>
       <h3 className="font-semibold text-xl">Modalidad de Ingreso</h3>
-      <Link href="#" className="hover:text-secondary pl-4">Admisión</Link>
-      <Link href="#" className="hover:text-secondary pl-4">Traslado</Link>
+      <Link href="/admision" className="hover:text-secondary pl-4">Admisión</Link>
+      <Link href="/reincorporacion" className="hover:text-secondary pl-4">Reincorporación</Link>
+
+      <Link href="/traslados" className="hover:text-secondary pl-4">Traslado</Link>
     </div>
   </div>
   </SheetContent>

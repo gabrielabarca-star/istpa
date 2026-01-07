@@ -34,14 +34,23 @@ const curriculumData: Year[] = [
                     { name: 'Primeros Auxilios', type: 'specific' },
                     { name: 'Asistencia en Inmunizaciones', type: 'specific' },
                     { name: 'Actividades en Epidemiologia', type: 'specific' },
+                    { name: 'Técnicas de Comunicación', type: 'employability' },
+                    { name: 'Lógica y Funciones', type: 'employability' },
+                    { name: 'Cultura Física y Deporte', type: 'employability' },
+                    { name: 'Informática / Internet', type: 'employability' },
                 ],
             },
             {
                 cycleNumber: '02',
                 courses: [
                     { name: 'Educación para la Salud', type: 'specific' },
-                    { name: 'Actividades en Salud Publica', type: 'employability' },
-                    { name: 'Actividades en Salud Comunitaria', type: 'employability' },
+                    { name: 'Actividades en Salud Publica', type: 'specific' },
+                    { name: 'Actividades en Salud Comunitaria', type: 'specific' },
+                    { name: 'Interpretación y Producción de Textos', type: 'employability' },
+                    { name: 'Estadística General', type: 'employability' },
+                    { name: 'Cultura Artística', type: 'employability' },
+                    { name: 'Ofimática', type: 'employability' },
+                    { name: 'Fundamentos de Investigación', type: 'employability' },
                     { name: 'EFSRT', type: 'real_work' },
                 ],
                 module: { number: 1, title: 'ATENCIÓN PRIMARIA EN SALUD' },
@@ -54,9 +63,12 @@ const curriculumData: Year[] = [
             {
                 cycleNumber: '03',
                 courses: [
-                    { name: 'Documentación en Salud', type: 'employability' },
+                    { name: 'Documentación en Salud', type: 'specific' },
                     { name: 'Bioseguridad Asistencia Básica', type: 'specific' },
                     { name: 'Hospitalaria Nutrición Y Dietas', type: 'specific' },
+                    { name: 'Sociedad y Economía en la Globalización', type: 'employability' },
+                    { name: 'Medio Ambiente y Desarrollo Sostenible', type: 'employability' },
+                    { name: 'Investigación e Innovación Tecnológica', type: 'employability' },
                 ],
             },
             {
@@ -66,6 +78,8 @@ const curriculumData: Year[] = [
                     { name: 'Asistencia en la Administración De Medicamentos', type: 'specific' },
                     { name: 'Asistencia al Usuario con Patologías', type: 'specific' },
                     { name: 'Asistencia al Usuario Quirúrgico', type: 'specific' },
+                    { name: 'Comunicación Interpersonal', type: 'employability' },
+                    { name: 'Proyectos de Investigación e Innovación Tecnológica', type: 'employability' },
                     { name: 'EFSRT', type: 'real_work' },
                 ],
                 module: { number: 2, title: 'SERVICIOS TÉCNICOS DE ENFERMERÍA ASISTENCIAL' },
@@ -82,6 +96,9 @@ const curriculumData: Year[] = [
                     { name: 'Salud Del Niño y Adolescente', type: 'specific' },
                     { name: 'Asistencia al Adulto Mayor', type: 'specific' },
                     { name: 'Asistencia de Enfermería en Salud Mental', type: 'specific' },
+                    { name: 'Comunicación Empresarial', type: 'employability' },
+                    { name: 'Ética Empresarial', type: 'employability' },
+                    { name: 'Organización y Constitución de Empresa', type: 'employability' },
                 ],
             },
             {
@@ -91,6 +108,9 @@ const curriculumData: Year[] = [
                     { name: 'Asistencia en Salud Bucal', type: 'specific' },
                     { name: 'Asistencia en Medicina Alternativa', type: 'specific' },
                     { name: 'Asistencia al Usuario Oncológico', type: 'specific' },
+                    { name: 'Liderazgo y Trabajo en Equipo', type: 'employability' },
+                    { name: 'Proyecto Empresarial', type: 'employability' },
+                    { name: 'Legislación e Inserción Laboral', type: 'employability' },
                     { name: 'EFSRT', type: 'real_work' },
                 ],
                 module: { number: 3, title: 'SERVICIOS TÉCNICOS DE ENFERMERÍA ESPECIALIZADA' },
@@ -149,11 +169,11 @@ export default function CurriculumGridNursing() { // <-- NOMBRE DEL COMPONENTE C
                 <div className="border border-slate-200 rounded-2xl p-4 flex flex-wrap items-center gap-x-6 gap-y-2 mb-12">
                     <div className="flex items-center gap-2">
                         <div className="w-4 h-4 rounded-sm" style={{backgroundColor: colors.accentTeal}}></div>
-                        <span className="text-sm text-slate-600">Competencias Específicas</span>
+                        <span className="text-sm text-slate-600">Formación Específicas</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <div className="w-4 h-4 rounded-sm" style={{backgroundColor: colors.accentYellow}}></div>
-                        <span className="text-sm text-slate-600">Competencias para la Empleabilidad</span>
+                        <span className="text-sm text-slate-600">Formacion Transversal</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <div className="w-4 h-4 rounded-sm" style={{backgroundColor: colors.accentRed}}></div>

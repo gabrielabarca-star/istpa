@@ -7,22 +7,21 @@ export const metadata: Metadata = {
   description: 'Plataforma educativa Carrión',
 };
 
+// app/layout.tsx
+
+import PageLoader from '@/components/PageLoader'; // Importa el loader
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="es">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased">
+      <body>
+        <PageLoader /> {/* <-- Colócalo aquí, antes del children */}
         {children}
-        <Toaster />
       </body>
     </html>
-  );
+  )
 }

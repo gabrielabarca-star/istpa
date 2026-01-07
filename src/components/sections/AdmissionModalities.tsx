@@ -28,24 +28,24 @@ const TransferIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
-// --- Fondos geométricos como componentes SVG ---
+// --- Fondos geométricos ---
 const BgPattern1 = () => (
-    <svg className="absolute top-0 right-0 h-full w-auto" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <svg className="absolute top-0 right-0 h-full w-auto opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
         <polygon points="0,0 100,0 100,100" fill="#00529B"/>
     </svg>
 );
 const BgPattern2 = () => (
-    <svg className="absolute top-0 right-0 h-full w-auto" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <svg className="absolute top-0 right-0 h-full w-auto opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
         <polygon points="0,0 100,0 100,100" fill="#002A5D"/>
     </svg>
 );
 const BgPattern3 = () => (
-    <svg className="absolute top-0 right-0 h-full w-auto" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <svg className="absolute top-0 right-0 h-full w-auto opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
         <polygon points="0,0 100,0 100,100" fill="#08D3C4"/>
     </svg>
 );
 
-// --- Definición de Tipos y Datos para las tarjetas ---
+// --- Datos ---
 interface ModalityCard {
   title: string;
   description: string;
@@ -61,7 +61,7 @@ const modalitiesData: ModalityCard[] = [
   {
     title: 'Admisión',
     description: 'Para todos los interesados en nuestras carreras.',
-    imageUrl: '/admission/admission-regular.jpg',
+    imageUrl: '/img/admision.png',
     buttonLink: '/admision',
     Icon: InfoIcon,
     BgPattern: BgPattern1,
@@ -71,8 +71,8 @@ const modalitiesData: ModalityCard[] = [
   {
     title: 'Reincorporación',
     description: 'Facilidades para quienes quieren retomar sus estudios.',
-    imageUrl: '/admission/admission-reingreso.jpg',
-    buttonLink: '/reingresos',
+    imageUrl: '/img/reincorporacion.png',
+    buttonLink: '/reincorporacion',
     Icon: ReEntryIcon,
     BgPattern: BgPattern2,
     buttonBgColor: 'bg-[#002A5D]',
@@ -81,7 +81,7 @@ const modalitiesData: ModalityCard[] = [
   {
     title: 'Traslados',
     description: 'Promociones especiales para quienes vienen de otras instituciones.',
-    imageUrl: '/admission/admission-traslado.jpg',
+    imageUrl: '/img/traslado.png',
     buttonLink: '/traslados',
     Icon: TransferIcon,
     BgPattern: BgPattern3,
@@ -90,7 +90,6 @@ const modalitiesData: ModalityCard[] = [
   },
 ];
 
-// --- Componente Principal ---
 export default function AdmissionModalities() {
   const colors = {
     primaryText: '#002A5D',
@@ -98,50 +97,59 @@ export default function AdmissionModalities() {
   };
 
   return (
-    <section className="w-full bg-slate-50 py-16 sm:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* --- Cabecera de la Sección --- */}
-        <div className="text-center">
-          <p className="font-semibold" style={{ color: colors.accent }}>Elige una de nuestras</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
+    <section className="w-full bg-slate-50 py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
+        {/* --- Cabecera --- */}
+        <div className="text-center mb-20">
+          <p className="font-semibold text-lg" style={{ color: colors.accent }}>Elige una de nuestras</p>
+          <h2 className="text-5xl sm:text-6xl font-extrabold" style={{ color: colors.primaryText }}>
             Modalidades de ingreso
           </h2>
-          <div className="w-16 h-1 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
-          <p className="mt-4 text-slate-600">Conviértete en un profesional de acción.</p>
+          <div className="w-20 h-1.5 mt-5 mx-auto" style={{ backgroundColor: colors.accent }}></div>
+          <p className="mt-6 text-lg text-slate-600">Conviértete en un profesional de acción.</p>
         </div>
 
         {/* --- Grid de Tarjetas --- */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-10">
           {modalitiesData.map((card, index) => (
-            <div key={index} className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col">
-              {/* Parte superior con imagen y fondo */}
-              <div className="relative h-60">
-                <card.BgPattern />
-                <div className="absolute inset-0 p-4">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={card.imageUrl}
-                      alt={`Imagen para ${card.title}`}
-                      layout="fill"
-                      objectFit="contain"
-                      className="drop-shadow-lg"
-                    />
-                  </div>
+            <div key={index} className="bg-white rounded-3xl shadow-xl flex flex-col relative group mt-12 h-full">
+              
+              {/* 1. Fondo Geométrico */}
+              <div className="absolute top-0 left-0 w-full h-64 rounded-t-3xl overflow-hidden z-0">
+                 <card.BgPattern />
+              </div>
+
+              {/* 2. Imagen */}
+              <div className="relative h-72 -mt-20 z-10 w-full px-4 flex justify-center items-end">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={card.imageUrl}
+                    alt={`Imagen para ${card.title}`}
+                    layout="fill"
+                    objectFit="contain" 
+                    objectPosition="bottom" 
+                    className="drop-shadow-2xl transition-transform duration-500 group-hover:scale-115 scale-110"
+                  />
                 </div>
               </div>
 
-              {/* Parte inferior con texto y botón */}
-              <div className="p-8 text-center flex-grow flex flex-col">
-                <h3 className="text-2xl font-bold" style={{ color: colors.primaryText }}>
+              {/* 3. Contenido (Texto y Botón) */}
+              <div className="px-8 pb-12 pt-6 text-center flex-grow flex flex-col relative z-10">
+                
+                <h3 className="text-3xl font-bold mb-3" style={{ color: colors.primaryText }}>
                   {card.title}
                 </h3>
-                <p className="mt-2 text-slate-500 flex-grow">
+                
+                {/* --- CAMBIO AQUÍ: Agregado 'flex flex-col justify-center' para centrado vertical --- */}
+                <p className="text-slate-500 flex-grow text-lg leading-relaxed flex flex-col justify-center">
                   {card.description}
                 </p>
-                <div className="mt-6">
+                
+                <div className="mt-8">
                   <Link href={card.buttonLink}>
-                    <button className={`group w-full flex items-center justify-center gap-3 text-white font-semibold py-3 px-6 rounded-full transition-colors duration-300 ${card.buttonBgColor} ${card.buttonHoverBgColor}`}>
-                      <card.Icon className="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" />
+                    <button className={`group w-full flex items-center justify-center gap-3 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 ${card.buttonBgColor} ${card.buttonHoverBgColor} text-lg`}>
+                      <card.Icon className="w-7 h-7 transition-transform duration-300 group-hover:rotate-12" />
                       <span>Información</span>
                     </button>
                   </Link>

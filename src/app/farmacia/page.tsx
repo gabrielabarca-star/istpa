@@ -15,38 +15,32 @@ export default function NosotrosPage() {
       <main className="flex-1">
         <section className="relative h-80 bg-primary">
           <Image
-            src="https://picsum.photos/1600/400?random=28"
+            src="/img/banner_farmacia.png"
             alt="Campus del instituto"
             fill
-            className="object-cover opacity-20"
+            className="object-cover object-[center_20%] opacity-20"
             data-ai-hint="university campus"
           />
-          <div className="relative flex h-full items-center justify-center">
+           <div className="relative flex h-full items-center justify-start container mx-auto px-4 md:px-6">
             <h1 className="font-headline text-4xl font-bold text-primary-foreground md:text-6xl">
-              Farmacia
+               Farmacia
             </h1>
-          </div>
+            </div>
         </section>
-        <section>
-
-        </section>
+       
         
         <PharmacyCareer/>
-      <section>
+     
       <WhyStudyPharmacy/>
-      </section>
-      <section>
+     
       <GraduateProfilePharmacy/>
-      </section>
-      <section>
+     
       <CurriculumGridPharmacy/>
-      </section>
-      <section>
+     
       <JobMarketPharmacy/>
-      </section>
-      <section>
+     
       <DegreeAndTitlePharmacy/>
-      </section>
+     
       </main>
       <Footer />
     </div>

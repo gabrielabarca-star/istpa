@@ -1,0 +1,145 @@
+// components/ScholarshipRequirementsSection.tsx
+
+import React from 'react';
+import Image from 'next/image';
+
+// --- Iconos SVG Personalizados ---
+
+const CheckCircleIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const AlertIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 8V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const MailIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const PhoneIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22 16.92V19.92C22.0011 20.1986 21.9441 20.4742 21.8325 20.7294C21.7209 20.9846 21.5573 21.2137 21.3521 21.402C21.1468 21.5902 20.9046 21.7336 20.6407 21.8228C20.3769 21.912 20.0974 21.9452 19.82 21.92C16.7428 21.5857 13.787 20.5342 11.19 18.85C8.77382 17.2436 6.72533 15.1951 5.11999 12.78C3.43296 10.1789 2.38151 7.21886 2.05 4.14001C2.02476 3.86305 2.05778 3.58401 2.14692 3.32063C2.23606 3.05724 2.37944 2.81521 2.56798 2.61001C2.75653 2.40481 2.98614 2.24107 3.24207 2.12929C3.49799 2.0175 3.77452 1.96013 4.053 1.96001H7.06C7.53621 1.9551 7.99777 2.12661 8.36079 2.44291C8.72381 2.75922 8.96637 3.20137 9.043 3.67001C9.18674 4.59115 9.41259 5.49543 9.717 6.38001C9.83777 6.73513 9.86366 7.11737 9.79179 7.48421C9.71993 7.85105 9.55313 8.18805 9.31 8.46001L7.55 10.22C9.52272 13.6961 12.3097 16.4762 15.79 18.45L17.55 16.69C17.8215 16.4462 18.1583 16.2788 18.525 16.2066C18.8917 16.1343 19.2738 16.16 19.629 16.2806C20.515 16.5852 21.4207 16.8113 22.343 16.955C22.8135 17.0318 23.2574 17.276 23.5742 17.6407C23.891 18.0053 24.0615 18.4685 24.056 18.946" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// --- Componente Principal ---
+export default function ScholarshipRequirementsSection() {
+  const colors = {
+    primaryText: '#002A5D', // Azul oscuro institucional
+    accent: '#08D3C4',     // Turquesa institucional
+    bgAlert: '#FFFBEB',    // Fondo amarillo suave para alerta (o usa #F0F9FF para azul suave)
+    borderAlert: '#FCD34D',// Borde alerta
+  };
+
+  return (
+    <section className="w-full bg-white py-16 sm:py-24">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          
+          {/* 1. COLUMNA IZQUIERDA: Imagen Mediana (5 Columnas) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/img/beca-requisitos.jpg" // REEMPLAZAR CON TU IMAGEN
+                alt="Estudiante solicitando información de becas"
+                layout="fill"
+                objectFit="cover"
+                className="hover:scale-105 transition-transform duration-700"
+              />
+              {/* Detalle decorativo */}
+              <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#002A5D]/80 to-transparent"></div>
+            </div>
+          </div>
+
+          {/* 2. COLUMNA DERECHA: Contenido (7 Columnas) */}
+          <div className="lg:col-span-7 space-y-8">
+            
+            {/* Título */}
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold" style={{ color: colors.primaryText }}>
+                Requisitos para la Beca
+              </h2>
+              <div className="w-16 h-1 mt-3" style={{ backgroundColor: colors.accent }}></div>
+              <p className="mt-4 text-slate-600">
+                Los estudiantes deberán cumplir con los siguientes requisitos indispensables para solicitar la beca socioeconómica o por rendimiento:
+              </p>
+            </div>
+
+            {/* Lista de Requisitos */}
+            <ul className="space-y-4">
+              {/* Requisito 1 */}
+              <li className="flex gap-4 items-start">
+                <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
+                  <CheckCircleIcon className="w-6 h-6" />
+                </div>
+                <p className="text-slate-700 text-sm sm:text-base">
+                  Haber cursado al menos un semestre como alumnos regulares del ISTPA; es decir, podrán postular <strong className="text-[#002A5D]">a partir del segundo semestre</strong>.
+                </p>
+              </li>
+              
+              {/* Requisito 2 */}
+              <li className="flex gap-4 items-start">
+                <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
+                  <CheckCircleIcon className="w-6 h-6" />
+                </div>
+                <p className="text-slate-700 text-sm sm:text-base">
+                  Estar matriculados en el ISTPA con un <strong className="text-[#002A5D]">mínimo de 12 créditos curriculares</strong> en el semestre para el cual se solicita la beca. No se otorgarán becas a quienes registren un número menor de créditos ni a quienes completen dicho mínimo mediante cursos por jurado o convalidaciones.
+                </p>
+              </li>
+
+              {/* Requisito 3 */}
+              <li className="flex gap-4 items-start">
+                <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
+                  <CheckCircleIcon className="w-6 h-6" />
+                </div>
+                <p className="text-slate-700 text-sm sm:text-base">
+                  Haber obtenido el <strong className="text-[#002A5D]">primer, segundo o tercer lugar</strong> en el semestre correspondiente.
+                </p>
+              </li>
+            </ul>
+
+            {/* Caja de Alerta/Información */}
+            <div className="bg-sky-50 border-l-4 border-[#002A5D] rounded-r-xl p-6 flex gap-4 items-start">
+              <div className="flex-shrink-0 text-[#002A5D]">
+                <AlertIcon className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="font-bold text-[#002A5D] mb-1">¿Necesitas más información?</h4>
+                <p className="text-slate-600 text-sm">
+                  Para iniciar tu trámite o resolver dudas específicas, debes acercarte a la <strong>Unidad de Bienestar y Empleabilidad</strong>.
+                </p>
+                
+                {/* Datos de Contacto Integrados */}
+                <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:items-center border-t border-sky-200 pt-3">
+                  <a href="mailto:unid.bienestar.empleabilidad@iest.edu.pe" className="flex items-center gap-2 text-sm font-semibold text-[#002A5D] hover:text-[#08D3C4] transition-colors">
+                    <MailIcon className="w-4 h-4" />
+                    unid.bienestar.empleabilidad@iest.edu.pe
+                  </a>
+                  <div className="hidden sm:block w-1 h-4 bg-sky-200"></div>
+                  <a href="tel:987845442" className="flex items-center gap-2 text-sm font-semibold text-[#002A5D] hover:text-[#08D3C4] transition-colors">
+                    <PhoneIcon className="w-4 h-4" />
+                    987 845 442
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Award, Briefcase, Users, HeartHandshake } from 'lucide-react';
+import { Award, Briefcase, Users, HeartHandshake, Wallet, ScrollText } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 interface Benefit {
@@ -13,6 +13,9 @@ const benefits: Benefit[] = [
   { icon: Briefcase, title: "Laboratorios modernos", description: "Laboratorios equipados con herramientas modernas." },
   { icon: Users, title: "Trayectoria", description: "Instituto con trayectoria y reconocimiento de 33 años en la región." },
   { icon: HeartHandshake, title: "Triunfa en 3 Años", description: "Termina tu carrera técnica profesional en 3 años." },
+  // Nuevos beneficios agregados
+  { icon: Wallet, title: "Pensiones y Becas", description: "Pensiones accesibles y becas al mérito académico." },
+  { icon: ScrollText, title: "Título Oficial", description: "Título a Nombre de la Nación válido en todo el país." },
 ];
 
 const FlippableCard = ({ benefit }: { benefit: Benefit }) => {
@@ -38,7 +41,6 @@ const FlippableCard = ({ benefit }: { benefit: Benefit }) => {
   );
 };
 
-
 export default function WhyUs() {
   return (
     <section id="why-us" className="bg-card py-16 sm:py-24">
@@ -51,25 +53,36 @@ export default function WhyUs() {
             Descubre las ventajas que nos convierten en tu mejor opción para un futuro exitoso.
           </p>
         </div>
+        
         <div className="mt-12 grid grid-cols-1 items-center gap-8 lg:grid-cols-3 lg:gap-12">
+          
+          {/* Columna Izquierda (3 items) */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1">
             <FlippableCard benefit={benefits[0]} />
             <FlippableCard benefit={benefits[1]} />
+            <FlippableCard benefit={benefits[4]} /> {/* Pensiones */}
           </div>
-          <div className="relative order-first h-96 w-full lg:order-none">
+
+          {/* Columna Central (Imagen) */}
+          {/* Se cambió h-96 por h-full y min-h para que se adapte a las 3 tarjetas laterales */}
+          <div className="relative order-first w-full lg:order-none h-96 lg:h-full lg:min-h-[40rem]">
             <Image
               src="/img/estudiante.png"
               alt="por que elegir ISTPA"
               width={300}
-              height={500}
+              height={700} // Aumentado para mantener proporción
               className="mx-auto h-full w-auto rounded-lg object-cover"
               data-ai-hint="smiling student"
             />
           </div>
+
+          {/* Columna Derecha (3 items) */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1">
             <FlippableCard benefit={benefits[2]} />
             <FlippableCard benefit={benefits[3]} />
+            <FlippableCard benefit={benefits[5]} /> {/* Título */}
           </div>
+
         </div>
       </div>
     </section>

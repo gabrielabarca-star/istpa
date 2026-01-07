@@ -72,7 +72,7 @@ export default function JobMarketNursing() { // <-- NOMBRE DEL COMPONENTE CAMBIA
           {/* --- Columna Izquierda: Imagen --- */}
           <div className="relative w-full max-w-md mx-auto aspect-[4/5]">
             <Image
-              src="/img/campolaboralenfermeria.JPG"
+              src="/img/campo_laboral_enfermeria.png"
               alt="Profesional de enfermería atendiendo a un paciente"
               layout="fill"
               objectFit="cover"

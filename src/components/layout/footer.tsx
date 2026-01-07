@@ -1,30 +1,27 @@
 import Link from 'next/link';
-import Image from 'next/image'; // 1. IMPORTAR Image
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'; // 2. QUITAR GraduationCap
+import Image from 'next/image';
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-16 md:grid-cols-4 md:px-6">
+      <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-16 md:grid-cols-5 md:px-6"> {/* Cambiado a 5 columnas para acomodar el Libro */}
+        
+        {/* Columna 1: Logo y Redes */}
         <div className="flex flex-col gap-4">
-          
-          {/* --- INICIO DE LA CORRECCIÓN --- */}
           <Link href="/" className="flex items-center gap-2">
-            {/* IMPORTANTE: 
-              1. Cambia '/logo.png' por la ruta a tu logo (debe estar en la carpeta 'public').
-                 Ejemplo: '/img/mi-logo.svg'
-              2. Ajusta 'width' y 'height' a las dimensiones REALES de tu archivo de logo.
-            */}
-            <Image
-              src="/img/logoblanco.png"    // <- CAMBIA ESTO
-              alt="Logo ISTPA"    // <- CAMBIA ESTO (si es necesario)
-              width={120}         // <- CAMBIA ESTO (ancho real de tu imagen)
-              height={32}         // <- CAMBIA ESTO (alto real de tu imagen)
-              className="h-8 w-auto" // Esto mantiene la altura de 32px (h-8)
-            />
+            {/* Contenedor relativo para el logo */}
+            <div className="relative w-auto h-12"> {/* Ajusta h-12 según necesites */}
+                <Image
+                  src="/img/logotipo-altiplano.png"
+                  alt="Logo ISTPA"
+                  width={500} // Dimensiones originales de la imagen (aproximadas o exactas)
+                  height={500}
+                  className="h-full w-auto object-contain" // h-full llena el contenedor padre, w-auto mantiene proporción
+                  priority // Opcional: para cargar el logo más rápido
+                />
+            </div>
           </Link>
-          {/* --- FIN DE LA CORRECCIÓN --- */}
-
           <p className="text-sm text-primary-foreground/80">
             Formando profesionales para un futuro brillante.
           </p>
@@ -36,6 +33,7 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Columna 2: Navegación */}
         <div>
           <h3 className="mb-4 text-lg font-semibold">Navegación</h3>
           <ul className="space-y-2">
@@ -46,15 +44,17 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Columna 3: Legal */}
         <div>
           <h3 className="mb-4 text-lg font-semibold">Legal</h3>
           <ul className="space-y-2">
             <li><Link href="#" className="text-sm hover:text-secondary">Términos de Servicio</Link></li>
             <li><Link href="#" className="text-sm hover:text-secondary">Política de Privacidad</Link></li>
-            <li><Link href="#" className="text-sm hover:text-secondary">Transparencia</Link></li>
+            <li><Link href="/transparencia" className="text-sm hover:text-secondary">Transparencia</Link></li>
           </ul>
         </div>
         
+        {/* Columna 4: Contacto */}
         <div>
           <h3 className="mb-4 text-lg font-semibold">Contacto</h3>
           <address className="not-italic text-sm text-primary-foreground/80">
@@ -64,6 +64,26 @@ export default function Footer() {
             <p>Teléfono: (051)357708</p>
           </address>
         </div>
+
+        {/* --- NUEVO: Columna 5: Libro de Reclamaciones --- */}
+        <div className="flex flex-col items-start justify-start">
+            <Link href="/libro_reclamaciones" className="group">
+                <div className="relative w-32 h-auto hover:opacity-90 transition-opacity">
+                    {/* Asegúrate de tener esta imagen en tu carpeta public */}
+                    <Image
+                        src="/img/libro_reclamaciones.png" 
+                        alt="Libro de Reclamaciones"
+                        width={150}
+                        height={80}
+                        className="object-contain"
+                    />
+                </div>
+                <p className="text-xs mt-2 text-primary-foreground/70 group-hover:text-secondary transition-colors">
+                    Libro de Reclamaciones Virtual
+                </p>
+            </Link>
+        </div>
+
       </div>
       <div className="border-t border-primary-foreground/10 py-6">
         <p className="text-center text-sm text-primary-foreground/60">
