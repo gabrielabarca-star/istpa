@@ -1,4 +1,4 @@
-# **App Name**: Carrión Digital
+# **App Name**: ISTPA
 
 ## Core Features:
 

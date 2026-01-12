@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Carrión Digital',
-  description: 'Plataforma educativa Carrión',
+  title: 'ISTPA',
+  description: 'Instituto Superior Tecnologico del Altiplano',
 };
 
 // app/layout.tsx
