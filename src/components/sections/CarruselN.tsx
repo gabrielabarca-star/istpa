@@ -19,17 +19,17 @@ import 'swiper/css/navigation';
 const slidesData = [
   {
     id: 1,
-    src: '/img/carrusel.1.png',
+    src: '/img/2.png',
     alt: 'Descripción del primer banner',
   },
   {
     id: 2,
-    src: '/img/carrusel.2.png',
+    src: '/img/3.png',
     alt: 'Descripción del segundo banner',
   },
   {
     id: 3,
-    src: '/img/carrusel.3.png',
+    src: '/img/4.png',
     alt: 'Descripción del tercer banner',
   },
 ];
@@ -72,7 +72,7 @@ export default function CarruselN() {
         {slidesData.map((slide) => (
           <SwiperSlide key={slide.id}>
             {/* Contenedor para mantener la proporción de la imagen */}
-            <div className="w-full aspect-[1920/500] relative">
+            <div className="w-full aspect-[1920/550] relative">
               <Image
                 src={slide.src}
                 alt={slide.alt}

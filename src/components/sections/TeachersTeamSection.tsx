@@ -45,7 +45,7 @@ const teachersData: Teacher[] = [
     id: 1,
     name: " Zoraida Silva Cacsire Grimaldos ",
     program: "Contabilidad",
-    image: "/img/docentes/eliana.jpg", 
+    image: "/img/docentes/", 
     titles: ["Contador Público Colegiado","Magister en Auditoria y Tributacion"],
     specialization: [""],
     email: "zoraida.cacsireg@iest.edu.pe"
@@ -159,7 +159,7 @@ const teachersData: Teacher[] = [
     email: "maria.rodriguez@iest.edu.pe"
   },
   {
-    id: 13,
+    id: 14,
     name: "Rosa Aragon Cardenas",
     program: "Contabilidad",
     image: "/img/docentes/rosa-aragon.png",
@@ -171,7 +171,7 @@ const teachersData: Teacher[] = [
 
   // --- DOCENTES DE ENFERMERÍA (19) ---
   {
-    id: 14,
+    id: 15,
     name: "Eliana Ines Aguirre Yucra",
     program: "Enfermería",
     image: "/img/docentes/eliana-aguirre.jpg",
@@ -180,7 +180,7 @@ const teachersData: Teacher[] = [
     email: "eliana.aguirre@iest.edu.pe"
   },
   {
-    id: 15,
+    id: 16,
     name: "Wilson Aro Calliri",
     program: "Enfermería",
     image: "/img/docentes/wilson_aro.png",
@@ -189,7 +189,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 16,
+    id: 17,
     name: "Heber Bautista Gonzales",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -198,7 +198,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 17,
+    id: 18,
     name: "Efrain Denis Ccoyo Hancco",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -207,7 +207,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 18,
+    id: 19,
     name: "Ibeth Magali Churata Quispe",
     program: "Enfermería",
     image: "/img/docentes/ibeth_churata.png",
@@ -216,7 +216,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 19,
+    id: 20,
     name: "Ivan Diego Cutipa Quiso",
     program: "Enfermería",
     image: "/img/docentes/ivan_cutipa.png",
@@ -225,7 +225,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 20,
+    id: 21,
     name: "Maritza Karina Herrera Pereira",
     program: "Enfermería",
     image: "/img/docentes/karina_herrera.png",
@@ -234,7 +234,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 21,
+    id: 22,
     name: "Lucía Ivonne Huaman Espinoza",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -243,7 +243,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 22,
+    id: 23,
     name: "Cinthia Julissa Mamani Paricahua",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -252,7 +252,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 23,
+    id: 24,
     name: "Nestor Alex Mamani Vilca",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -261,7 +261,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 24,
+    id: 25,
     name: "Lenna Medina Vega",
     program: "Enfermería",
     image: "/img/docentes/lenna-medina.png",
@@ -270,7 +270,7 @@ const teachersData: Teacher[] = [
     email: "lenna.medina@iest.edu.pe"
   },
   {
-    id: 25,
+    id: 26,
     name: "Nohemi Danid Quea Chavez",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -279,7 +279,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 26,
+    id: 27,
     name: "Carmen Justina Quilca Zapana",
     program: "Enfermería",
     image: "/img/docentes/carmen_quilca.png",
@@ -288,7 +288,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 27,
+    id: 28,
     name: "Pamela Nora Quispe Coaquira",
     program: "Enfermería",
     image: "/img/docentes/pamela_quispe.png",
@@ -297,7 +297,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 28,
+    id: 29,
     name: "Margoth Carolina Rojas Colca",
     program: "Enfermería",
     image: "/img/docentes/margoth_rojas.png",
@@ -306,7 +306,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 29,
+    id: 30,
     name: "Carmen Amparo Tapia Centellas",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -315,7 +315,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 30,
+    id: 31,
     name: "Henry Raul Tito Mamani",
     program: "Enfermería",
     image: "/img/docentes/henry_tito.png",
@@ -324,7 +324,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 31,
+    id: 32,
     name: "Karem Lisbet Vélez Figueroa",
     program: "Enfermería",
     image: "/img/docentes/ana-lopez.jpg",
@@ -333,7 +333,7 @@ const teachersData: Teacher[] = [
     email: "ana.lopez@iest.edu.pe"
   },
   {
-    id: 32,
+    id: 33,
     name: "Yoly Tania Vizcarra Ticona",
     program: "Enfermería",
     image: "/img/docentes/yoly_vizcarra.png",
@@ -345,7 +345,7 @@ const teachersData: Teacher[] = [
 
   // --- DOCENTES DE FARMACIA (11) ---
   {
-    id: 33,
+    id: 34,
     name: "Lucio Jose Blanco Luna",
     program: "Farmacia",
     image: "/img/docentes/carlos-ruiz.jpg",
@@ -354,7 +354,7 @@ const teachersData: Teacher[] = [
     email: "carlos.ruiz@iest.edu.pe"
   },
   {
-    id: 34,
+    id: 35,
     name: "Julio Waldir Curasi Cari",
     program: "Farmacia",
     image: "/img/docentes/carlos-ruiz.jpg",
@@ -363,7 +363,7 @@ const teachersData: Teacher[] = [
     email: "carlos.ruiz@iest.edu.pe"
   },
   {
-    id: 35,
+    id: 36,
     name: "Nancy Cusilayme Quispe",
     program: "Farmacia",
     image: "/img/docentes/carlos-ruiz.jpg",
@@ -371,15 +371,7 @@ const teachersData: Teacher[] = [
     specialization: ["Contabilidad de Costos"],
     email: "carlos.ruiz@iest.edu.pe"
   },
-  {
-    id: 36,
-    name: "Heidy Camila Flores Flores",
-    program: "Farmacia",
-    image: "/img/docentes/carlos-ruiz.jpg",
-    titles: ["Químico Farmacéutico", "Especialista en Farmacología"],
-    specialization: ["Contabilidad de Costos"],
-    email: "carlos.ruiz@iest.edu.pe"
-  },
+  
   {
     id: 37,
     name: "Ximena Paola Huaracha Loza",
@@ -486,9 +478,9 @@ const teachersData: Teacher[] = [
   },
   {
     id: 48,
-    name: "Jhon Ángelo Núñez Gamarra",
+    name: "Jhon Ángel Núñez Gamarra",
     program: "Transversales",
-    image: "/img/docentes/pedro-castillo.jpg",
+    image: "/img/docentes/jhon_nuñez.png",
     titles: ["Licenciado en Turismo","Magister en Contabilidad y Administración con mención en Gestión gubernamental y desarrollo empresarial"],
     specialization: [""],
     email: "jhon_nunez_gamarra@iest.edu.pe"
@@ -512,7 +504,7 @@ const teachersData: Teacher[] = [
     email: "kelly.rioss@iest.edu.pe"
   },
   {
-    id: 49,
+    id: 51,
     name: "Luis Carlos Sotomayor Perez",
     program: "Transversales",
     image: "/img/docentes/pedro-castillo.jpg",
@@ -521,7 +513,7 @@ const teachersData: Teacher[] = [
     email: "luis.sotomayor@iest.edu.pe"
   },
   {
-    id: 50,
+    id: 52,
     name: "Caroli Yudiht Ticona Arpasi",
     program: "Transversales",
     image: "/img/docentes/caroli_ticona.png",
@@ -530,7 +522,7 @@ const teachersData: Teacher[] = [
     email: "caroli.ticona@iest.edu.pe"
   },
   {
-    id: 51,
+    id: 53,
     name: "Norca Mayli Tisnado Hualpa",
     program: "Transversales",
     image: "/img/docentes/pedro-castillo.jpg",
@@ -539,7 +531,7 @@ const teachersData: Teacher[] = [
     email: "norca.tisnado@iest.edu.pe"
   },
   {
-    id: 52,
+    id: 54,
     name: "Jhan Carlos Valencia Franco",
     program: "Transversales",
     image: "/img/docentes/jhan-valencia.png",
@@ -548,10 +540,10 @@ const teachersData: Teacher[] = [
     email: "jhan.valencia@iest.edu.pe"
   },
   {
-    id: 53,
+    id: 55,
     name: "Adisson Sergio Villalta Quispe",
     program: "Transversales",
-    image: "/img/docentes/pedro-castillo.jpg",
+    image: "/img/docentes/adisson_villalta.png",
     titles: ["Ingeniero Civil"],
     specialization: [""],
     email: "adisson.villalta@iest.edu.pe"
