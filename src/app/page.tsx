@@ -10,6 +10,7 @@ import  CareersN from '@/components/sections/CareersN'
 import TestimonialsCarouselGeneral from '@/components/sections/TestimonialsCarouselGeneral';
 import AdmissionModalities from '@/components/sections/AdmissionModalities';
 import ExperienceSection from '@/components/ExperienceSection';
+import PopUpSection from '@/components/sections/PopUpSection';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <ExperienceSection/>
         
         <Contact />
+        <PopUpSection />
         
       </main>
       <Footer />
