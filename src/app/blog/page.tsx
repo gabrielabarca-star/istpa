@@ -1,7 +1,9 @@
 // app/blog/page.tsx
-
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 // Asegúrate de que esta ruta sea la correcta para tu proyecto:
 import { getNews, Post } from '@/lib/news'; 
 

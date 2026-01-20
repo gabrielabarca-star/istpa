@@ -1,5 +1,6 @@
 // app/blog/[slug]/page.tsx
-
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 import Image from 'next/image';
 import { getNews, Post } from '@/lib/news'; // <-- 1. IMPORTAR DIRECTAMENTE
 

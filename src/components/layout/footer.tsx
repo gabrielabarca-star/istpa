@@ -23,7 +23,8 @@ export default function Footer() {
             </div>
           </Link>
           <p className="text-sm text-primary-foreground/80">
-            Formando profesionales para un futuro brillante.
+          Somos una Institución que forma profesionales técnicos competentes, conscientes, críticos y humanistas, integrándose adecuadamente a la sociedad.
+
           </p>
           <div className="flex gap-4">
             <Link href="#" aria-label="Facebook"><Facebook className="h-6 w-6 hover:text-secondary" /></Link>
