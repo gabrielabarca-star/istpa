@@ -19,11 +19,12 @@ import 'swiper/css/navigation';
 const slidesData = [
   {
     id: 1,
-    src: '/img/2.png',
-    alt: 'Descripción del primer banner',
+    src: '/img/5.jpg',
+    alt: 'Descripción del cuarto banner',
   },
+
   {
-    id: 2,
+    id: 3,
     src: '/img/3.png',
     alt: 'Descripción del segundo banner',
   },
@@ -32,6 +33,12 @@ const slidesData = [
     src: '/img/4.png',
     alt: 'Descripción del tercer banner',
   },
+  {
+    id: 4,
+    src: '/img/2.png',
+    alt: 'Descripción del primer banner',
+  },
+ 
 ];
 
 // --- Iconos para los botones de navegación (opcional, pero mejora el estilo) ---
