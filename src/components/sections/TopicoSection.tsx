@@ -32,7 +32,7 @@ export default function TopicoSection() {
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
               <Image
                 // ¡Recuerda cambiar esta ruta por la de tu imagen!
-                src="/img/topico_doctora.jpg" 
+                src="/img/topico.png" 
                 alt="Personal de salud del tópico atendiendo a un estudiante"
                 layout="fill"
                 objectFit="cover"

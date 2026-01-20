@@ -130,7 +130,7 @@ export default function Header() {
                 <div className="flex flex-col gap-1">
                     <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Menú Principal</h3>
                     <Link href="/nosotros" className={mobileLinkClasses}>Nosotros</Link>
-                    <Link href="/porque_istpa" className={mobileLinkClasses}>¿Por qué el Ies del Altiplano?</Link>
+                    <Link href="/porque_istpa" className={mobileLinkClasses}>¿Por qué el I.E.S DEL Altiplano?</Link>
                 </div>
 
                 {/* Sección 2 */}

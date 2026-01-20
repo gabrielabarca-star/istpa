@@ -33,7 +33,7 @@ export default function LibrarySection() {
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
               <Image
                 // Reemplaza esta ruta por la de tu imagen de biblioteca
-                src="/img/library-main.jpg" 
+                src="/img/biblioteca.png" 
                 alt="Estudiantes en la biblioteca del instituto"
                 layout="fill"
                 objectFit="cover"
