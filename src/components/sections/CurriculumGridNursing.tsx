@@ -17,12 +17,14 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 );
 
 // --- Definiciones de Tipos con TypeScript ---
+// 1. AQUI AGREGAMOS "credits"
 interface Module { title: string; number: number; }
-interface Course { name: string; type: 'specific' | 'employability' | 'real_work'; }
+interface Course { name: string; type: 'specific' | 'employability' | 'real_work'; credits: number; }
 interface Cycle { cycleNumber: string; courses: Course[]; module?: Module; }
 interface Year { yearName: string; cycles: Cycle[]; }
 
 // --- Datos de la Malla Curricular ---
+// 2. AQUI AGREGAMOS LOS VALORES DE LOS CREDITOS A CADA CURSO
 const curriculumData: Year[] = [
     {
         yearName: 'Primer año',
@@ -30,28 +32,28 @@ const curriculumData: Year[] = [
             {
                 cycleNumber: '01',
                 courses: [
-                    { name: 'Anatomía Funcional', type: 'specific' },
-                    { name: 'Primeros Auxilios', type: 'specific' },
-                    { name: 'Asistencia en Inmunizaciones', type: 'specific' },
-                    { name: 'Actividades en Epidemiologia', type: 'specific' },
-                    { name: 'Técnicas de Comunicación', type: 'employability' },
-                    { name: 'Lógica y Funciones', type: 'employability' },
-                    { name: 'Cultura Física y Deporte', type: 'employability' },
-                    { name: 'Informática / Internet', type: 'employability' },
+                    { name: 'Anatomía Funcional', type: 'specific', credits: 4 },
+                    { name: 'Primeros Auxilios', type: 'specific', credits: 4 },
+                    { name: 'Asistencia en Inmunizaciones', type: 'specific', credits: 4 },
+                    { name: 'Actividades en Epidemiologia', type: 'specific', credits: 4 },
+                    { name: 'Técnicas de Comunicación', type: 'employability', credits: 1.5 },
+                    { name: 'Lógica y Funciones', type: 'employability', credits: 1.5 },
+                    { name: 'Cultura Física y Deporte', type: 'employability', credits: 1.5 },
+                    { name: 'Informática / Internet', type: 'employability', credits: 1.5 },
                 ],
             },
             {
                 cycleNumber: '02',
                 courses: [
-                    { name: 'Educación para la Salud', type: 'specific' },
-                    { name: 'Actividades en Salud Publica', type: 'specific' },
-                    { name: 'Actividades en Salud Comunitaria', type: 'specific' },
-                    { name: 'Interpretación y Producción de Textos', type: 'employability' },
-                    { name: 'Estadística General', type: 'employability' },
-                    { name: 'Cultura Artística', type: 'employability' },
-                    { name: 'Ofimática', type: 'employability' },
-                    { name: 'Fundamentos de Investigación', type: 'employability' },
-                    { name: 'EFSRT', type: 'real_work' },
+                    { name: 'Educación para la Salud', type: 'specific', credits: 4 },
+                    { name: 'Actividades en Salud Publica', type: 'specific', credits: 7 },
+                    { name: 'Actividades en Salud Comunitaria', type: 'specific', credits: 4 },
+                    { name: 'Interpretación y Producción de Textos', type: 'employability', credits: 1.5 },
+                    { name: 'Estadística General', type: 'employability', credits: 1.5 },
+                    { name: 'Cultura Artística', type: 'employability', credits: 1.5 },
+                    { name: 'Ofimática', type: 'employability', credits: 1.5 },
+                    { name: 'Fundamentos de Investigación', type: 'employability', credits: 1.5 },
+                    { name: 'EFSRT', type: 'real_work', credits: 0 },
                 ],
                 module: { number: 1, title: 'ATENCIÓN PRIMARIA EN SALUD' },
             },
@@ -63,24 +65,24 @@ const curriculumData: Year[] = [
             {
                 cycleNumber: '03',
                 courses: [
-                    { name: 'Documentación en Salud', type: 'specific' },
-                    { name: 'Bioseguridad Asistencia Básica', type: 'specific' },
-                    { name: 'Hospitalaria Nutrición Y Dietas', type: 'specific' },
-                    { name: 'Sociedad y Economía en la Globalización', type: 'employability' },
-                    { name: 'Medio Ambiente y Desarrollo Sostenible', type: 'employability' },
-                    { name: 'Investigación e Innovación Tecnológica', type: 'employability' },
+                    { name: 'Documentación en Salud', type: 'specific', credits: 1 },
+                    { name: 'Bioseguridad Asistencia Básica', type: 'specific', credits: 4 },
+                    { name: 'Hospitalaria Nutrición Y Dietas', type: 'specific', credits: 4 },
+                    { name: 'Sociedad y Economía en la Globalización', type: 'employability', credits: 2 },
+                    { name: 'Medio Ambiente y Desarrollo Sostenible', type: 'employability', credits: 2 },
+                    { name: 'Investigación e Innovación Tecnológica', type: 'employability', credits: 1.5 },
                 ],
             },
             {
                 cycleNumber: '04',
                 courses: [
-                    { name: 'Procedimientos Invasivos y no Invasivos', type: 'specific' },
-                    { name: 'Asistencia en la Administración De Medicamentos', type: 'specific' },
-                    { name: 'Asistencia al Usuario con Patologías', type: 'specific' },
-                    { name: 'Asistencia al Usuario Quirúrgico', type: 'specific' },
-                    { name: 'Comunicación Interpersonal', type: 'employability' },
-                    { name: 'Proyectos de Investigación e Innovación Tecnológica', type: 'employability' },
-                    { name: 'EFSRT', type: 'real_work' },
+                    { name: 'Procedimientos Invasivos y no Invasivos', type: 'specific', credits: 3 },
+                    { name: 'Asistencia en la Administración De Medicamentos', type: 'specific', credits: 4 },
+                    { name: 'Asistencia al Usuario con Patologías', type: 'specific', credits: 3 },
+                    { name: 'Asistencia al Usuario Quirúrgico', type: 'specific', credits: 5 },
+                    { name: 'Comunicación Interpersonal', type: 'employability', credits: 1.5 },
+                    { name: 'Proyectos de Investigación e Innovación Tecnológica', type: 'employability', credits: 3 },
+                    { name: 'EFSRT', type: 'real_work', credits: 0 },
                 ],
                 module: { number: 2, title: 'SERVICIOS TÉCNICOS DE ENFERMERÍA ASISTENCIAL' },
             },
@@ -92,26 +94,26 @@ const curriculumData: Year[] = [
             {
                 cycleNumber: '05',
                 courses: [
-                    { name: 'Atención en Salud Materna', type: 'specific' },
-                    { name: 'Salud Del Niño y Adolescente', type: 'specific' },
-                    { name: 'Asistencia al Adulto Mayor', type: 'specific' },
-                    { name: 'Asistencia de Enfermería en Salud Mental', type: 'specific' },
-                    { name: 'Comunicación Empresarial', type: 'employability' },
-                    { name: 'Ética Empresarial', type: 'employability' },
-                    { name: 'Organización y Constitución de Empresa', type: 'employability' },
+                    { name: 'Atención en Salud Materna', type: 'specific', credits: 4 },
+                    { name: 'Salud Del Niño y Adolescente', type: 'specific', credits: 5 },
+                    { name: 'Asistencia al Adulto Mayor', type: 'specific', credits: 5 },
+                    { name: 'Asistencia de Enfermería en Salud Mental', type: 'specific', credits: 4 },
+                    { name: 'Comunicación Empresarial', type: 'employability', credits: 1.5 },
+                    { name: 'Comportamiento Ético', type: 'employability', credits: 1.5 },
+                    { name: 'Organización y Constitución de Empresa', type: 'employability', credits: 1.5 },
                 ],
             },
             {
                 cycleNumber: '06',
                 courses: [
-                    { name: 'Asistencia en Fisioterapia y Rehabilitación', type: 'specific' },
-                    { name: 'Asistencia en Salud Bucal', type: 'specific' },
-                    { name: 'Asistencia en Medicina Alternativa', type: 'specific' },
-                    { name: 'Asistencia al Usuario Oncológico', type: 'specific' },
-                    { name: 'Liderazgo y Trabajo en Equipo', type: 'employability' },
-                    { name: 'Proyecto Empresarial', type: 'employability' },
-                    { name: 'Legislación e Inserción Laboral', type: 'employability' },
-                    { name: 'EFSRT', type: 'real_work' },
+                    { name: 'Asistencia en Fisioterapia y Rehabilitación', type: 'specific', credits: 5 },
+                    { name: 'Asistencia en Salud Bucal', type: 'specific', credits: 3 },
+                    { name: 'Asistencia en Medicina Alternativa', type: 'specific', credits: 4 },
+                    { name: 'Asistencia al Usuario Oncológico', type: 'specific', credits: 5 },
+                    { name: 'Liderazgo y Trabajo en Equipo', type: 'employability', credits: 1.5 },
+                    { name: 'Proyecto Empresarial', type: 'employability', credits: 1.5 },
+                    { name: 'Legislación e Inserción Laboral', type: 'employability', credits: 2 },
+                    { name: 'EFSRT', type: 'real_work', credits: 0 },
                 ],
                 module: { number: 3, title: 'SERVICIOS TÉCNICOS DE ENFERMERÍA ESPECIALIZADA' },
             },
@@ -120,7 +122,7 @@ const curriculumData: Year[] = [
 ];
 
 // --- Componente Principal ---
-export default function CurriculumGridNursing() { // <-- NOMBRE DEL COMPONENTE CAMBIADO
+export default function CurriculumGridNursing() {
     const [activeYearIndex, setActiveYearIndex] = useState(0);
 
     const colors = {
@@ -196,13 +198,19 @@ export default function CurriculumGridNursing() { // <-- NOMBRE DEL COMPONENTE C
                                     </div>
                                     <div className="w-1 h-full" style={{ backgroundColor: colors.accentTeal }}></div>
                                 </div>
-                                <ul className="space-y-2 text-slate-700">
+                                <ul className="space-y-2 text-slate-700 w-full">
                                     {cycle.courses.map((course, cIndex) => (
+                                        // 3. AQUI MODIFICAMOS EL LI PARA MOSTRAR CREDITOS
                                         <li key={cIndex} className="flex items-start">
-                                            <span className="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full" style={{
+                                            <span className="mr-2 mt-1.5 w-1.5 h-1.5 min-w-[6px] rounded-full" style={{
                                                 backgroundColor: course.type === 'specific' ? colors.accentTeal : course.type === 'employability' ? colors.accentYellow : colors.accentRed
                                             }}></span>
-                                            {course.name}
+                                            <div className="flex flex-col sm:flex-row sm:items-center w-full justify-between gap-1">
+                                                <span className="leading-tight">{course.name}</span>
+                                                <span className="text-xs font-semibold text-slate-400 border border-slate-200 rounded px-1.5 py-0.5 whitespace-nowrap">
+                                                    {course.credits} Cr.
+                                                </span>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>

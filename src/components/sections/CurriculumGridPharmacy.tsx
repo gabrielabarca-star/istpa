@@ -10,15 +10,110 @@ const ArrowRightIcon = ({ className }: { className?: string }) => ( <svg classNa
 
 // --- Estructura de Datos ---
 interface Module { title: string; number: number; }
-interface Course { name: string; type: 'specific' | 'employability' | 'real_work'; }
+// 1. AGREGADO: credits
+interface Course { name: string; type: 'specific' | 'employability' | 'real_work'; credits: number; }
 interface Cycle { cycleNumber: string; courses: Course[]; module?: Module; }
 interface Year { yearName: string; cycles: Cycle[]; }
 
-// --- !!!!! IMPORTANTE: REEMPLAZA ESTOS DATOS CON LOS DE FARMACIA !!!!! ---
+// --- DATOS CON CREDITOS AGREGADOS ---
 const curriculumData: Year[] = [
-    { yearName: 'Primer año', cycles: [ { cycleNumber: '01', courses: [ { name: 'Análisis de Procesos Biológicos y Químicos en el Serhumano', type: 'specific' }, { name: 'Técnicas de Administración de Documentos', type: 'specific' }, { name: 'Atención de Medicamentos Esenciales', type: 'specific' }, { name: 'Técnicas de  Comunicación', type: 'employability' },{ name: 'Lógica y Funciones', type: 'employability' },{ name: 'Cultura Física y Deportes', type: 'employability' },{ name: 'Informática / Internet', type: 'employability' }, ], }, { cycleNumber: '02', courses: [ { name: 'Análisis Microbiano en la Industria Farmacéutica', type: 'specific' }, { name: 'Atención de Urgencias en una Oficina Farmacéutica', type: 'specific' }, { name: 'Administración Farmacéutica', type: 'specific' },{ name: 'Documentos Contables en una Oficina Farmacéutica', type: 'specific' }, { name: 'Liniamientos de Políticas Nacionales de Salud y Medicamentos', type: 'specific' },{ name: 'Interpretación y Producción de Texto', type: 'employability' },{ name: 'Cultura Artística', type: 'employability' },{ name: 'Ofimática', type: 'employability' },{ name: 'Fundamentos de Investigación', type: 'employability' },{ name: 'Estadística General', type: 'employability' },{ name: 'EFSRT', type: 'real_work' }, ], module: { number: 1, title: 'ATENCIÓN DE URGENCIAS Y ADMINISTRACIÓN DE UNA OFICINA FARMACÉUTICA' }, }, ], },
-    { yearName: 'Segundo año', cycles: [ { cycleNumber: '03', courses: [ { name: 'Estudio de Enfermedades y su Tratamiento Farmacológico I', type: 'specific' }, { name: 'Aplicación de Bases Farmacológicas de los Medicamentos I', type: 'specific' }, { name: 'Venta y Dispensación de Medicamentos y Productos Afines', type: 'specific' },{ name: 'Dispensación de Medicamentos en el Sistema de Salud', type: 'specific' },{ name: 'Sociedad y Economía en la Globalización', type: 'employability' },{ name: 'Medio Ambiente y Desarrollo Sostenible', type: 'employability' },{ name: 'Investigación e Innovación Tecnológica', type: 'employability' }, ], }, { cycleNumber: '04', courses: [ { name: 'Estudio De Enfermedades y su Tratamiento Farmacológico II', type: 'specific' }, { name: 'Aplicación de Bases Farmacológicas de los Medicamentos II', type: 'specific' }, { name: 'Clasificación de Medicamentos', type: 'specific' },{ name: 'Promoción Y Prevención de Salud en Farmacia', type: 'specific' },{ name: 'Técnicas de Transformación de Recursos Naturales', type: 'specific' },{ name: 'Comunicación Interpersonal', type: 'employability' },{ name: 'Proyectos de Investigación e innovación Tecnológica', type: 'employability' }, { name: 'EFSRT', type: 'real_work' }, ], module: { number: 2, title: 'DISPENSACIÓN DE MEDICAMENTOS Y ATENCIÓN EN FARMACIA' }, }, ], },
-    { yearName: 'Tercer año', cycles: [ { cycleNumber: '05', courses: [ { name: 'Métodos de Extracción e Identificación', type: 'specific' }, { name: 'Venta y Dispensación de Productos Naturales', type: 'specific' }, { name: 'Técnicas de Control de Calidad En La Industria Farmacéutica', type: 'specific' },{ name: 'Técnicas De Transformación de Materias Primas en la Industria Farmacéutica', type: 'specific' }, { name: 'Aspectos Legales en la Industria Farmacéutica', type: 'specific' },{ name: 'Comunicación Empresarial', type: 'employability' },{ name: 'Organización y Constitución de Empresas', type: 'employability' },{ name: 'Comportamiento Ético', type: 'employability' },], }, { cycleNumber: '06', courses: [ { name: 'Clasificación de Acción Farmacológica', type: 'specific' }, { name: 'Normas De Control de Calidad en la Industria Farmacéutica', type: 'specific' }, { name: 'Elaboración de Formas Farmacéuticas', type: 'specific' },{ name: 'Procesamiento de Productos Galénicos, Naturales, Cosméticos y Afines', type: 'specific' },{ name: 'Liderazgos y Trabajo en Equipo', type: 'employability' },{ name: 'Proyecto Empresarial', type: 'employability' },{ name: 'Legislación e Inserción Laboral', type: 'employability' }, { name: 'EFSRT', type: 'real_work' }, ], module: { number: 3, title: 'ELABORACIÓN Y COMERCIALIZACIÓN DE PRODUCTOS FARMACÉUTICOS Y AFINES' }, }, ], },
+    { 
+        yearName: 'Primer año', 
+        cycles: [ 
+            { 
+                cycleNumber: '01', 
+                courses: [ 
+                    { name: 'Análisis de Procesos Biológicos y Químicos en el Serhumano', type: 'specific', credits: 4 }, 
+                    { name: 'Técnicas de Administración de Documentos', type: 'specific', credits: 4 }, 
+                    { name: 'Atención de Medicamentos Esenciales', type: 'specific', credits: 3 }, 
+                    { name: 'Técnicas de  Comunicación', type: 'employability', credits: 1.5 },
+                    { name: 'Lógica y Funciones', type: 'employability', credits: 1.5 },
+                    { name: 'Cultura Física y Deportes', type: 'employability', credits: 1.5 },
+                    { name: 'Informática / Internet', type: 'employability', credits: 1.5 }, 
+                ], 
+            }, 
+            { 
+                cycleNumber: '02', 
+                courses: [ 
+                    { name: 'Análisis Microbiano en la Industria Farmacéutica', type: 'specific', credits: 3 }, 
+                    { name: 'Atención de Urgencias en una Oficina Farmacéutica', type: 'specific', credits: 4 }, 
+                    { name: 'Administración Farmacéutica', type: 'specific', credits: 4 },
+                    { name: 'Documentos Contables en una Oficina Farmacéutica', type: 'specific', credits: 3 }, 
+                    { name: 'Liniamientos de Políticas Nacionales de Salud y Medicamentos', type: 'specific', credits: 3 },
+                    { name: 'Interpretación y Producción de Texto', type: 'employability', credits: 1.5 },
+                    { name: 'Cultura Artística', type: 'employability', credits: 1.5 },
+                    { name: 'Ofimática', type: 'employability', credits: 1.5 },
+                    { name: 'Fundamentos de Investigación', type: 'employability', credits: 1.5 },
+                    { name: 'Estadística General', type: 'employability', credits: 1.5 },
+                    { name: 'EFSRT', type: 'real_work', credits: 0 }, 
+                ], 
+                module: { number: 1, title: 'ATENCIÓN DE URGENCIAS Y ADMINISTRACIÓN DE UNA OFICINA FARMACÉUTICA' }, 
+            }, 
+        ], 
+    },
+    { 
+        yearName: 'Segundo año', 
+        cycles: [ 
+            { 
+                cycleNumber: '03', 
+                courses: [ 
+                    { name: 'Estudio de Enfermedades y su Tratamiento Farmacológico I', type: 'specific', credits: 4 }, 
+                    { name: 'Aplicación de Bases Farmacológicas de los Medicamentos I', type: 'specific', credits: 6 }, 
+                    { name: 'Venta y Dispensación de Medicamentos y Productos Afines', type: 'specific', credits: 4 },
+                    { name: 'Dispensación de Medicamentos en el Sistema de Salud', type: 'specific', credits: 3 },
+                    { name: 'Sociedad y Economía en la Globalización', type: 'employability', credits: 2 },
+                    { name: 'Medio Ambiente y Desarrollo Sostenible', type: 'employability', credits: 2 },
+                    { name: 'Investigación e Innovación Tecnológica', type: 'employability', credits: 1.5 }, 
+                ], 
+            }, 
+            { 
+                cycleNumber: '04', 
+                courses: [ 
+                    { name: 'Estudio De Enfermedades y su Tratamiento Farmacológico II', type: 'specific', credits: 4 }, 
+                    { name: 'Aplicación de Bases Farmacológicas de los Medicamentos II', type: 'specific', credits: 4 }, 
+                    { name: 'Clasificación de Medicamentos', type: 'specific', credits: 4 },
+                    { name: 'Promoción Y Prevención de Salud en Farmacia', type: 'specific', credits: 2 },
+                    { name: 'Técnicas de Transformación de Recursos Naturales', type: 'specific', credits: 4 },
+                    { name: 'Comunicación Interpersonal', type: 'employability', credits: 1.5 },
+                    { name: 'Proyectos de Investigación e innovación Tecnológica', type: 'employability', credits: 3 }, 
+                    { name: 'EFSRT', type: 'real_work', credits: 0 }, 
+                ], 
+                module: { number: 2, title: 'DISPENSACIÓN DE MEDICAMENTOS Y ATENCIÓN EN FARMACIA' }, 
+            }, 
+        ], 
+    },
+    { 
+        yearName: 'Tercer año', 
+        cycles: [ 
+            { 
+                cycleNumber: '05', 
+                courses: [ 
+                    { name: 'Métodos de Extracción e Identificación', type: 'specific', credits: 4 }, 
+                    { name: 'Venta y Dispensación de Productos Naturales', type: 'specific', credits: 3 }, 
+                    { name: 'Técnicas de Control de Calidad En La Industria Farmacéutica', type: 'specific', credits: 2 },
+                    { name: 'Técnicas De Transformación de Materias Primas en la Industria Farmacéutica', type: 'specific', credits: 5 }, 
+                    { name: 'Aspectos Legales en la Industria Farmacéutica', type: 'specific', credits: 3 },
+                    { name: 'Comunicación Empresarial', type: 'employability', credits: 1.5 },
+                    { name: 'Organización y Constitución de Empresas', type: 'employability', credits: 1.5 },
+                    { name: 'Comportamiento Ético', type: 'employability', credits: 1.5 },
+                ], 
+            }, 
+            { 
+                cycleNumber: '06', 
+                courses: [ 
+                    { name: 'Clasificación de Acción Farmacológica', type: 'specific', credits: 4 }, 
+                    { name: 'Normas De Control de Calidad en la Industria Farmacéutica', type: 'specific', credits: 2 }, 
+                    { name: 'Elaboración de Formas Farmacéuticas', type: 'specific', credits: 5 },
+                    { name: 'Procesamiento de Productos Galénicos, Naturales, Cosméticos y Afines', type: 'specific', credits: 6 },
+                    { name: 'Liderazgos y Trabajo en Equipo', type: 'employability', credits: 1.5 },
+                    { name: 'Proyecto Empresarial', type: 'employability', credits: 1.5 },
+                    { name: 'Legislación e Inserción Laboral', type: 'employability', credits: 2 }, 
+                    { name: 'EFSRT', type: 'real_work', credits: 0 }, 
+                ], 
+                module: { number: 3, title: 'ELABORACIÓN Y COMERCIALIZACIÓN DE PRODUCTOS FARMACÉUTICOS Y AFINES' }, 
+            }, 
+        ], 
+    },
 ];
 
 export default function CurriculumGridPharmacy() {
@@ -58,7 +153,20 @@ export default function CurriculumGridPharmacy() {
                                     <div className="text-center mr-6"><p className="font-bold text-lg" style={{ color: colors.accentRed }}>CICLO</p><p className="text-8xl font-extrabold text-transparent" style={{ WebkitTextStroke: `2px ${colors.accentRed}` }}>{cycle.cycleNumber}</p></div>
                                     <div className="w-1 h-full" style={{ backgroundColor: colors.accentTeal }}></div>
                                 </div>
-                                <ul className="space-y-2 text-slate-700">{cycle.courses.map((course, cIndex) => ( <li key={cIndex} className="flex items-start"><span className="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: course.type === 'specific' ? colors.accentTeal : course.type === 'employability' ? colors.accentYellow : colors.accentRed }}></span>{course.name}</li> ))}</ul>
+                                <ul className="space-y-2 text-slate-700 w-full">
+                                    {cycle.courses.map((course, cIndex) => ( 
+                                        // 3. MODIFICADO: Layout para nombre y creditos
+                                        <li key={cIndex} className="flex items-start">
+                                            <span className="mr-2 mt-1.5 w-1.5 h-1.5 min-w-[6px] rounded-full" style={{ backgroundColor: course.type === 'specific' ? colors.accentTeal : course.type === 'employability' ? colors.accentYellow : colors.accentRed }}></span>
+                                            <div className="flex flex-col sm:flex-row sm:items-center w-full justify-between gap-1">
+                                                <span className="leading-tight">{course.name}</span>
+                                                <span className="text-xs font-semibold text-slate-400 border border-slate-200 rounded px-1.5 py-0.5 whitespace-nowrap">
+                                                    {course.credits} Cr.
+                                                </span>
+                                            </div>
+                                        </li> 
+                                    ))}
+                                </ul>
                             </div>
                             {cycle.module ? ( <div className="border-2 border-[#EF4444] rounded-2xl p-6 flex flex-col justify-center items-center text-center"><ModuleIcon className="w-12 h-12 mb-2"/><p className="font-bold text-lg" style={{ color: colors.primaryText }}>Módulo {cycle.module.number}</p><p className="text-slate-600">{cycle.module.title}</p></div> ) : ( <div></div> )}
                         </div>

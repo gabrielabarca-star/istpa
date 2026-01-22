@@ -144,10 +144,11 @@ export default function Header() {
                 {/* Sección 3 */}
                 <div className="flex flex-col gap-1">
                     <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Comunidad</h3>
-                    <Link href="#" className={mobileLinkClasses}>Intranet Alumnos</Link>
+                    <Link href="https://iestpa.jedu.pe/alumno/entrar" className={mobileLinkClasses}>Intranet Alumnos</Link>
                     <Link href="/atencion_estudiante" className={mobileLinkClasses}>Atención al estudiante</Link>
-                    <Link href="#" className={mobileLinkClasses}>Intranet Docentes</Link>
+                    <Link href="https://iestpa.jedu.pe/docente/entrar" className={mobileLinkClasses}>Intranet Docentes</Link>
                     <Link href="/docentes" className={mobileLinkClasses}>Nuestra Plana Docente</Link>
+                    <Link href="/indicadores_academicos" className={mobileLinkClasses}>Indicadores Académicos</Link>
                 </div>
                 
                 {/* Sección 4 */}
@@ -168,6 +169,7 @@ export default function Header() {
                     <Link href="/reincorporacion" className={mobileLinkClasses}>Reincorporación</Link>
                     <Link href="/traslados" className={mobileLinkClasses}>Traslados</Link>
                     <Link href="/transparencia" className={mobileLinkClasses}>Transparencia</Link>
+                    
                 </div>
 
                 </div>
