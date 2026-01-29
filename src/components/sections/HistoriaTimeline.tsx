@@ -13,18 +13,18 @@ interface TimelineEvent {
 
 // --- Datos de la línea de tiempo (puedes añadir más años aquí) ---
 const timelineData: TimelineEvent[] = [
-  { year: '1992', title: 'Funcionamiento', description: 'El Gobierno Regional José Carlos Mariátegui autorizo el funcionamiento del instituto con el nombre de INSTITUTO SUPERIOR TECNOLÓGICO NO ESTATAL DEL ALTIPLANO PUNO.', imageSrc: '/placeholder-image.png' },
-  { year: '1993', title: 'Reconocimiento', description: 'El ministerio de Educación reconocio a la Asociación de educativa cultural y de investigación Carlos Rubina Burgos como promotara del Instituto  .', imageSrc: '/placeholder-image.png' },
-  { year: '1994', title: 'Funcionamiento oficial', description: 'El Ministerio de Educación autorizó el funcionamiento del INSTITUTO SUPERIOR TECNOLÓGICO PRIVADO DEL ALTIPLANO PUNO, con la Resolución: R.M. Nº0568-94-ED.', imageSrc: '/placeholder-image.png' },
+  { year: '1992', title: 'Funcionamiento', description: 'El Gobierno Regional José Carlos Mariátegui autorizo el funcionamiento del instituto con el nombre de INSTITUTO SUPERIOR TECNOLÓGICO NO ESTATAL DEL ALTIPLANO PUNO.', imageSrc: '/img/1992.png' },
+  { year: '1993', title: 'Reconocimiento', description: 'El ministerio de Educación reconocio a la Asociación de educativa cultural y de investigación Carlos Rubina Burgos como promotara del Instituto  .', imageSrc: '/img/1993.png' },
+  { year: '1994', title: 'Funcionamiento oficial', description: 'El Ministerio de Educación autorizó el funcionamiento del INSTITUTO SUPERIOR TECNOLÓGICO PRIVADO DEL ALTIPLANO PUNO, con la Resolución: R.M. Nº0568-94-ED.', imageSrc: '/img/1994.png' },
   {
     year: '1995',
     title: 'Creacion de Carreras',
     description: 'El Ministerio de Educación autorizó la creación de nuevas carreras profesionales en el instituto.',
-    imageSrc: '/history-2008.jpg', // Usa la imagen que proporcionaste
+    imageSrc: '/img/1995.png', // Usa la imagen que proporcionaste
   },
-  { year: '1996', title: 'Entrega de Titulos', description: 'El Ministerio de Educación autorizó al instituto para otorgar los títulos de Profesional Técnico en Técnica en Farmacia y Profesional Técnico en Técnica en Laboratorio Clínico.', imageSrc: '/placeholder-image.png' },
-  { year: '2005', title: 'Revalidaron', description: 'Se obtuvo la revalidación de las carreras profesionales del instituto.', imageSrc: '/placeholder-image.png' },
-  { year: '2011', title: 'Nombre', description: 'El Instituto adoptó su nueva denominación como Instituto de Educación Superior Tecnológico Privado del Altiplano.', imageSrc: '/placeholder-image.png' },
+  { year: '1996', title: 'Entrega de Titulos', description: 'El Ministerio de Educación autorizó al instituto para otorgar los títulos de Profesional Técnico en Técnica en Farmacia y Profesional Técnico en Técnica en Laboratorio Clínico.', imageSrc: '/img/1996.png' },
+  { year: '2005', title: 'Revalidaron', description: 'Se obtuvo la revalidación de las carreras profesionales del instituto.', imageSrc: '/img/2005.png' },
+  { year: '2011', title: 'Nombre', description: 'El Instituto adoptó su nueva denominación como Instituto de Educación Superior Tecnológico Privado del Altiplano.', imageSrc: '/img/2011.png' },
   { year: '2024', title: 'Alianza Estratégica', description: 'Descripción del evento de 2016.', imageSrc: '/placeholder-image.png' },
  
 ];

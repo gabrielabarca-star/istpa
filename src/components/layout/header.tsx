@@ -87,10 +87,10 @@ export default function Header() {
               <Link href="/farmacia" className={mobileLinkClasses}>Farmacia</Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="hover:bg-slate-100 hover:text-[#C8663E] cursor-pointer text-[#002A5D]">
-              <Link href="/farmacia" className={mobileLinkClasses} >Enfermería</Link>
+              <Link href="/enfermeria" className={mobileLinkClasses} >Enfermería</Link>
               </DropdownMenuItem>
               <DropdownMenuItem  className="hover:bg-slate-100 hover:text-[#C8663E] cursor-pointer text-[#002A5D]">
-              <Link href="/farmacia" className={mobileLinkClasses}>Contabilidad</Link>
+              <Link href="/contabilidad" className={mobileLinkClasses}>Contabilidad</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
