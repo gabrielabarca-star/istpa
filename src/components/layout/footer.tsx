@@ -1,36 +1,45 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+// Importamos los iconos correctos de Lucide
+import { Facebook, Youtube, Instagram, Music2 } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-16 md:grid-cols-5 md:px-6"> {/* Cambiado a 5 columnas para acomodar el Libro */}
+      <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-16 md:grid-cols-5 md:px-6">
         
         {/* Columna 1: Logo y Redes */}
         <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-2">
-            {/* Contenedor relativo para el logo */}
-            <div className="relative w-auto h-12"> {/* Ajusta h-12 según necesites */}
+            <div className="relative w-auto h-12">
                 <Image
                   src="/img/logotipo-altiplano.png"
                   alt="Logo ISTPA"
-                  width={500} // Dimensiones originales de la imagen (aproximadas o exactas)
+                  width={500}
                   height={500}
-                  className="h-full w-auto object-contain" // h-full llena el contenedor padre, w-auto mantiene proporción
-                  priority // Opcional: para cargar el logo más rápido
+                  className="h-full w-auto object-contain"
+                  priority
                 />
             </div>
           </Link>
           <p className="text-sm text-primary-foreground/80">
-          Somos una Institución que forma profesionales técnicos competentes, conscientes, críticos y humanistas, integrándose adecuadamente a la sociedad.
-
+            Somos una Institución que forma profesionales técnicos competentes, conscientes, críticos y humanistas, integrándose adecuadamente a la sociedad.
           </p>
+          
+          {/* --- REDES SOCIALES ACTUALIZADAS --- */}
           <div className="flex gap-4">
-            <Link href="#" aria-label="Facebook"><Facebook className="h-6 w-6 hover:text-secondary" /></Link>
-            <Link href="#" aria-label="Twitter"><Twitter className="h-6 w-6 hover:text-secondary" /></Link>
-            <Link href="#" aria-label="Instagram"><Instagram className="h-6 w-6 hover:text-secondary" /></Link>
-            <Link href="#" aria-label="LinkedIn"><Linkedin className="h-6 w-6 hover:text-secondary" /></Link>
+            <Link href="https://www.facebook.com/share/186n755bmz/" target="_blank" aria-label="Facebook">
+                <Facebook className="h-6 w-6 hover:text-secondary transition-colors" />
+            </Link>
+            <Link href="https://www.youtube.com/@ISTPdelAltiplano" target="_blank" aria-label="Youtube">
+                <Youtube className="h-6 w-6 hover:text-secondary transition-colors" />
+            </Link>
+            <Link href="https://www.instagram.com/istp.altiplano?igsh=d28xZjcxMDE0MjZ6" target="_blank" aria-label="Instagram">
+                <Instagram className="h-6 w-6 hover:text-secondary transition-colors" />
+            </Link>
+            <Link href="https://www.tiktok.com/@istp.del.altiplan?_r=1&_t=ZS-93VcfNJSdqm" target="_blank" aria-label="Tiktok">
+                <Music2 className="h-6 w-6 hover:text-secondary transition-colors" />
+            </Link>
           </div>
         </div>
 
@@ -66,11 +75,10 @@ export default function Footer() {
           </address>
         </div>
 
-        {/* --- NUEVO: Columna 5: Libro de Reclamaciones --- */}
+        {/* Columna 5: Libro de Reclamaciones */}
         <div className="flex flex-col items-start justify-start">
             <Link href="/libro_reclamaciones" className="group">
                 <div className="relative w-32 h-auto hover:opacity-90 transition-opacity">
-                    {/* Asegúrate de tener esta imagen en tu carpeta public */}
                     <Image
                         src="/img/libro_reclamaciones.png" 
                         alt="Libro de Reclamaciones"
