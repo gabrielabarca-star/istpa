@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
@@ -33,10 +33,7 @@ export default function Header() {
     };
   }, []);
 
-  // Estilos de enlace: color naranja al hover y fondo redondeado
   const navLinkClasses = "transition-all duration-300 hover:text-[#C8663E] hover:bg-white/10 px-3 py-2 rounded-lg";
-  
-  // Estilos para los links dentro del menú hamburguesa (Sheet)
   const mobileLinkClasses = "text-white hover:text-[#C8663E] hover:bg-white/10 px-3 py-2 rounded-lg transition-all duration-300 block";
 
   return (
@@ -47,136 +44,155 @@ export default function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6 relative">
         
-        {/* 1. Logo a la Izquierda */}
+        {/* 1. Logo */}
         <div className="flex-shrink-0 z-10">
-            <Link href="/" className="flex items-center gap-2 text-primary-foreground">
+          <Link href="/" className="flex items-center gap-2 text-primary-foreground">
             <Image 
-                src="/img/logotipo-altiplano.png" 
-                alt="Logo" 
-                width={500} 
-                height={500} 
-                className="h-16 w-auto object-contain" 
-                priority 
+              src="/img/logotipo-altiplano.png" 
+              alt="Logo" 
+              width={500} 
+              height={500} 
+              className="h-16 w-auto object-contain" 
+              priority 
             />
-            </Link>
+          </Link>
         </div>
         
-        {/* 2. Navegación Centrada (Absoluta para estar justo en el medio) */}
-        {/* Se muestra solo en pantallas medianas (md) en adelante */}
+        {/* 2. Navegación Desktop (Centrada) */}
         <nav className="hidden md:flex items-center gap-6 text-lg font-medium text-white absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <Link href="/nosotros" className={navLinkClasses}>
-            Nosotros
-          </Link>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant="ghost" 
+                className="flex items-center gap-1 text-lg font-medium text-white hover:text-[#C8663E] hover:bg-white/10 px-3 py-2 rounded-lg focus-visible:ring-0"
+              >
+                Nosotros <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-[#002a5d] text-white border-none shadow-xl p-2 min-w-[200px]">
+              <DropdownMenuItem asChild>
+                <Link href="/nosotros#HistoriaTimeline" className="w-full cursor-pointer focus:text-[#C8663E]">Historia</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/nosotros#CompanyInfo" className="w-full cursor-pointer focus:text-[#C8663E]">Misión y Visión</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/nosotros#CompanyInfo" className="w-full cursor-pointer focus:text-[#C8663E]">Valores y Principios</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/nosotros#TeamCarousel" className="w-full cursor-pointer focus:text-[#C8663E]">Plana Jerárquica</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Link href="/porque_istpa" className={navLinkClasses}>
             ¿Por qué ISTPA?
           </Link>
           
           <DropdownMenu>
-            <DropdownMenuTrigger >
+            <DropdownMenuTrigger asChild>
               <Button 
                 variant="ghost" 
-                // CORRECCIÓN: Se cambió el hover a naranja #C8663E
-                className={`text-lg font-medium text-white hover:text-[#C8663E] hover:bg-white/10 px-3 py-2 rounded-lg focus-visible:ring-0 ${navLinkClasses}`}
+                className="flex items-center gap-1 text-lg font-medium text-white hover:text-[#C8663E] hover:bg-white/10 px-3 py-2 rounded-lg focus-visible:ring-0"
               >
-                Carreras
+                Carreras <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-[#002a5d] text-white border-none shadow-xl">
-              {/* Ajuste de color para los items del dropdown */}
-              <DropdownMenuItem  className="hover:bg-slate-100 hover:text-[#C8663E] cursor-pointer text-[#002A5D]">
-              <Link href="/farmacia" className={mobileLinkClasses}>Farmacia</Link>
+            <DropdownMenuContent className="bg-[#002a5d] text-white border-none shadow-xl p-2 min-w-[200px]">
+              <DropdownMenuItem asChild>
+                <Link href="/farmacia" className="w-full cursor-pointer focus:text-[#C8663E]">Farmacia</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-slate-100 hover:text-[#C8663E] cursor-pointer text-[#002A5D]">
-              <Link href="/enfermeria" className={mobileLinkClasses} >Enfermería</Link>
+              <DropdownMenuItem asChild>
+                <Link href="/enfermeria" className="w-full cursor-pointer focus:text-[#C8663E]">Enfermería</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem  className="hover:bg-slate-100 hover:text-[#C8663E] cursor-pointer text-[#002A5D]">
-              <Link href="/contabilidad" className={mobileLinkClasses}>Contabilidad</Link>
+              <DropdownMenuItem asChild>
+                <Link href="/contabilidad" className="w-full cursor-pointer focus:text-[#C8663E]">Contabilidad</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </nav>
 
-        {/* 3. Botón de Menú "Oculto" a la Derecha (Visible siempre) */}
+        {/* 3. Menú Móvil (Sheet) */}
         <div className="flex-shrink-0 z-10 ml-auto">
-            <Sheet>
+          <Sheet>
             <SheetTrigger asChild>
-                {/* Se eliminó md:hidden para que aparezca siempre */}
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-[#C8663E]">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-[#C8663E]">
                 <Menu className="h-8 w-8" />
                 <span className="sr-only">Abrir menú</span>
-                </Button>
+              </Button>
             </SheetTrigger>
             
-            {/* Contenido del Menú Lateral */}
             <SheetContent side="right" className="bg-[#1B355C] border-l-[#C8663E]/20 overflow-y-auto w-[300px] sm:w-[400px]">
-                <SheetHeader className="mb-6">
+              <SheetHeader className="mb-6">
                 <SheetTitle className="text-left">
-                    <Link href="/" className="flex items-center gap-2">
+                  <Link href="/" className="flex items-center gap-2">
                     <Image
-                        src="/img/logotipo-altiplano.png"
-                        alt="Logo"
-                        width={200}
-                        height={200}
-                        className="h-16 w-auto object-contain bg-white/10 p-2 rounded-lg"
-                        priority
+                      src="/img/logotipo-altiplano.png"
+                      alt="Logo"
+                      width={200}
+                      height={200}
+                      className="h-16 w-auto object-contain bg-white/10 p-2 rounded-lg"
+                      priority
                     />
-                    </Link>
+                  </Link>
                 </SheetTitle>
-                </SheetHeader>
+              </SheetHeader>
+              
+              <div className="grid grid-cols-1 gap-8 text-lg w-full">
                 
-                <div className="grid grid-cols-1 gap-8 text-lg w-full">
-                
-                {/* Sección 1 */}
+                {/* Sección Institucional Móvil - CORREGIDA */}
                 <div className="flex flex-col gap-1">
-                    <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Menú Principal</h3>
-                    <Link href="/nosotros" className={mobileLinkClasses}>Nosotros</Link>
-                    <Link href="/porque_istpa" className={mobileLinkClasses}>¿Por qué el I.E.S DEL Altiplano?</Link>
+                  <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">
+                    Institucional
+                  </h3>
+                  <Link href="/nosotros#HistoriaTimeline" className={mobileLinkClasses}>Historia</Link>
+                  <Link href="/nosotros#CompanyInfo" className={mobileLinkClasses}>Misión</Link>
+                  <Link href="/nosotros#CompanyInfo" className={mobileLinkClasses}>Visión</Link>
+                  <Link href="/nosotros#CompanyInfo" className={mobileLinkClasses}>Valores</Link>
+                  <Link href="/nosotros#CompanyInfo" className={mobileLinkClasses}>Principios</Link>
+                  <Link href="/nosotros#TeamCarousel" className={mobileLinkClasses}>Plana Jerárquica</Link>
+                  <Link href="/porque_istpa" className={mobileLinkClasses}>¿Por qué el I.E.S DEL Altiplano?</Link>
                 </div>
 
-                {/* Sección 2 */}
                 <div className="flex flex-col gap-1">
-                    <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Carreras</h3>
-                    <Link href="/farmacia" className={mobileLinkClasses}>Farmacia</Link>
-                    <Link href="/enfermeria" className={mobileLinkClasses}>Enfermería</Link>
-                    <Link href="/contabilidad" className={mobileLinkClasses}>Contabilidad</Link>
+                  <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Carreras</h3>
+                  <Link href="/farmacia" className={mobileLinkClasses}>Farmacia</Link>
+                  <Link href="/enfermeria" className={mobileLinkClasses}>Enfermería</Link>
+                  <Link href="/contabilidad" className={mobileLinkClasses}>Contabilidad</Link>
                 </div>
                 
-                {/* Sección 3 */}
                 <div className="flex flex-col gap-1">
-                    <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Comunidad</h3>
-                    <Link href="https://iestpa.jedu.pe/alumno/entrar" className={mobileLinkClasses}>Intranet Alumnos</Link>
-                    <Link href="/atencion_estudiante" className={mobileLinkClasses}>Atención al estudiante</Link>
-                    <Link href="https://iestpa.jedu.pe/docente/entrar" className={mobileLinkClasses}>Intranet Docentes</Link>
-                    <Link href="/docentes" className={mobileLinkClasses}>Nuestra Plana Docente</Link>
-                    <Link href="/indicadores_academicos" className={mobileLinkClasses}>Indicadores Académicos</Link>
+                  <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Comunidad</h3>
+                  <Link href="https://iestpa.jedu.pe/alumno/entrar" className={mobileLinkClasses}>Intranet Alumnos</Link>
+                  <Link href="/atencion_estudiante" className={mobileLinkClasses}>Atención al estudiante</Link>
+                  <Link href="https://iestpa.jedu.pe/docente/entrar" className={mobileLinkClasses}>Intranet Docentes</Link>
+                  <Link href="/docentes" className={mobileLinkClasses}>Nuestra Plana Docente</Link>
+                  <Link href="/indicadores_academicos" className={mobileLinkClasses}>Indicadores Académicos</Link>
                 </div>
                 
-                {/* Sección 4 */}
                 <div className="flex flex-col gap-1">
-                    <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Servicios</h3>
-                    <Link href="/bienestar" className={mobileLinkClasses}>Bienestar y empleabilidad</Link>
-                    <Link href="/topico" className={mobileLinkClasses}>Tópico</Link>
-                    <Link href="/biblioteca" className={mobileLinkClasses}>Biblioteca</Link>
-                    <Link href="/beca" className={mobileLinkClasses}>Becas</Link>
+                  <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Servicios</h3>
+                  <Link href="/bienestar" className={mobileLinkClasses}>Bienestar y empleabilidad</Link>
+                  <Link href="/topico" className={mobileLinkClasses}>Tópico</Link>
+                  <Link href="/biblioteca" className={mobileLinkClasses}>Biblioteca</Link>
+                  <Link href="/beca" className={mobileLinkClasses}>Becas</Link>
                 </div>
 
-                {/* Sección 5 */}
                 <div className="flex flex-col gap-1 pb-10">
-                    <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Trámites y Admisión</h3>
-                    <Link href="/admision" className={mobileLinkClasses}>Admisión</Link>
-                    <Link href="/modalidad_titulacion" className={mobileLinkClasses}>Titulación</Link>
-                    <Link href="/Rumbo_titulo" className={mobileLinkClasses}>Rumbo al título</Link>
-                    <Link href="/reincorporacion" className={mobileLinkClasses}>Reincorporación</Link>
-                    <Link href="/traslados" className={mobileLinkClasses}>Traslados</Link>
-                    <Link href="/transparencia" className={mobileLinkClasses}>Transparencia</Link>
-                    
+                  <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">Trámites y Admisión</h3>
+                  <Link href="/admision" className={mobileLinkClasses}>Admisión</Link>
+                  <Link href="/matricula" className={mobileLinkClasses}>Matrícula</Link>
+                  <Link href="/modalidad_titulacion" className={mobileLinkClasses}>Titulación</Link>
+                  <Link href="/Rumbo_titulo" className={mobileLinkClasses}>Rumbo al título</Link>
+                  <Link href="/reincorporacion" className={mobileLinkClasses}>Reincorporación</Link>
+                  <Link href="/traslados" className={mobileLinkClasses}>Traslados</Link>
+                  <Link href="/transparencia" className={mobileLinkClasses}>Transparencia</Link>
                 </div>
-
-                </div>
+              </div>
             </SheetContent>
-            </Sheet>
+          </Sheet>
         </div>
-
       </div>
     </header>
   );

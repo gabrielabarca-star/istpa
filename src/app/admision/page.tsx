@@ -2,6 +2,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Image from "next/image";
 import  AdmissionSection  from "@/components/sections/AdmissionSection";
+import CareersN from "@/components/sections/CareersN";
 
 
 export default function NosotrosPage() {
@@ -25,7 +26,7 @@ export default function NosotrosPage() {
         </section>
         <AdmissionSection/>
         
-       
+       <CareersN/>
 
       </main>
       <Footer />

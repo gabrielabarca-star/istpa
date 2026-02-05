@@ -13,7 +13,7 @@ interface TeamMember {
   email: string;
 }
 
-// --- Datos del Equipo Directivo (5 miembros) ---
+// --- Datos del Equipo Directivo y Coordinadores ---
 const teamMembers: TeamMember[] = [
   {
     id: 1,
@@ -26,7 +26,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 2,
     name: 'Carlos Murillo',
-    position: 'Administrador General',
+    position: 'Jefe de Unidad Administrativa',
     photoUrl: '/img/administrativo/carlos-1.jpg',
     phone: '965801705',
     email: 'carlos.murillo@iest.edu.pe',
@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 3,
     name: 'Ruth Trujillo',
-    position: 'Jefe de Secretaria Académica',
+    position: 'Secretaria Académica',
     photoUrl: '/img/administrativo/ruth.jpg',
     phone: '912503627',
     email: 'ruth.trujillo@iest.edu.pe',
@@ -55,9 +55,49 @@ const teamMembers: TeamMember[] = [
     phone: '965689692',
     email: 'rosa.aragon@iest.edu.pe',
   },
+  // --- NUEVOS CARGOS AGREGADOS ---
+  {
+    id: 6,
+    name: 'Sonia Anapan Ulloa',
+    position: 'COORDINADOR DE ÁREA DE CALIDAD',
+    photoUrl: '/img/administrativo/default.jpg', // Cambiar por la ruta real
+    phone: '922309224',
+    email: 'sonia.anapan@iest.edu.pe',
+  },
+  {
+    id: 7,
+    name: 'Braddy Gabriel Abarca Aranibar',
+    position: 'Responsable de Tecnologías de la Información',
+    photoUrl: '/img/administrativo/default.jpg',
+    phone: '965818204',
+    email: 'gabriel.abarca@iest.edu.pe',
+  },
+  {
+    id: 8,
+    name: 'Martin Lorenzo Samo',
+    position: 'Coordinador del Área de Estudios de Contabilidad',
+    photoUrl: '/img/docentes/martin-lorenzo.png',
+    phone: '971000026',
+    email: 'martin.lorenzo@iest.edu.pe',
+  },
+  {
+    id: 9,
+    name: 'Liz Zuñiga Gonzales',
+    position: 'Coordinador del Área de Estudios de Farmacia',
+    photoUrl: '/img/docentes/liz-zuñiga.png',
+    phone: '951526054',
+    email: 'liz.zuniga@iest.edu.pe',
+  },
+  {
+    id: 10,
+    name: 'Eliana Aguirre Yucra',
+    position: 'Coordinador del Área de Estudios de Enfermería',
+    photoUrl: '/img/docentes/eliana-aguirre.jpg',
+    phone: '921806360',
+    email: 'eliana.maquera@iest.edu.pe',
+  },
 ];
 
-// --- Iconos para los botones ---
 const ChevronLeftIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -69,9 +109,8 @@ const ChevronRightIcon = () => (
     </svg>
 );
 
-
 export default function TeamCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(2); // Empezamos con el miembro del medio
+  const [currentIndex, setCurrentIndex] = useState(0); // Ajustado a 0 para iniciar desde el primer miembro
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + teamMembers.length) % teamMembers.length);
@@ -82,22 +121,22 @@ export default function TeamCarousel() {
   };
 
   const getCardStyle = (index: number) => {
-    const offset = index - currentIndex;
+    let offset = index - currentIndex;
+    
+    // Lógica para que el carrusel sea infinito visualmente
+    if (offset > teamMembers.length / 2) offset -= teamMembers.length;
+    if (offset < -teamMembers.length / 2) offset += teamMembers.length;
+
     const absOffset = Math.abs(offset);
 
     const styles = {
       transform: `translateX(${(offset * 100) / 2}%) scale(${1 - absOffset * 0.1})`,
-      opacity: `${1 - absOffset * 0.4}`,
+      opacity: `${absOffset > 1 ? 0 : 1 - absOffset * 0.4}`,
       filter: `blur(${absOffset * 4}px)`,
       zIndex: 50 - absOffset,
       transition: 'all 0.4s ease-out',
+      pointerEvents: absOffset === 0 ? 'auto' : 'none' as const,
     };
-    
-    // Si la tarjeta no es la central ni las adyacentes, la hacemos casi invisible
-    if (absOffset > 1) {
-        styles.opacity = '0';
-        styles.filter = 'blur(8px)';
-    }
 
     return styles;
   };
@@ -111,12 +150,11 @@ export default function TeamCarousel() {
   
   return (
     <div className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 sm:p-8" style={{ backgroundColor: colors.background }}>
-      {/* --- Sección del Título (Izquierda) --- */}
       <div className="lg:w-1/3 text-center lg:text-left mb-12 lg:mb-0 lg:pr-12">
         <h2 className="text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-            Equipo
+            Plana
             <br />
-            <span style={{color: colors.accent}}>directivo</span>
+            <span style={{color: colors.accent}}>Jerárquica</span>
         </h2>
         <div className="w-16 h-1.5 mt-4 mx-auto lg:mx-0" style={{ backgroundColor: colors.accent }}></div>
         <p className="text-gray-500 mt-6 max-w-sm mx-auto lg:mx-0">
@@ -124,7 +162,6 @@ export default function TeamCarousel() {
         </p>
       </div>
 
-      {/* --- Sección del Carrusel (Derecha) --- */}
       <div className="relative w-full lg:w-2/3 h-[500px] flex items-center justify-center">
         {teamMembers.map((member, index) => (
           <div
@@ -136,20 +173,17 @@ export default function TeamCarousel() {
                 <Image
                     src={member.photoUrl}
                     alt={member.name}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    className="object-cover"
                 />
             </div>
             <h3 className="text-xl font-bold mt-4" style={{color: colors.primaryText}}>{member.name}</h3>
-            <p className="text-sm font-semibold" style={{color: colors.positionText}}>{member.position}</p>
+            <p className="text-sm font-semibold uppercase" style={{color: colors.positionText}}>{member.position}</p>
 
-            {/* --- INICIO DE LA MODIFICACIÓN --- */}
-            {/* Información de contacto vertical, visible solo en la tarjeta activa */}
             <div 
               className="mt-4 space-y-2 transition-opacity duration-300"
               style={{ 
                 opacity: index === currentIndex ? 1 : 0,
-                pointerEvents: index === currentIndex ? 'auto' : 'none' // Evita clics en tarjetas no activas
               }}
             >
               <p className="text-sm text-gray-600">
@@ -159,23 +193,20 @@ export default function TeamCarousel() {
                 <a href={`mailto:${member.email}`} className="hover:underline">{member.email}</a>
               </p>
             </div>
-            {/* --- FIN DE LA MODIFICACIÓN --- */}
-
           </div>
         ))}
 
-        {/* --- Botones de Navegación --- */}
         <button
           onClick={handlePrev}
-          className="absolute left-0 lg:left-20 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm text-blue-900 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-white transition"
-          style={{ zIndex: 52 }}
+          className="absolute left-0 lg:left-10 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm text-blue-900 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-white transition"
+          style={{ zIndex: 60 }}
         >
           <ChevronLeftIcon />
         </button>
         <button
           onClick={handleNext}
-          className="absolute right-0 lg:right-20 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm text-blue-900 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-white transition"
-          style={{ zIndex: 52 }}
+          className="absolute right-0 lg:right-10 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm text-blue-900 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-white transition"
+          style={{ zIndex: 60 }}
         >
           <ChevronRightIcon />
         </button>

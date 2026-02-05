@@ -1,46 +1,38 @@
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Image from "next/image";
-import  HistoriaTimeline  from "@/components/sections/HistoriaTimeline";
-import CompanyInfo from "@/components/sections/CompanyInfo";
-import TeamCarousel from "@/components/sections/TeamCarousel";
+import  EnrollmentProcessSection  from "@/components/sections/EnrollmentProcessSection";
+import TuitionFeeSection from "@/components/sections/TuitionFeeSection";
+import MatriculaReservationSection from "@/components/sections/MatriculaReservationSection";
 
 
-/* --- app/nosotros/page.tsx --- */
+
+
+
+
+
 export default function NosotrosPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-neutral-textDark">
       <Header />
       <main className="flex-1">
-        {/* Banner Hero */}
         <section className="relative h-80 bg-primary">
           <Image
             src="https://picsum.photos/1600/400?random=28"
-            alt="Campus"
+            alt="Campus del instituto"
             fill
             className="object-cover opacity-20"
-            priority
+            data-ai-hint="university campus"
           />
           <div className="relative flex h-full items-center justify-center">
             <h1 className="font-headline text-4xl font-bold text-primary-foreground md:text-6xl">
-              Sobre Nosotros
+              Matricula
             </h1>
           </div>
         </section>
-
-        {/* IMPORTANTE: Añadimos 'scroll-mt-20' para compensar la altura del header (h-20) 
-        */}
-        <section id="HistoriaTimeline" className="scroll-mt-20">
-          <HistoriaTimeline />
-        </section>
- 
-        <section id="CompanyInfo" className="scroll-mt-20">
-          <CompanyInfo />
-        </section>
-
-        <section id="TeamCarousel" className="scroll-mt-20">
-          <TeamCarousel />
-        </section>
+        <EnrollmentProcessSection/>
+        <TuitionFeeSection/>
+        <MatriculaReservationSection/>
       </main>
       <Footer />
     </div>

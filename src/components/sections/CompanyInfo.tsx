@@ -44,21 +44,20 @@ interface TitledDescription {
 
 // --- Datos (sin cambios) ---
 const valores: TitledDescription[] = [
-    { title: 'Liderazgo', description: 'Institución generadora de desarrollo y cambio regional.' },
-    { title: 'Responsabilidad', description: 'Compartida con directivos, docentes y alumnos.' },
-    { title: 'Identidad', description: 'Reconocer y valorar nuestras costumbres y cultura.' },
-    { title: 'Autoestima', description: 'Reflexivo, la autoevaluación y a valorar a los demás.' },
-    { title: 'Igualdad', description: 'Respeto mutuo de cualidad y calidad humana.' },
-    { title: 'Dignidad a la persona', description: 'Tolerancia, flexibilidad, honestidad, igualdad y lealtad.' },
-    { title: 'Educación para el trabajo', description: 'Humanista, el hombre es un fin de sí mismo y no puede ser instrumento de otro.' },
+    { title: 'Respeto', description: 'Se promueve en las relaciones entre los miembros de la comunidad educativa, garantizando un clima institucional basado en la convivencia armónica, la tolerancia y el reconocimiento de la diversidad.' },
+    { title: 'Responsabilidad', description: 'Se manifiesta en el cumplimiento de las funciones, deberes y compromisos asumidos por los distintos actores institucionales en el desarrollo de sus actividades académicas y administrativas.' },
+    { title: 'Honestidad', description: 'Se integra en la gestión institucional mediante prácticas éticas, transparentes y coherentes con los principios de integridad y probidad.' },
+    { title: 'Solidaridad', description: 'Se expresa en la promoción del trabajo colaborativo, el apoyo mutuo y la participación activa de la comunidad educativa en acciones de responsabilidad social.' },
+    { title: 'Compromiso Institucional', description: 'Se evidencia en la identificación de los miembros de la comunidad educativa con la misión, visión y objetivos estratégicos del IES del Altiplano, contribuyendo al logro de los resultados institucionales.' },
+    
 ];
 const principios: TitledDescription[] = [
-    { title: 'CALIDAD', description: 'Asegura la eficiencia en los procesos y la eficacia en los logros y las mejores condiciones, brindando una educación para la identidad, la ciudadanía, el trabajo, en un marco de una formación permanente.' },
-    { title: 'INNOVACIÓN', description: 'En todos los campos del saber, el arte y la cultura.' },
-    { title: 'CREATIVIDAD', description: 'Promueve la producción de nuevos conocimientos.' },
-    { title: 'CONCIENCIA AMBIENTAL', description: 'Motiva el respeto, cuidado y conservación del entorno natural como garantía para el futuro de la vida.' },
-    { title: 'ÉTICA', description: 'Fortalece valores, el respeto a las normas de convivencia y la conciencia moral, individual y pública.' },
-    { title: 'SINERGIA', description: 'Acción conjunta de varios órganos en la realización de una función, con el objeto de alcanzar las metas pedagógicas de la institución.' }
+    { title: 'CALIDAD EDUCATIVA', description: 'Se concreta mediante la implementación de mecanismos de planificación, seguimiento y evaluación de los procesos institucionales, orientados a la mejora continua del servicio educativo y al cumplimiento de las Condiciones Básicas de Calidad.' },
+    { title: 'EQUIDAD E INCLUSIÓN', description: 'Se incorpora a través de políticas y prácticas institucionales que promueven el acceso, la permanencia y la culminación de los estudios, considerando la diversidad de la comunidad educativa y garantizando la igualdad de oportunidades.' },
+    { title: 'PERTINENCIA', description: 'Se refleja en la articulación de la oferta formativa, los procesos académicos y las actividades institucionales con las demandas del entorno productivo regional y nacional, contribuyendo al desarrollo territorial.' },
+    { title: 'TRANSPARENCIA', description: 'Se integra en la gestión institucional mediante el cumplimiento del marco normativo vigente, la rendición de cuentas y el acceso a información relevante para la comunidad educativa.' },
+    { title: 'MEJORA CONTINUA', description: 'Se materializa a través de la evaluación permanente de los procesos institucionales y la implementación de acciones de mejora orientadas al fortalecimiento de la calidad del servicio educativo.' },
+    { title: 'ENFOQUE DE GESTIÓN DE PROCESOS', description: 'El IES del Altiplano orienta su gestión académica y administrativa considerando la interrelación de sus procesos institucionales, con la finalidad de contribuir al aseguramiento de la calidad y la mejora continua del servicio educativo.' }
 ];
 
 // --- Colores (sin cambios) ---
@@ -96,8 +95,10 @@ export default function CompanyInfo() {
               <MissionIcon className="w-12 h-12" style={{ color: colors.icon }} />
             </div>
             <p className="mt-4 text-base" style={{ color: colors.secondaryText }}>
-            Somos una institución Educativa Tecnológica que forma profesionales técnicos con valores 
-            democráticos para aportar en el progreso y desarrollo social de la región y del país en su conjunto.
+            Somos un Instituto de Educación Superior que brinda un servicio educativo de calidad, 
+            inclusivo y pertinente, orientado al desarrollo de competencias para la inserción laboral, el emprendimiento y 
+            la contribución al desarrollo productivo de la región Puno y del país, en coherencia con las 
+            demandas del entorno y el marco normativo vigente.
 
             </p>
           </InfoCard>
@@ -111,8 +112,10 @@ export default function CompanyInfo() {
               <VisionIcon className="w-12 h-12" style={{ color: colors.icon }} />
             </div>
             <p className="mt-4 text-base" style={{ color: colors.secondaryText }}>
-            Al 2026 ser una institución Educativa Tecnológica líder en la Región Puno que forme 
-            profesionales con valores democráticos para aportar en el progreso y desarrollo social de la región y del país en su conjunto.
+            Al 2031, ser un Instituto de Educación Superior licenciado, reconocido en la 
+            región Puno por brindar un servicio educativo de calidad, pertinente y orientado a la productividad, 
+            que contribuya al desarrollo económico y social regional y nacional, formando profesionales con valores democráticos,
+             compromiso ético y responsabilidad social.
 
             </p>
           </InfoCard>

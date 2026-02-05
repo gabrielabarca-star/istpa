@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react'; // Añadimos Clock
 
 export default function Contact() {
-  const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4752.949090175178!2d-70.0305151!3d-15.838520700000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d69ea45cb486b%3A0xb92f75c71c6a1581!2sIESTP%20DEL%20ALTIPLANO!5e1!3m2!1ses!2spe!4v1761580884313!5m2!1ses!2spe"; // Asegúrate de que esta URL sea la correcta
+  const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4752.949090175178!2d-70.0305151!3d-15.838520700000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d69ea45cb486b%3A0xb92f75c71c6a1581!2sIESTP%20DEL%20ALTIPLANO!5e1!3m2!1ses!2spe!4v1761580884313!5m2!1ses!2spe"; 
 
   return (
     <section id="contact" className="bg-card py-16 sm:py-24">
@@ -16,16 +16,12 @@ export default function Contact() {
             Estamos aquí para resolver tus dudas. ¡Visítanos o ponte en contacto con nosotros!
           </p>
         </div>
+        
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="font-headline text-2xl text-primary">Instituto del Altiplano Puno</CardTitle>
-              
-              {/* --- INICIO DE LA CORRECCIÓN --- */}
-              {/* Línea decorativa añadida */}
-              
-              {/* --- FIN DE LA CORRECCIÓN --- */}
-
+              <div className="w-12 h-1 mt-1" style={{ backgroundColor: '#09d3c5' }}></div>
             </CardHeader>
             <CardContent className="space-y-6 text-lg">
               <div className="flex items-start gap-4">
@@ -35,6 +31,20 @@ export default function Contact() {
                   <p className="text-muted-foreground">Jr. Lambayeque N° 416, Puno, Perú</p>
                 </div>
               </div>
+
+              {/* --- NUEVA SECCIÓN: HORARIO DE ATENCIÓN --- */}
+              <div className="flex items-start gap-4">
+                <Clock className="h-8 w-8 flex-shrink-0 text-secondary" />
+                <div>
+                  <h3 className="font-semibold">Horario de Atención</h3>
+                  <p className="text-muted-foreground">
+                    Mañana: 9:00 AM - 1:00 PM<br />
+                    Tarde: 3:00 PM - 7:00 PM
+                  </p>
+                </div>
+              </div>
+              {/* --------------------------------------- */}
+
               <div className="flex items-start gap-4">
                 <Phone className="h-8 w-8 flex-shrink-0 text-secondary" />
                 <div>
@@ -42,6 +52,7 @@ export default function Contact() {
                   <p className="text-muted-foreground">(051)357708</p>
                 </div>
               </div>
+              
               <div className="flex items-start gap-4">
                 <Mail className="h-8 w-8 flex-shrink-0 text-secondary" />
                 <div>
@@ -51,6 +62,7 @@ export default function Contact() {
               </div>
             </CardContent>
           </Card>
+
           <div className="overflow-hidden rounded-lg shadow-lg">
             <iframe
               src={mapSrc}
