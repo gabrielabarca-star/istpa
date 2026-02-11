@@ -10,12 +10,20 @@ const ArrowRightIcon = ({ className }: { className?: string }) => ( <svg classNa
 
 // --- Estructura de Datos ---
 interface Module { title: string; number: number; }
-// 1. AGREGADO: credits
-interface Course { name: string; type: 'specific' | 'employability' | 'real_work'; credits: number; }
+
+// 1. MODIFICADO: Se agrega totalHours a la interfaz
+interface Course { 
+    name: string; 
+    type: 'specific' | 'employability' | 'real_work'; 
+    credits: number;
+    totalHours: number; // Nuevo campo
+}
+
 interface Cycle { cycleNumber: string; courses: Course[]; module?: Module; }
 interface Year { yearName: string; cycles: Cycle[]; }
 
-// --- DATOS CON CREDITOS AGREGADOS (CONTABILIDAD) ---
+// --- DATOS CON CREDITOS Y HORAS (CONTABILIDAD) ---
+// Nota: Calculado en base a 1 crédito = 16 horas.
 const curriculumData: Year[] = [
     { 
         yearName: 'Primer año', 
@@ -23,29 +31,29 @@ const curriculumData: Year[] = [
             { 
                 cycleNumber: '01', 
                 courses: [ 
-                    { name: 'Contabilidad General I', type: 'specific', credits: 4 }, 
-                    { name: 'Plan Contable', type: 'specific', credits: 3 }, 
-                    { name: 'Documentación Comercial y Contable', type: 'specific', credits: 4 }, 
-                    { name: 'Administración Empresaria', type: 'specific', credits: 2 },
-                    { name: 'Legislación Comercial', type: 'specific', credits: 3 },
-                    { name: 'Técnicas de Comunicación', type: 'specific', credits: 1.5 },
-                    { name: 'Lógica y Funciones', type: 'employability', credits: 1.5 },
-                    { name: 'Cultura Física y Deportes', type: 'employability', credits: 1.5 },
-                    { name: 'Informática /Internet', type: 'employability', credits: 1.5 }, 
+                    { name: 'Contabilidad General I', type: 'specific', credits: 4, totalHours: 108 }, 
+                    { name: 'Plan Contable', type: 'specific', credits: 3, totalHours: 72 }, 
+                    { name: 'Documentación Comercial y Contable', type: 'specific', credits: 4, totalHours: 90 }, 
+                    { name: 'Administración Empresaria', type: 'specific', credits: 2, totalHours: 54 },
+                    { name: 'Legislación Comercial', type: 'specific', credits: 3, totalHours: 72 },
+                    { name: 'Técnicas de Comunicación', type: 'specific', credits: 1.5, totalHours: 36 },
+                    { name: 'Lógica y Funciones', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Cultura Física y Deportes', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Informática /Internet', type: 'employability', credits: 1.5, totalHours: 36 }, 
                 ], 
             }, 
             { 
                 cycleNumber: '02', 
                 courses: [ 
-                    { name: 'Contabilidad General II', type: 'specific', credits: 5 }, 
-                    { name: 'Legislación Laboral', type: 'specific', credits: 3 }, 
-                    { name: 'Legislación Tributaria', type: 'specific', credits: 3 },
-                    { name: 'Fundamentos de Costos', type: 'specific', credits: 4 }, 
-                    { name: 'Interpretación y Producción de Texto', type: 'employability', credits: 1.5 },
-                    { name: 'Estadística General', type: 'employability', credits: 1.5 },
-                    { name: 'Cultura Artística', type: 'employability', credits: 1.5 },
-                    { name: 'Ofimática', type: 'employability', credits: 1.5 },
-                    { name: 'EFSRT', type: 'real_work', credits: 0 }, 
+                    { name: 'Contabilidad General II', type: 'specific', credits: 5, totalHours: 126 }, 
+                    { name: 'Legislación Laboral', type: 'specific', credits: 3, totalHours: 72 }, 
+                    { name: 'Legislación Tributaria', type: 'specific', credits: 3, totalHours: 72 },
+                    { name: 'Fundamentos de Costos', type: 'specific', credits: 4, totalHours: 90 }, 
+                    { name: 'Interpretación y Producción de Texto', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Estadística General', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Cultura Artística', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Ofimática', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'EFSRT', type: 'real_work', credits: 0, totalHours: 265 }, 
                 ], 
                 module: { number: 1, title: 'PROCESOS CONTABLES' }, 
             }, 
@@ -57,24 +65,24 @@ const curriculumData: Year[] = [
             { 
                 cycleNumber: '03', 
                 courses: [ 
-                    { name: 'Contabilidad de Costos', type: 'specific', credits: 4 }, 
-                    { name: 'Técnica Presupuestal', type: 'specific', credits: 4 }, 
-                    { name: ' Contabilidad Gubernamental I', type: 'specific', credits: 4 },
-                    { name: ' Aplicativos Informáticos', type: 'specific', credits: 4 },
-                    { name: ' Sociedad y Economía en la Globalización', type: 'employability', credits: 2 },
-                    { name: ' Medio Ambiente y Desarrollo Sostenible', type: 'employability', credits: 2 },
-                    { name: ' Investigación e Innovación Tecnológica', type: 'employability', credits: 1.5 }, 
+                    { name: 'Contabilidad de Costos', type: 'specific', credits: 4, totalHours: 108 }, 
+                    { name: 'Técnica Presupuestal', type: 'specific', credits: 4, totalHours: 108 }, 
+                    { name: ' Contabilidad Gubernamental I', type: 'specific', credits: 4, totalHours: 90 },
+                    { name: ' Aplicativos Informáticos', type: 'specific', credits: 4, totalHours: 90 },
+                    { name: ' Sociedad y Economía en la Globalización', type: 'employability', credits: 2, totalHours: 54 },
+                    { name: ' Medio Ambiente y Desarrollo Sostenible', type: 'employability', credits: 2, totalHours: 54 },
+                    { name: ' Investigación e Innovación Tecnológica', type: 'employability', credits: 1.5, totalHours: 36 }, 
                 ], 
             }, 
             { 
                 cycleNumber: '04', 
                 courses: [ 
-                    { name: 'Contabilidad de Sociedades', type: 'specific', credits: 6 }, 
-                    { name: 'Contabilidad Aplicada', type: 'specific', credits: 6 }, 
-                    { name: 'Contabilidad Gubernamental II', type: 'specific', credits: 6 },
-                    { name: 'Comunicación Interpersonal', type: 'employability', credits: 1.5 },
-                    { name: 'Proyectos de Investigación e Innovación Tecnológica', type: 'employability', credits: 3 }, 
-                    { name: 'EFSRT', type: 'real_work', credits: 0 }, 
+                    { name: 'Contabilidad de Sociedades', type: 'specific', credits: 6, totalHours: 144 }, 
+                    { name: 'Contabilidad Aplicada', type: 'specific', credits: 6, totalHours: 144 }, 
+                    { name: 'Contabilidad Gubernamental II', type: 'specific', credits: 6, totalHours: 144 },
+                    { name: 'Comunicación Interpersonal', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Proyectos de Investigación e Innovación Tecnológica', type: 'employability', credits: 3, totalHours: 72 }, 
+                    { name: 'EFSRT', type: 'real_work', credits: 0, totalHours: 290 }, 
                 ], 
                 module: { number: 2, title: 'ANÁLISIS FINANCIERO' }, 
             }, 
@@ -86,28 +94,28 @@ const curriculumData: Year[] = [
             { 
                 cycleNumber: '05', 
                 courses: [ 
-                    { name: 'Formulación de Estados Financieros', type: 'specific', credits: 4 }, 
-                    { name: 'Fundamentos de Finanzas', type: 'specific', credits: 3 }, 
-                    { name: 'Formulación y Evaluación de Proyectos', type: 'specific', credits: 4 },
-                    { name: 'Planeamiento de Auditoria', type: 'specific', credits: 3 },
-                    { name: 'Contabilidad de Entidades Financieras I', type: 'specific', credits: 4 },
-                    { name: 'Comunicación Empresarial', type: 'employability', credits: 1.5 },
-                    { name: 'Comportamiento Ético', type: 'employability', credits: 1.5 },
-                    { name: 'Organización y Constitución de Empresas', type: 'employability', credits: 1.5 }, 
+                    { name: 'Formulación de Estados Financieros', type: 'specific', credits: 4, totalHours: 108 }, 
+                    { name: 'Fundamentos de Finanzas', type: 'specific', credits: 3, totalHours: 72 }, 
+                    { name: 'Formulación y Evaluación de Proyectos', type: 'specific', credits: 4, totalHours: 90 },
+                    { name: 'Planeamiento de Auditoria', type: 'specific', credits: 3, totalHours: 72 },
+                    { name: 'Contabilidad de Entidades Financieras I', type: 'specific', credits: 4, totalHours: 90 },
+                    { name: 'Comunicación Empresarial', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Comportamiento Ético', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Organización y Constitución de Empresas', type: 'employability', credits: 1.5, totalHours: 36 }, 
                 ], 
             }, 
             { 
                 cycleNumber: '06', 
                 courses: [ 
-                    { name: 'Análisis e Interpretación de Estados Financieros', type: 'specific', credits: 4 }, 
-                    { name: 'Finanzas Públicas', type: 'specific', credits: 3 }, 
-                    { name: 'Técnicas y Procedimientos de Auditoria', type: 'specific', credits: 3 },
-                    { name: 'Contabilidad de Entidades Financieras II', type: 'specific', credits: 4 },
-                    { name: 'Cálculo Financiero', type: 'specific', credits: 4 },
-                    { name: 'Liderazgo y Trabajo en Equipo', type: 'employability', credits: 1.5 },
-                    { name: 'Proyecto Empresarial', type: 'employability', credits: 1.5 },
-                    { name: 'Legislación e Inserción Laboral', type: 'employability', credits: 2 }, 
-                    { name: 'EFSRT', type: 'real_work', credits: 0 }, 
+                    { name: 'Análisis e Interpretación de Estados Financieros', type: 'specific', credits: 4, totalHours: 90 }, 
+                    { name: 'Finanzas Públicas', type: 'specific', credits: 3, totalHours: 72 }, 
+                    { name: 'Técnicas y Procedimientos de Auditoria', type: 'specific', credits: 3, totalHours: 72 },
+                    { name: 'Contabilidad de Entidades Financieras II', type: 'specific', credits: 4, totalHours: 90 },
+                    { name: 'Cálculo Financiero', type: 'specific', credits: 4, totalHours: 90 },
+                    { name: 'Liderazgo y Trabajo en Equipo', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Proyecto Empresarial', type: 'employability', credits: 1.5, totalHours: 36 },
+                    { name: 'Legislación e Inserción Laboral', type: 'employability', credits: 2, totalHours: 54 }, 
+                    { name: 'EFSRT', type: 'real_work', credits: 0, totalHours: 300 }, 
                 ], 
                 module: { number: 3, title: 'CONTABILIDAD PÚBLICA Y PRIVADA' }, 
             }, 
@@ -154,13 +162,13 @@ export default function CurriculumGridAccounting() {
                                 </div>
                                 <ul className="space-y-2 text-slate-700 w-full">
                                     {cycle.courses.map((course, cIndex) => ( 
-                                        // 3. MODIFICADO: Layout para nombre y créditos
+                                        // 3. MODIFICADO: Layout para nombre, créditos y horas
                                         <li key={cIndex} className="flex items-start">
                                             <span className="mr-2 mt-1.5 w-1.5 h-1.5 min-w-[6px] rounded-full" style={{ backgroundColor: course.type === 'specific' ? colors.accentTeal : course.type === 'employability' ? colors.accentYellow : colors.accentRed }}></span>
                                             <div className="flex flex-col sm:flex-row sm:items-center w-full justify-between gap-1">
                                                 <span className="leading-tight">{course.name}</span>
-                                                <span className="text-xs font-semibold text-slate-400 border border-slate-200 rounded px-1.5 py-0.5 whitespace-nowrap">
-                                                    {course.credits} Cr.
+                                                <span className="text-xs font-semibold text-slate-400 border border-slate-200 rounded px-1.5 py-0.5 whitespace-nowrap bg-slate-50">
+                                                    {course.credits} Cr. <span className="text-slate-300 mx-1">|</span> {course.totalHours} Hrs.
                                                 </span>
                                             </div>
                                         </li> 

@@ -8,6 +8,8 @@ import GraduateProfileNursing from "@/components/sections/GraduateProfileNursing
 import CurriculumGridNursing from "@/components/sections/CurriculumGridNursing";
 import JobMarketNursing from "@/components/sections/JobMarketNursing";
 import DegreeAndTitleNursing from "@/components/sections/DegreeAndTitleNursing";
+import NursingModulesSection from "@/components/sections/NursingModulesSection";
+
 export default function NosotrosPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-neutral-textDark">
@@ -28,27 +30,23 @@ export default function NosotrosPage() {
             </div>
         </section>
 
-        <section>
+        
           <NursingCareer />
-        </section>
-       <section>  
+          <NursingModulesSection />
+      
        <WhyChooseUs/>
-       </section>
-       <section>
+      
        <WhyStudyNursing />
-       </section>
-       <section>
+     
        <GraduateProfileNursing />
-       </section>
-       <section>
+      
        <CurriculumGridNursing />
-       </section>
-       <section>
+    
        <JobMarketNursing/>
-       </section>
-       <section>
+       
        <DegreeAndTitleNursing />
-       </section>
+       
+
       </main>
       <Footer />
     </div>

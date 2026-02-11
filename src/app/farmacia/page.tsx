@@ -7,6 +7,7 @@ import GraduateProfilePharmacy from "@/components/sections/GraduateProfilePharma
 import CurriculumGridPharmacy from "@/components/sections/CurriculumGridPharmacy";
 import JobMarketPharmacy from "@/components/sections/JobMarketPharmacy";
 import DegreeAndTitlePharmacy from "@/components/sections/DegreeAndTitlePharmacy";
+import PharmacyModulesSection from "@/components/sections/PharmacyModulesSection";
 
 export default function NosotrosPage() {
   return (
@@ -30,7 +31,7 @@ export default function NosotrosPage() {
        
         
         <PharmacyCareer/>
-     
+        <PharmacyModulesSection />
       <WhyStudyPharmacy/>
      
       <GraduateProfilePharmacy/>

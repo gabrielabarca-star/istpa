@@ -33,12 +33,19 @@ const PhoneIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// 1. NUEVO ICONO DE DOCUMENTO
+const DocumentIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+  </svg>
+);
+
 // --- Componente Principal ---
 export default function ScholarshipRequirementsSection() {
   const colors = {
     primaryText: '#002A5D', // Azul oscuro institucional
     accent: '#08D3C4',     // Turquesa institucional
-    bgAlert: '#FFFBEB',    // Fondo amarillo suave para alerta (o usa #F0F9FF para azul suave)
+    bgAlert: '#FFFBEB',    // Fondo amarillo suave
     borderAlert: '#FCD34D',// Borde alerta
   };
 
@@ -48,22 +55,21 @@ export default function ScholarshipRequirementsSection() {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
-          {/* 1. COLUMNA IZQUIERDA: Imagen Mediana (5 Columnas) */}
+          {/* 1. COLUMNA IZQUIERDA: Imagen Mediana */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
               <Image
-                src="/img/beca-requisitos.jpg" // REEMPLAZAR CON TU IMAGEN
+                src="/img/beca.png" // REEMPLAZAR CON TU IMAGEN
                 alt="Estudiante solicitando información de becas"
                 layout="fill"
                 objectFit="cover"
                 className="hover:scale-105 transition-transform duration-700"
               />
-              {/* Detalle decorativo */}
               <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#002A5D]/80 to-transparent"></div>
             </div>
           </div>
 
-          {/* 2. COLUMNA DERECHA: Contenido (7 Columnas) */}
+          {/* 2. COLUMNA DERECHA: Contenido */}
           <div className="lg:col-span-7 space-y-8">
             
             {/* Título */}
@@ -75,6 +81,20 @@ export default function ScholarshipRequirementsSection() {
               <p className="mt-4 text-slate-600">
                 Los estudiantes deberán cumplir con los siguientes requisitos indispensables para solicitar la beca socioeconómica o por rendimiento:
               </p>
+
+              {/* --- 2. BOTÓN DE RESOLUCIÓN AGREGADO AQUÍ --- */}
+              <div className="mt-6">
+                <a 
+                  href="/docs/resolucion becas por rendimiento academico_0001.pdf" // Asegúrate que esta ruta exista en public/
+                  download
+                  className="inline-flex items-center gap-3 bg-[#002A5D] text-white px-6 py-3 rounded-lg hover:bg-[#001F45] transition-colors shadow-md group w-full sm:w-auto justify-center sm:justify-start"
+                >
+                  <DocumentIcon className="w-6 h-6 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm font-semibold text-left">
+                    Descargar Resolución Directoral N° 090-2025-I.S.T.P DEL ALTIPLANO
+                  </span>
+                </a>
+              </div>
             </div>
 
             {/* Lista de Requisitos */}
@@ -85,7 +105,7 @@ export default function ScholarshipRequirementsSection() {
                   <CheckCircleIcon className="w-6 h-6" />
                 </div>
                 <p className="text-slate-700 text-sm sm:text-base">
-                  Haber cursado al menos un semestre como alumnos regulares del ISTPA; es decir, podrán postular <strong className="text-[#002A5D]">a partir del segundo semestre</strong>.
+                  Haber cursado al menos un semestre como alumnos regulares del IES Privado del Altiplano; es decir, podrán postular <strong className="text-[#002A5D]">a partir del segundo semestre</strong>.
                 </p>
               </li>
               

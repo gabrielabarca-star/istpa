@@ -10,6 +10,7 @@ import GraduateProfileAccounting from "@/components/sections/GraduateProfileAcco
 import  CurriculumGridAccounting from "@/components/sections/CurriculumGridAccounting";
 import JobMarketAccounting from "@/components/sections/JobMarketAccounting";
 import DegreeAndTitleAccounting from "@/components/sections/DegreeAndTitleAccounting";
+import AccountingModulesSection from "@/components/sections/AccountingModulesSection";
 
 
 
@@ -33,12 +34,14 @@ export default function NosotrosPage() {
                </div>
         </section>
         <AccountingCareer/>
+        <AccountingModulesSection />
         <WhyChooseUs/>
         <WhyStudyAccounting/>
         <GraduateProfileAccounting/>
         <CurriculumGridAccounting/>
         <JobMarketAccounting/>
         <DegreeAndTitleAccounting/>
+        
       </main>
       <Footer />
     </div>
