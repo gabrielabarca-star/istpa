@@ -33,12 +33,35 @@ const PhoneIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// 1. NUEVO ICONO DE DOCUMENTO
 const DocumentIcon = ({ className }: { className?: string }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
   </svg>
 );
+
+// --- NUEVOS ICONOS PARA LOS TIPOS DE BECA ---
+const AcademicIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path d="M12 14L21 9L12 4L3 9L12 14Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+     <path d="M3 14V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+     <path d="M12 14V20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const MilitaryIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const HandHeartIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fillOpacity="0" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 14C12 14 14 16 17 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 
 // --- Componente Principal ---
 export default function ScholarshipRequirementsSection() {
@@ -53,10 +76,10 @@ export default function ScholarshipRequirementsSection() {
     <section className="w-full bg-white py-16 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* 1. COLUMNA IZQUIERDA: Imagen Mediana */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end sticky top-8">
             <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
               <Image
                 src="/img/beca.png" // REEMPLAZAR CON TU IMAGEN
@@ -72,20 +95,20 @@ export default function ScholarshipRequirementsSection() {
           {/* 2. COLUMNA DERECHA: Contenido */}
           <div className="lg:col-span-7 space-y-8">
             
-            {/* Título */}
+            {/* Título y Texto */}
             <div>
               <h2 className="text-3xl sm:text-4xl font-extrabold" style={{ color: colors.primaryText }}>
-                Requisitos para la Beca
+                Programa de Becas
               </h2>
               <div className="w-16 h-1 mt-3" style={{ backgroundColor: colors.accent }}></div>
               <p className="mt-4 text-slate-600">
-                Los estudiantes deberán cumplir con los siguientes requisitos indispensables para solicitar la beca socioeconómica o por rendimiento:
+                En el IES Privado del Altiplano, reconocemos el esfuerzo y brindamos oportunidades. Ofrecemos becas para aquellos estudiantes que destacan académicamente, para quienes sirven a nuestra patria y para quienes requieren apoyo socioeconómico.
               </p>
 
-              {/* --- 2. BOTÓN DE RESOLUCIÓN AGREGADO AQUÍ --- */}
+              {/* BOTÓN DE DESCARGA */}
               <div className="mt-6">
                 <a 
-                  href="/docs/resolucion becas por rendimiento academico_0001.pdf" // Asegúrate que esta ruta exista en public/
+                  href="/docs/resolucion becas por rendimiento academico_0001.pdf" 
                   download
                   className="inline-flex items-center gap-3 bg-[#002A5D] text-white px-6 py-3 rounded-lg hover:bg-[#001F45] transition-colors shadow-md group w-full sm:w-auto justify-center sm:justify-start"
                 >
@@ -97,38 +120,76 @@ export default function ScholarshipRequirementsSection() {
               </div>
             </div>
 
-            {/* Lista de Requisitos */}
-            <ul className="space-y-4">
-              {/* Requisito 1 */}
-              <li className="flex gap-4 items-start">
-                <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
-                  <CheckCircleIcon className="w-6 h-6" />
+            {/* --- SECCIÓN NUEVA: TIPOS DE BECAS --- */}
+            <div>
+              <h3 className="text-xl font-bold mb-4" style={{ color: colors.primaryText }}>Modalidades Disponibles</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                
+                {/* Modalidad 1: Rendimiento */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center hover:border-[#08D3C4] transition-colors">
+                   <div className="w-10 h-10 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-3">
+                      <AcademicIcon className="w-6 h-6"/>
+                   </div>
+                   <h4 className="font-bold text-sm text-[#002A5D]">Rendimiento Académico</h4>
+                   <p className="text-xs text-slate-500 mt-1">Para los primeros puestos del semestre.</p>
                 </div>
-                <p className="text-slate-700 text-sm sm:text-base">
-                  Haber cursado al menos un semestre como alumnos regulares del IES Privado del Altiplano; es decir, podrán postular <strong className="text-[#002A5D]">a partir del segundo semestre</strong>.
-                </p>
-              </li>
-              
-              {/* Requisito 2 */}
-              <li className="flex gap-4 items-start">
-                <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
-                  <CheckCircleIcon className="w-6 h-6" />
-                </div>
-                <p className="text-slate-700 text-sm sm:text-base">
-                  Estar matriculados en el ISTPA con un <strong className="text-[#002A5D]">mínimo de 12 créditos curriculares</strong> en el semestre para el cual se solicita la beca. No se otorgarán becas a quienes registren un número menor de créditos ni a quienes completen dicho mínimo mediante cursos por jurado o convalidaciones.
-                </p>
-              </li>
 
-              {/* Requisito 3 */}
-              <li className="flex gap-4 items-start">
-                <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
-                  <CheckCircleIcon className="w-6 h-6" />
+                {/* Modalidad 2: Licenciados */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center hover:border-[#08D3C4] transition-colors">
+                   <div className="w-10 h-10 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-3">
+                      <MilitaryIcon className="w-6 h-6"/>
+                   </div>
+                   <h4 className="font-bold text-sm text-[#002A5D]">Licenciados FF.AA.</h4>
+                   <p className="text-xs text-slate-500 mt-1">Beneficio para licenciados del ejército.</p>
                 </div>
-                <p className="text-slate-700 text-sm sm:text-base">
-                  Haber obtenido el <strong className="text-[#002A5D]">primer, segundo o tercer lugar</strong> en el semestre correspondiente.
-                </p>
-              </li>
-            </ul>
+
+                {/* Modalidad 3: Socioeconómica */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center hover:border-[#08D3C4] transition-colors">
+                   <div className="w-10 h-10 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-3">
+                      <HandHeartIcon className="w-6 h-6"/>
+                   </div>
+                   <h4 className="font-bold text-sm text-[#002A5D]">Situación Socioeconómica</h4>
+                   <p className="text-xs text-slate-500 mt-1">Apoyo tras evaluación social.</p>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Lista de Requisitos Generales */}
+            <div>
+              <h3 className="text-xl font-bold mb-4" style={{ color: colors.primaryText }}>Requisitos Generales</h3>
+              <ul className="space-y-4">
+                {/* Requisito 1 */}
+                <li className="flex gap-4 items-start">
+                  <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
+                    <CheckCircleIcon className="w-6 h-6" />
+                  </div>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    Haber cursado al menos un semestre como alumnos regulares del IES Privado del Altiplano; es decir, podrán postular <strong className="text-[#002A5D]">a partir del segundo semestre</strong>.
+                  </p>
+                </li>
+                
+                {/* Requisito 2 */}
+                <li className="flex gap-4 items-start">
+                  <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
+                    <CheckCircleIcon className="w-6 h-6" />
+                  </div>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    Estar matriculados en el IES Privado del Altiplano con un <strong className="text-[#002A5D]">mínimo de 12 créditos curriculares</strong> en el semestre. No aplica para quienes registren menos créditos o cursos por jurado.
+                  </p>
+                </li>
+
+                {/* Requisito 3 */}
+                <li className="flex gap-4 items-start">
+                  <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
+                    <CheckCircleIcon className="w-6 h-6" />
+                  </div>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    Para beca por rendimiento: Haber obtenido el <strong className="text-[#002A5D]">primer, segundo o tercer lugar</strong> en el semestre correspondiente.
+                  </p>
+                </li>
+              </ul>
+            </div>
 
             {/* Caja de Alerta/Información */}
             <div className="bg-sky-50 border-l-4 border-[#002A5D] rounded-r-xl p-6 flex gap-4 items-start">
@@ -138,7 +199,7 @@ export default function ScholarshipRequirementsSection() {
               <div>
                 <h4 className="font-bold text-[#002A5D] mb-1">¿Necesitas más información?</h4>
                 <p className="text-slate-600 text-sm">
-                  Para iniciar tu trámite o resolver dudas específicas, debes acercarte a la <strong>Unidad de Bienestar y Empleabilidad</strong>.
+                  Para iniciar tu trámite o resolver dudas específicas sobre cualquiera de las modalidades, acércate a la <strong>Unidad de Bienestar y Empleabilidad</strong>.
                 </p>
                 
                 {/* Datos de Contacto Integrados */}

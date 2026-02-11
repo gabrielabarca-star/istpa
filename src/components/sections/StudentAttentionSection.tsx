@@ -7,7 +7,8 @@ import {
   FileText, 
   Clock, 
   Headset,
-  CalendarCheck
+  CalendarCheck,
+  Laptop // 1. IMPORTAMOS EL NUEVO ÍCONO
 } from 'lucide-react';
 
 const services = [
@@ -16,8 +17,7 @@ const services = [
     title: "Chat en Línea",
     description: "Conversa con nuestros asesores en tiempo real vía WhatsApp.",
     action: "Iniciar Chat",
-    // Reemplaza este número con el de la universidad (formato internacional sin +)
-    href: "https://wa.me/51912503627?text=Hola,%20tengo%20una%20consulta%20sobre..." 
+    href: "https://wa.me/51912503627?text=Hola,%20tengo%20una%20consulta%20general..." 
   },
   {
     icon: <Phone className="w-8 h-8" />,
@@ -33,7 +33,15 @@ const services = [
     action: "Ir a Trámites",
     href: "https://forms.gle/GBX93q8E1WYfK8sD7"
   },
- 
+  // --- 2. NUEVA TARJETA DE SOPORTE TECNOLÓGICO ---
+  {
+    icon: <Laptop className="w-8 h-8" />,
+    title: "Soporte Tecnológico",
+    description: "Ayuda técnica con tu Correo Institucional y acceso a Intranet.",
+    action: "Soporte WhatsApp",
+    // Enlace con mensaje personalizado para soporte técnico
+    href: "https://wa.me/51965818204?text=Hola,%20necesito%20ayuda%20con%20mi%20Correo%20Institucional%20e%20Intranet."
+  },
 ];
 
 const contactInfo = [
@@ -43,7 +51,7 @@ const contactInfo = [
   },
   {
     icon: <Clock className="w-6 h-5" />,
-    text: "Lun - Vie: 9:00 am -7:00pm"
+    text: "Lun - Vie: 9:00 am - 7:00pm"
   },
   {
     icon: <MapPin className="w-5 h-5" />,
@@ -82,7 +90,7 @@ export default function StudentAttentionSection() {
               // Abre en nueva pestaña solo si es un link externo (WhatsApp o Forms)
               target={service.href.startsWith('http') ? "_blank" : undefined}
               rel={service.href.startsWith('http') ? "noopener noreferrer" : undefined}
-              className="w-full max-w-[350px] group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-[#002a5d] hover:bg-[#002a5d] hover:-translate-y-1 cursor-pointer overflow-hidden block"
+              className="w-full max-w-[300px] lg:max-w-[280px] xl:max-w-[300px] group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-[#002a5d] hover:bg-[#002a5d] hover:-translate-y-1 cursor-pointer overflow-hidden block"
             >
               {/* Decoración de fondo en hover */}
               <div className="absolute top-0 right-0 -mr-8 -mt-8 w-24 h-24 rounded-full bg-[#002a5d]/5 group-hover:bg-white/10 transition-colors" />
