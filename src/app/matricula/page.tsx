@@ -18,7 +18,7 @@ export default function NosotrosPage() {
       <main className="flex-1">
         <section className="relative h-80 bg-primary">
           <Image
-            src="https://picsum.photos/1600/400?random=28"
+            src="/img/cabeceras/matriculas.png"
             alt="Campus del instituto"
             fill
             className="object-cover opacity-20"

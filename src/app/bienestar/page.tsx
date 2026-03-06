@@ -12,11 +12,11 @@ export default function NosotrosPage() {
       <main className="flex-1">
         <section className="relative h-80 bg-primary">
           <Image
-            src="https://picsum.photos/1600/400?random=28"
-            alt="Campus del instituto"
+            src="/img/cabeceras/bienestar.png"
+            alt="bienestar"
             fill
-            className="object-cover opacity-20"
-            data-ai-hint="university campus"
+            className="object-cover "
+            data-ai-hint="bienestar"
           />
           <div className="relative flex h-full items-center justify-center">
             <h1 className="font-headline text-4xl font-bold text-primary-foreground md:text-6xl">

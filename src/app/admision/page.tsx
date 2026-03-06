@@ -11,13 +11,13 @@ export default function NosotrosPage() {
       <Header />
       <main className="flex-1">
         <section className="relative h-80 bg-primary">
-          <Image
-            src="https://picsum.photos/1600/400?random=28"
-            alt="Campus del instituto"
-            fill
-            className="object-cover opacity-20"
-            data-ai-hint="university campus"
-          />
+             <Image
+                     src="/img/cabeceras/admision.png"
+                     alt="admision"
+                     fill
+                     className="object-cover object-[center_20%] opacity-20"
+                     data-ai-hint="admision"
+                   />
           <div className="relative flex h-full items-center justify-center">
             <h1 className="font-headline text-4xl font-bold text-primary-foreground md:text-6xl">
               Admisión

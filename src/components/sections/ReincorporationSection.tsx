@@ -83,7 +83,7 @@ export default function ReincorporationSection() {
             <div className="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden shadow-xl">
                 {/*  */}
                 <Image 
-                  src="/img/reincorporacion-imagen.jpg" // RECUERDA PONER TU IMAGEN AQUÍ
+                  src="/img/reincorporacion_1.png" // RECUERDA PONER TU IMAGEN AQUÍ
                   alt="Estudiante realizando trámite de reincorporación"
                   layout="fill"
                   objectFit="cover"

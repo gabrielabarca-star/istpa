@@ -83,7 +83,7 @@ export default function TopicServicesSection() {
             <div className="relative w-full max-w-xs mx-auto">
               <Image
                 // ¡Recuerda cambiar esta ruta por la de tu imagen!
-                src="/img/topico_servicio.png" 
+                src="/img/topico_1.png" 
                 alt="Servicios de Tópico"
                 width={400} // Ancho original de tu imagen
                 height={600} // Alto original de tu imagen

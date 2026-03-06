@@ -102,7 +102,7 @@ export default function ProfessionalTitleRequirementsSection2013() {
             <div className="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden shadow-xl">
                 {/* REEMPLAZAR CON TU IMAGEN REAL */}
                 <Image 
-                  src="/img/titulo-requisitos.jpg" // Asegúrate de tener una imagen adecuada
+                  src="/img/rumbo_2.png" // Asegúrate de tener una imagen adecuada
                   alt="Egresado tramitando título"
                   layout="fill"
                   objectFit="cover"

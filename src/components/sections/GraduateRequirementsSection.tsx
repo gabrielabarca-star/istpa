@@ -76,19 +76,19 @@ export default function GraduateRequirementsSection() {
           
           {/* 1. COLUMNA IZQUIERDA: Imagen (5 Columnas) */}
           <div className="lg:col-span-5 flex justify-center lg:justify-start lg:sticky lg:top-8">
-            <div className="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden shadow-xl">
-                {/* REEMPLAZAR CON TU IMAGEN REAL */}
-                <Image 
-                  src="/img/egresados-requisitos.jpg" 
-                  alt="Estudiante egresado"
-                  layout="fill"
-                  objectFit="cover"
-                  className="hover:scale-105 transition-transform duration-700"
-                />
-                {/* Overlay decorativo */}
-                <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-[#002A5D]/70 to-transparent"></div>
-            </div>
-          </div>
+    {/* Cambia max-w-[400px] al ancho que desees */}
+    <div className="relative w-full max-w-[400px] aspect-[3/4] rounded-3xl overflow-hidden shadow-xl">
+        <Image 
+            src="/img/egresado.png" 
+            alt="Estudiante egresado"
+            fill // Usar el prop booleano es más moderno en Next.js
+            style={{ objectFit: 'cover' }} // Recomendado en versiones recientes
+            className="hover:scale-105 transition-transform duration-700"
+        />
+        {/* Overlay decorativo */}
+        <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-[#002A5D]/70 to-transparent"></div>
+    </div>
+</div>
 
           {/* 2. COLUMNA DERECHA: Contenido (7 Columnas) */}
           <div className="lg:col-span-7 space-y-8">

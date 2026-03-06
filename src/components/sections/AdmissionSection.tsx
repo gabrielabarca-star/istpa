@@ -94,7 +94,7 @@ export default function AdmissionSection() {
 [Image of student smiling or university campus]
  */}
                 <Image 
-                  src="/img/admision-imagen.jpg" // RECUERDA PONER TU IMAGEN AQUÍ
+                  src="/img/admision-requisitos.png" // RECUERDA PONER TU IMAGEN AQUÍ
                   alt="Estudiante de admisión"
                   layout="fill"
                   objectFit="cover"

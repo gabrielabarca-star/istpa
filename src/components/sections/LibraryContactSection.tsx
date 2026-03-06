@@ -96,7 +96,7 @@ export default function LibraryContactSection() {
             <div className="absolute bottom-0 w-[400px] h-[550px]">
               <Image
                 // Reemplaza esta ruta por la de tu imagen de biblioteca
-                src="/img/library-contact.png" 
+                src="/img/" 
                 alt="Contacto Biblioteca" 
                 layout="fill" 
                 objectFit="contain" 

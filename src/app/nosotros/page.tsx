@@ -15,10 +15,10 @@ export default function NosotrosPage() {
         {/* Banner Hero */}
         <section className="relative h-80 bg-primary">
           <Image
-            src="https://picsum.photos/1600/400?random=28"
-            alt="Campus"
+            src="/img/cabeceras/nosotros.png"
+            alt="nosotros"
             fill
-            className="object-cover opacity-20"
+            className="object-cover "
             priority
           />
           <div className="relative flex h-full items-center justify-center">

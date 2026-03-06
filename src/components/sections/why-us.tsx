@@ -67,7 +67,7 @@ export default function WhyUs() {
           {/* Se cambió h-96 por h-full y min-h para que se adapte a las 3 tarjetas laterales */}
           <div className="relative order-first w-full lg:order-none h-96 lg:h-full lg:min-h-[40rem]">
             <Image
-              src="/img/estudiante.png"
+              src="/img/poeque_elegiristpa.png"
               alt="por que elegir ISTPA"
               width={300}
               height={700} // Aumentado para mantener proporción

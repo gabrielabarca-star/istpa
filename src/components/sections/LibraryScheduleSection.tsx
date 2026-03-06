@@ -25,7 +25,7 @@ export default function LibraryScheduleSection() {
             <div className="relative w-full max-w-sm">
               <Image
                 // Reemplaza esta ruta por la de tu imagen de biblioteca
-                src="/img/library-schedule.png" 
+                src="/img/biblioteca_atencion.png" 
                 alt="Horario de atención de la biblioteca"
                 width={400}
                 height={600}

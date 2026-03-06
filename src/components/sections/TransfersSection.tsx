@@ -189,7 +189,7 @@ export default function TransfersSection() {
             <div className="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden shadow-xl">
                 {/*  - Usamos placeholder si no tienes la imagen exacta */}
                 <Image 
-                  src="/img/traslados-imagen.jpg" // RECUERDA PONER TU IMAGEN AQUÍ
+                  src="/img/traslado.png" // RECUERDA PONER TU IMAGEN AQUÍ
                   alt="Estudiante realizando trámite de traslado"
                   layout="fill"
                   objectFit="cover"
