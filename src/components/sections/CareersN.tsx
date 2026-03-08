@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 // --- Icono de flecha para los botones ---
 const ArrowRightIcon = ({ className }: { className?: string }) => (
-    <svg className={className} xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
     </svg>
 );
@@ -30,14 +30,15 @@ const cardData: CareerCard[] = [
     bgColor: 'bg-[#EF4444]', // Rojo
     titleColor: 'text-[#300404]',
   },
-  {
+  /* {
     title: 'FARMACIA',
     imageUrl: '/img/far.estu.png',
     buttonText: 'Conoce Nuestra Carrera',
     buttonLink: '/farmacia',
     bgColor: 'bg-[#09d3c5]', // azul
     titleColor: 'text-[#422006]',
-  },
+  }, 
+  */
   {
     title: 'ENFERMERÍA',
     imageUrl: '/img/enfer.estu.png',
@@ -65,9 +66,8 @@ export default function CareersN() {
         </div>
 
         {/* --- Grid de Tarjetas --- */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {cardData.map((card, index) => (
-            // --- CORRECCIÓN AQUÍ: Se eliminó la etiqueta <a> y se pasaron sus props a <Link> ---
             <Link 
               href={card.buttonLink} 
               key={index}
@@ -77,18 +77,16 @@ export default function CareersN() {
                 <h3 className={`text-4xl font-bold ${card.titleColor}`}>{card.title}</h3>
               </div>
 
-              {/* Contenedor de la Imagen para el efecto de zoom */}
               <div className="relative mt-4 aspect-square">
                 <Image
                   src={card.imageUrl}
                   alt={`Imagen para ${card.title}`}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  style={{ objectFit: 'contain' }}
                   className="transition-transform duration-500 ease-in-out group-hover:scale-110"
                 />
               </div>
               
-              {/* Botón */}
               <button className="mt-6 w-full bg-white text-slate-800 font-semibold py-3 px-5 rounded-full flex items-center justify-between text-left transition-transform duration-300 group-hover:scale-105">
                 <span>{card.buttonText}</span>
                 <span className="bg-slate-200 text-slate-700 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
