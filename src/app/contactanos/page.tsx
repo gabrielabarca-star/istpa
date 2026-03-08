@@ -3,7 +3,9 @@ import Footer from "@/components/layout/footer";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Telescope, Gem, Target } from "lucide-react";
-import TransparencySection from "@/components/sections/TransparencySection";
+import Contact from "@/components/sections/contact";
+
+
 
 export default function NosotrosPage() {
   return (
@@ -12,7 +14,7 @@ export default function NosotrosPage() {
       <main className="flex-1">
         <section className="relative h-80 bg-primary">
           <Image
-            src="/img/cabeceras/transparencia.png"
+            src="/img/cabeceras/plana-docente.png"
             alt="Campus del instituto"
             fill
             className="object-cover"
@@ -20,12 +22,12 @@ export default function NosotrosPage() {
           />
           <div className="relative flex h-full items-center justify-center">
             <h1 className="font-headline text-4xl font-bold text-primary-foreground md:text-6xl">
-              Transparencia
+              Nuestros Docentes 
             </h1>
           </div>
         </section>
 
-        <TransparencySection/>
+        <Contact/>
         
        
 

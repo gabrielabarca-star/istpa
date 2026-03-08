@@ -4,6 +4,7 @@ import Image from "next/image";
 import  HistoriaTimeline  from "@/components/sections/HistoriaTimeline";
 import CompanyInfo from "@/components/sections/CompanyInfo";
 import TeamCarousel from "@/components/sections/TeamCarousel";
+import InstitutionalOrgChart from "@/components/sections/InstitutionalOrgChart";
 
 
 /* --- app/nosotros/page.tsx --- */
@@ -40,6 +41,9 @@ export default function NosotrosPage() {
 
         <section id="TeamCarousel" className="scroll-mt-20">
           <TeamCarousel />
+        </section>
+        <section id="InstitutionalOrgChart" className="scroll-mt-20">
+          <InstitutionalOrgChart />
         </section>
       </main>
       <Footer />
