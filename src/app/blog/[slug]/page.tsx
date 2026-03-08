@@ -34,5 +34,6 @@ export default async function PostPage({ params }: { params: { slug: string } })
                 <p>{post.description}</p>
             </div>
         </article>
+        
     );
 }

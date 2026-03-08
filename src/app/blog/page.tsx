@@ -7,7 +7,7 @@ import Footer from "@/components/layout/footer";
 // Asegúrate de que esta ruta sea la correcta para tu proyecto:
 import { getNews, Post } from '@/lib/news'; 
 
-// --- INICIO DE LA CORRECCIÓN: Función para formatear la fecha ---
+// Función para formatear la fecha
 const monthNames: { [key: string]: string } = {
     '01': 'enero', '02': 'febrero', '03': 'marzo', '04': 'abril',
     '05': 'mayo', '06': 'junio', '07': 'julio', '08': 'agosto',
@@ -23,8 +23,6 @@ function formatDate(isoDate: string): string {
     const [year, month, day] = parts;
     return `${day} de ${monthNames[month] || ''} de ${year}`;
 }
-// --- FIN DE LA CORRECCIÓN ---
-
 
 // Componente de tarjeta pequeña (con la fecha corregida)
 const NewsCardSmall = ({ post }: { post: Post }) => (
@@ -35,7 +33,6 @@ const NewsCardSmall = ({ post }: { post: Post }) => (
                 <span className="absolute top-4 left-4 bg-white/90 text-sm font-semibold text-[#002A5D] py-1 px-3 rounded-full">{post.category}</span>
             </div>
             <div className="p-4 flex flex-col flex-grow">
-                {/* --- CORRECCIÓN DE FECHA AQUÍ --- */}
                 <p className="text-xs text-slate-500 mb-2">
                     {formatDate(post.date)}
                 </p>
@@ -60,45 +57,58 @@ export default async function BlogIndexPage() {
     const eventPosts = allPosts.filter(p => p.category && p.category.toLowerCase() === 'eventos');
     
     return (
-        <div className="max-w-6xl mx-auto py-16 px-4 space-y-16">
+        /* Contenedor principal para manejar el Header, contenido y Footer */
+        <div className="flex flex-col min-h-screen">
             
-            {/* Sección Blog */}
-            {blogPosts.length > 0 && (
-                <div>
-                    <h2 className="text-3xl font-bold text-[#002A5D]">Blog</h2>
-                    <div className="w-12 h-1 mt-2 bg-[#08D3C4]"></div>
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {blogPosts.map(post => <NewsCardSmall key={post.slug} post={post} />)}
-                    </div>
-                </div>
-            )}
+            {/* 1. Agregamos el Header en la parte superior */}
+            <Header />
 
-            {/* Sección Noticias */}
-            {newsPosts.length > 0 && (
-                <div>
-                    <h2 className="text-3xl font-bold text-[#002A5D]">Noticias</h2>
-                    <div className="w-12 h-1 mt-2 bg-[#08D3C4]"></div>
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {newsPosts.map(post => <NewsCardSmall key={post.slug} post={post} />)}
+            {/* 2. El contenido de la página se envuelve en un <main> con flex-grow 
+                   para que ocupe todo el espacio disponible y empuje el Footer hacia abajo */}
+            <main className="flex-grow w-full max-w-6xl mx-auto py-16 px-4 space-y-16">
+                
+                {/* Sección Blog */}
+                {blogPosts.length > 0 && (
+                    <div>
+                        <h2 className="text-3xl font-bold text-[#002A5D]">Blog</h2>
+                        <div className="w-12 h-1 mt-2 bg-[#08D3C4]"></div>
+                        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {blogPosts.map(post => <NewsCardSmall key={post.slug} post={post} />)}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            {/* Sección Eventos */}
-            {eventPosts.length > 0 && (
-                <div>
-                    <h2 className="text-3xl font-bold text-[#002A5D]">Eventos</h2>
-                    <div className="w-12 h-1 mt-2 bg-[#08D3C4]"></div>
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {eventPosts.map(post => <NewsCardSmall key={post.slug} post={post} />)}
+                {/* Sección Noticias */}
+                {newsPosts.length > 0 && (
+                    <div>
+                        <h2 className="text-3xl font-bold text-[#002A5D]">Noticias</h2>
+                        <div className="w-12 h-1 mt-2 bg-[#08D3C4]"></div>
+                        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {newsPosts.map(post => <NewsCardSmall key={post.slug} post={post} />)}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            {/* Mensaje si no hay NINGÚN post en absoluto */}
-            {allPosts.length === 0 && (
-                 <p className="text-center text-slate-500 py-10">No hay publicaciones disponibles en este momento.</p>
-            )}
+                {/* Sección Eventos */}
+                {eventPosts.length > 0 && (
+                    <div>
+                        <h2 className="text-3xl font-bold text-[#002A5D]">Eventos</h2>
+                        <div className="w-12 h-1 mt-2 bg-[#08D3C4]"></div>
+                        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {eventPosts.map(post => <NewsCardSmall key={post.slug} post={post} />)}
+                        </div>
+                    </div>
+                )}
+
+                {/* Mensaje si no hay NINGÚN post en absoluto */}
+                {allPosts.length === 0 && (
+                     <p className="text-center text-slate-500 py-10">No hay publicaciones disponibles en este momento.</p>
+                )}
+            </main>
+
+            {/* 3. Agregamos el Footer al final */}
+            <Footer />
+            
         </div>
     );
 }

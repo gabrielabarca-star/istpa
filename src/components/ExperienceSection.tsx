@@ -4,10 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// --- INICIO DE LA CORRECCIÓN ---
-// Quitamos 'src/' del path. El alias '@/' ya apunta a la carpeta 'src'.
+// Importamos el Header y Footer (Asegúrate de que estas rutas coincidan con tu proyecto)
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+
 import { getNews, Post } from '@/lib/news'; 
-// --- FIN DE LA CORRECCIÓN ---
 
 // --- Iconos ---
 const CalendarIcon = ({ className }: { className?: string }) => (
@@ -66,35 +67,42 @@ export default async function ExperienceSection() {
     }
     
     return (
-        <section className="w-full bg-slate-50 py-16 sm:py-24">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                <div className="text-center">
-                    <p className="font-semibold" style={{ color: colors.primaryText }}>Vive la</p>
-                    <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-                        Experiencia Istpa
-                    </h2>
-                    <div className="w-16 h-1 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
-                </div>
+        // Utilizamos un Fragmento (<>...</>) para envolver múltiples elementos al mismo nivel
+        <>
+            <Header />
 
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {featuredPosts.length > 0 ? (
-                        featuredPosts.map(post => <NewsCard key={post.slug} post={post} />)
-                    ) : (
-                        <p className="col-span-3 text-center text-slate-500">No hay noticias disponibles en este momento.</p>
-                    )}
-                </div>
+            <section className="w-full bg-slate-50 py-16 sm:py-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div className="text-center">
+                        <p className="font-semibold" style={{ color: colors.primaryText }}>Vive la</p>
+                        <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
+                            Experiencia Istpa
+                        </h2>
+                        <div className="w-16 h-1 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
+                    </div>
 
-                <div className="text-center mt-12">
-                    <Link href="/blog">
-                        <button className="group bg-[#002A5D] text-white font-semibold py-3 px-8 rounded-full flex items-center justify-center gap-3 mx-auto hover:bg-[#001F44] transition-colors">
-                            Ver más publicaciones
-                            <span className="bg-white/20 rounded-full w-7 h-7 flex items-center justify-center transition-transform group-hover:translate-x-1">
-                                <ArrowRightIcon className="w-4 h-4" />
-                            </span>
-                        </button>
-                    </Link>
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {featuredPosts.length > 0 ? (
+                            featuredPosts.map(post => <NewsCard key={post.slug} post={post} />)
+                        ) : (
+                            <p className="col-span-3 text-center text-slate-500">No hay noticias disponibles en este momento.</p>
+                        )}
+                    </div>
+
+                    <div className="text-center mt-12">
+                        <Link href="/blog">
+                            <button className="group bg-[#002A5D] text-white font-semibold py-3 px-8 rounded-full flex items-center justify-center gap-3 mx-auto hover:bg-[#001F44] transition-colors">
+                                Ver más publicaciones
+                                <span className="bg-white/20 rounded-full w-7 h-7 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                                    <ArrowRightIcon className="w-4 h-4" />
+                                </span>
+                            </button>
+                        </Link>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <Footer />
+        </>
     );
 }

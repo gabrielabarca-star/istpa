@@ -7,7 +7,7 @@ import TeamCarousel from "@/components/sections/TeamCarousel";
 import InstitutionalOrgChart from "@/components/sections/InstitutionalOrgChart";
 
 
-/* --- app/nosotros/page.tsx --- */
+
 export default function NosotrosPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-neutral-textDark">
