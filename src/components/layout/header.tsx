@@ -87,6 +87,9 @@ export default function Header() {
                 <a href="/nosotros#TeamCarousel" className="w-full cursor-pointer focus:text-[#C8663E]">Plana Jerárquica</a>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
+                <a href="/docentes" className="w-full cursor-pointer focus:text-[#C8663E]">Plana Docente</a>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
                 <a href="/nosotros#InstitutionalOrgChart" className="w-full cursor-pointer focus:text-[#C8663E]">Organización Institucional </a>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -275,6 +278,7 @@ export default function Header() {
                   <Link href="/nosotros" className={mobileLinkClasses}>Misión y Visión</Link>
                   <Link href="/nosotros" className={mobileLinkClasses}>Valores y Principios </Link>
                   <Link href="/nosotros" className={mobileLinkClasses}>Plana Jerárquica </Link>
+                  <Link href="/docentes" className={mobileLinkClasses}>Plana Docente </Link>
                   <Link href="/nosotros" className={mobileLinkClasses}>Organigrama Institucional</Link>
                 </div>
 
