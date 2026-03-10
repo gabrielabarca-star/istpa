@@ -3,8 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-// --- Iconos SVG Personalizados ---
-
+// --- Iconos SVG (Se mantienen igual) ---
 const CheckCircleIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -39,7 +38,6 @@ const DocumentIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// --- NUEVOS ICONOS PARA LOS TIPOS DE BECA ---
 const AcademicIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
      <path d="M12 14L21 9L12 4L3 9L12 14Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -62,155 +60,142 @@ const HandHeartIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-
 // --- Componente Principal ---
 export default function ScholarshipRequirementsSection() {
   const colors = {
-    primaryText: '#002A5D', // Azul oscuro institucional
-    accent: '#08D3C4',     // Turquesa institucional
-    bgAlert: '#FFFBEB',    // Fondo amarillo suave
-    borderAlert: '#FCD34D',// Borde alerta
+    primaryText: '#002A5D',
+    accent: '#08D3C4',
+    bgAlert: '#FFFBEB',
+    borderAlert: '#FCD34D',
   };
 
   return (
-    <section className="w-full bg-white py-16 sm:py-24">
+    <section className="w-full bg-white py-12 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         
+        {/* Usamos items-start para que el sticky funcione correctamente dentro del grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          {/* 1. COLUMNA IZQUIERDA: Imagen Mediana */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end sticky top-8">
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
+          {/* 1. COLUMNA IZQUIERDA: Imagen */}
+          {/* CAMBIO: Se añade lg:sticky para que en móvil sea estática y en PC sea fija al bajar */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end lg:sticky lg:top-24 z-10">
+            <div className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-slate-100">
               <Image
-                src="/img/beca.png" // REEMPLAZAR CON TU IMAGEN
+                src="/img/beca.png"
                 alt="Estudiante solicitando información de becas"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: 'cover' }}
                 className="hover:scale-105 transition-transform duration-700"
+                priority
               />
               <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#002A5D]/80 to-transparent"></div>
             </div>
           </div>
 
           {/* 2. COLUMNA DERECHA: Contenido */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-10">
             
             {/* Título y Texto */}
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold" style={{ color: colors.primaryText }}>
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
                 Programa de Becas
               </h2>
-              <div className="w-16 h-1 mt-3" style={{ backgroundColor: colors.accent }}></div>
-              <p className="mt-4 text-slate-600">
+              <div className="w-20 h-1.5 mt-4 mx-auto lg:mx-0" style={{ backgroundColor: colors.accent }}></div>
+              <p className="mt-6 text-slate-600 text-lg leading-relaxed">
                 En el IES Privado del Altiplano, reconocemos el esfuerzo y brindamos oportunidades. Ofrecemos becas para aquellos estudiantes que destacan académicamente, para quienes sirven a nuestra patria y para quienes requieren apoyo socioeconómico.
               </p>
 
               {/* BOTÓN DE DESCARGA */}
-              <div className="mt-6">
+              <div className="mt-8">
                 <a 
                   href="/docs/resolucion becas por rendimiento academico_0001.pdf" 
                   download
-                  className="inline-flex items-center gap-3 bg-[#002A5D] text-white px-6 py-3 rounded-lg hover:bg-[#001F45] transition-colors shadow-md group w-full sm:w-auto justify-center sm:justify-start"
+                  className="inline-flex items-center gap-4 bg-[#002A5D] text-white px-8 py-4 rounded-xl hover:bg-[#001F45] transition-all hover:shadow-lg group w-full sm:w-auto justify-center sm:justify-start"
                 >
-                  <DocumentIcon className="w-6 h-6 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm font-semibold text-left">
-                    Descargar Resolución Directoral N° 090-2025-I.S.T.P DEL ALTIPLANO
+                  <DocumentIcon className="w-7 h-7 flex-shrink-0 group-hover:rotate-6 transition-transform" />
+                  <span className="text-sm font-bold text-left leading-tight">
+                    Descargar Resolución Directoral<br/>N° 090-2025-I.S.T.P DEL ALTIPLANO
                   </span>
                 </a>
               </div>
             </div>
 
-            {/* --- SECCIÓN NUEVA: TIPOS DE BECAS --- */}
+            {/* --- SECCIÓN: MODALIDADES --- */}
             <div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: colors.primaryText }}>Modalidades Disponibles</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <h3 className="text-2xl font-bold mb-6 text-center lg:text-left" style={{ color: colors.primaryText }}>Modalidades Disponibles</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                 
-                {/* Modalidad 1: Rendimiento */}
-                <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center hover:border-[#08D3C4] transition-colors">
-                   <div className="w-10 h-10 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-3">
-                      <AcademicIcon className="w-6 h-6"/>
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                   <div className="w-12 h-12 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-4">
+                      <AcademicIcon className="w-7 h-7"/>
                    </div>
-                   <h4 className="font-bold text-sm text-[#002A5D]">Rendimiento Académico</h4>
-                   <p className="text-xs text-slate-500 mt-1">Para los primeros puestos del semestre.</p>
+                   <h4 className="font-bold text-base text-[#002A5D]">Rendimiento Académico</h4>
+                   <p className="text-xs text-slate-500 mt-2">Primeros puestos del semestre.</p>
                 </div>
 
-                {/* Modalidad 2: Licenciados */}
-                <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center hover:border-[#08D3C4] transition-colors">
-                   <div className="w-10 h-10 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-3">
-                      <MilitaryIcon className="w-6 h-6"/>
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                   <div className="w-12 h-12 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-4">
+                      <MilitaryIcon className="w-7 h-7"/>
                    </div>
-                   <h4 className="font-bold text-sm text-[#002A5D]">Licenciados FF.AA.</h4>
-                   <p className="text-xs text-slate-500 mt-1">Beneficio para licenciados del ejército.</p>
+                   <h4 className="font-bold text-base text-[#002A5D]">Licenciados FF.AA.</h4>
+                   <p className="text-xs text-slate-500 mt-2">Beneficio para licenciados del ejército.</p>
                 </div>
 
-                {/* Modalidad 3: Socioeconómica */}
-                <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center hover:border-[#08D3C4] transition-colors">
-                   <div className="w-10 h-10 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-3">
-                      <HandHeartIcon className="w-6 h-6"/>
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                   <div className="w-12 h-12 rounded-full bg-blue-100 text-[#002A5D] flex items-center justify-center mb-4">
+                      <HandHeartIcon className="w-7 h-7"/>
                    </div>
-                   <h4 className="font-bold text-sm text-[#002A5D]">Situación Socioeconómica</h4>
-                   <p className="text-xs text-slate-500 mt-1">Apoyo tras evaluación social.</p>
+                   <h4 className="font-bold text-base text-[#002A5D]">Evaluación Social</h4>
+                   <p className="text-xs text-slate-500 mt-2">Apoyo por situación socioeconómica.</p>
                 </div>
-
               </div>
             </div>
 
-            {/* Lista de Requisitos Generales */}
-            <div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: colors.primaryText }}>Requisitos Generales</h3>
-              <ul className="space-y-4">
-                {/* Requisito 1 */}
+            {/* Requisitos Generales */}
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+              <h3 className="text-2xl font-bold mb-6" style={{ color: colors.primaryText }}>Requisitos Generales</h3>
+              <ul className="space-y-6">
                 <li className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
-                    <CheckCircleIcon className="w-6 h-6" />
-                  </div>
-                  <p className="text-slate-700 text-sm sm:text-base">
-                    Haber cursado al menos un semestre como alumnos regulares del IES Privado del Altiplano; es decir, podrán postular <strong className="text-[#002A5D]">a partir del segundo semestre</strong>.
+                  <CheckCircleIcon className="w-7 h-7 flex-shrink-0 text-[#08D3C4]" />
+                  <p className="text-slate-700 text-base leading-relaxed">
+                    Haber cursado al menos un semestre como alumnos regulares; es decir, podrán postular <strong className="text-[#002A5D]">a partir del segundo semestre</strong>.
                   </p>
                 </li>
                 
-                {/* Requisito 2 */}
                 <li className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
-                    <CheckCircleIcon className="w-6 h-6" />
-                  </div>
-                  <p className="text-slate-700 text-sm sm:text-base">
-                    Estar matriculados en el IES Privado del Altiplano con un <strong className="text-[#002A5D]">mínimo de 12 créditos curriculares</strong> en el semestre. No aplica para quienes registren menos créditos o cursos por jurado.
+                  <CheckCircleIcon className="w-7 h-7 flex-shrink-0 text-[#08D3C4]" />
+                  <p className="text-slate-700 text-base leading-relaxed">
+                    Estar matriculados con un <strong className="text-[#002A5D]">mínimo de 12 créditos curriculares</strong>. No aplica para cursos por jurado.
                   </p>
                 </li>
 
-                {/* Requisito 3 */}
                 <li className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 mt-1 text-[#08D3C4]">
-                    <CheckCircleIcon className="w-6 h-6" />
-                  </div>
-                  <p className="text-slate-700 text-sm sm:text-base">
-                    Para beca por rendimiento: Haber obtenido el <strong className="text-[#002A5D]">primer, segundo o tercer lugar</strong> en el semestre correspondiente.
+                  <CheckCircleIcon className="w-7 h-7 flex-shrink-0 text-[#08D3C4]" />
+                  <p className="text-slate-700 text-base leading-relaxed">
+                    Para rendimiento: Haber obtenido el <strong className="text-[#002A5D]">1er, 2do o 3er lugar</strong> en el semestre anterior.
                   </p>
                 </li>
               </ul>
             </div>
 
-            {/* Caja de Alerta/Información */}
-            <div className="bg-sky-50 border-l-4 border-[#002A5D] rounded-r-xl p-6 flex gap-4 items-start">
-              <div className="flex-shrink-0 text-[#002A5D]">
-                <AlertIcon className="w-6 h-6" />
+            {/* Caja de Alerta */}
+            <div className="bg-sky-50 border-l-4 border-[#002A5D] rounded-r-2xl p-8 flex flex-col sm:flex-row gap-6 items-start">
+              <div className="flex-shrink-0 text-[#002A5D] bg-white p-2 rounded-lg shadow-sm">
+                <AlertIcon className="w-8 h-8" />
               </div>
-              <div>
-                <h4 className="font-bold text-[#002A5D] mb-1">¿Necesitas más información?</h4>
-                <p className="text-slate-600 text-sm">
-                  Para iniciar tu trámite o resolver dudas específicas sobre cualquiera de las modalidades, acércate a la <strong>Unidad de Bienestar y Empleabilidad</strong>.
+              <div className="flex-1">
+                <h4 className="font-bold text-xl text-[#002A5D] mb-2">¿Necesitas más información?</h4>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  Para iniciar tu trámite o resolver dudas, acércate a la <strong>Unidad de Bienestar y Empleabilidad</strong>.
                 </p>
                 
-                {/* Datos de Contacto Integrados */}
-                <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:items-center border-t border-sky-200 pt-3">
-                  <a href="mailto:unid.bienestar.empleabilidad@iest.edu.pe" className="flex items-center gap-2 text-sm font-semibold text-[#002A5D] hover:text-[#08D3C4] transition-colors">
-                    <MailIcon className="w-4 h-4" />
+                <div className="flex flex-col sm:flex-row gap-6 sm:items-center pt-6 border-t border-sky-200">
+                  <a href="mailto:unid.bienestar.empleabilidad@iest.edu.pe" className="flex items-center gap-3 text-sm font-bold text-[#002A5D] hover:text-[#08D3C4] transition-colors">
+                    <MailIcon className="w-5 h-5" />
                     unid.bienestar.empleabilidad@iest.edu.pe
                   </a>
-                  <div className="hidden sm:block w-1 h-4 bg-sky-200"></div>
-                  <a href="tel:987845442" className="flex items-center gap-2 text-sm font-semibold text-[#002A5D] hover:text-[#08D3C4] transition-colors">
-                    <PhoneIcon className="w-4 h-4" />
+                  <a href="tel:987845442" className="flex items-center gap-3 text-sm font-bold text-[#002A5D] hover:text-[#08D3C4] transition-colors">
+                    <PhoneIcon className="w-5 h-5" />
                     987 845 442
                   </a>
                 </div>
@@ -218,7 +203,6 @@ export default function ScholarshipRequirementsSection() {
             </div>
 
           </div>
-
         </div>
       </div>
     </section>

@@ -17,11 +17,11 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: 'Maximo Valdivia',
+    name: 'Esteban Isidro Leon Apaza',
     position: 'Director General',
     photoUrl: '/img/administrativo/maximo.jpg',
-    phone: '981701213',
-    email: 'maximo.valdivia@iest.edu.pe',
+    phone: '951083279',
+    email: 'esteban.leon@iest.edu.pe',
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ const teamMembers: TeamMember[] = [
     id: 6,
     name: 'Sonia Anapan Ulloa',
     position: 'COORDINADOR DE ÁREA DE CALIDAD',
-    photoUrl: '/img/administrativo/default.jpg', // Cambiar por la ruta real
+    photoUrl: '/img/administrativo/sonia.napan.jpg', 
     phone: '922309224',
     email: 'sonia.anapan@iest.edu.pe',
   },
@@ -95,6 +95,14 @@ const teamMembers: TeamMember[] = [
     photoUrl: '/img/docentes/eliana-aguirre.jpg',
     phone: '921806360',
     email: 'eliana.maquera@iest.edu.pe',
+  },
+  {
+    id: 11,
+    name: 'Maritza Karina Herrera Pereira',
+    position: 'Coordinador de EFSRT',
+    photoUrl: '/img/administrativo/karina_herrera.png',
+    phone: '999668164',
+    email: 'maritza.herrerap@iest.edu.pe',
   },
 ];
 

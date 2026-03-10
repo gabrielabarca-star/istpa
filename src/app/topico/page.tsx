@@ -7,6 +7,7 @@ import TopicServicesSection from "@/components/sections/TopicServicesSection";
 import AudienceSectionTopic from "@/components/sections/AudienceSectionTopic";
 import TopicScheduleSection from "@/components/sections/TopicScheduleSection";
 import TopicContactSection from "@/components/sections/TopicContactSection";
+import HealthCampaigns from "@/components/sections/HealthCampaigns";
 
 export default function NosotrosPage() {
   return (
@@ -30,6 +31,7 @@ export default function NosotrosPage() {
 
         <TopicoSection/>
         <TopicServicesSection/>
+        <HealthCampaigns/>
         <AudienceSectionTopic/>
         <TopicScheduleSection/>
         <TopicContactSection/>

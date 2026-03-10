@@ -112,7 +112,7 @@ export default function CompanyInfo() {
               <VisionIcon className="w-12 h-12" style={{ color: colors.icon }} />
             </div>
             <p className="mt-4 text-base" style={{ color: colors.secondaryText }}>
-            Al 2031, ser un Instituto de Educación Superior licenciado, reconocido en la 
+            Al 2032, ser un Instituto de Educación Superior licenciado, reconocido en la 
             región Puno por brindar un servicio educativo de calidad, pertinente y orientado a la productividad, 
             que contribuya al desarrollo económico y social regional y nacional, formando profesionales con valores democráticos,
              compromiso ético y responsabilidad social.

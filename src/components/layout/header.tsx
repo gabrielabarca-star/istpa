@@ -137,13 +137,14 @@ export default function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className={dropDownButtonClasses}>
-                Transparencia <ChevronDown className="h-4 w-4" />
+                Transparencia Institucional <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-[#002a5d] text-white border-none shadow-xl p-2 min-w-[200px]">
               <DropdownMenuItem asChild>
                 <Link href="/documentos_gestion" className="w-full cursor-pointer focus:text-[#C8663E]">Documentos de Gestión</Link>
               </DropdownMenuItem>
+              
               <DropdownMenuItem asChild>
                 <Link href="/indicadores_academicos" className="w-full cursor-pointer focus:text-[#C8663E]">Indicadores Académicos</Link>
               </DropdownMenuItem>
@@ -174,6 +175,9 @@ export default function Header() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/traslados" className="w-full cursor-pointer focus:text-[#C8663E]">Traslados</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/tupa" className="w-full cursor-pointer focus:text-[#C8663E]">TUPA</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -307,9 +311,10 @@ export default function Header() {
 
                 <div className="flex flex-col gap-1">
                   <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">
-                    Transparencia
+                    Transparencia Institucional
                   </h3>
                   <Link href="/documentos_gestion" className={mobileLinkClasses}>Documentos de Gestión</Link>
+                  
                   <Link href="/indicadores_academicos" className={mobileLinkClasses}>Indicadores Académicos</Link>
                   <Link href="/beca" className={mobileLinkClasses}>Recursos Económicos</Link>
                   <Link href="/libro_reclamaciones" className={mobileLinkClasses}>Libro de reclamaciones</Link>
@@ -320,6 +325,7 @@ export default function Header() {
                     Trámites
                   </h3>
                   <Link href="/modalidad_titulacion" className={mobileLinkClasses}>Titulación</Link>
+                  <Link href="/tupa" className={mobileLinkClasses}>TUPA</Link>
                   <Link href="/Rumbo_titulo" className={mobileLinkClasses}>Rumbo al Título Profesional</Link>
                   <Link href="/reincorporacion" className={mobileLinkClasses}>Reincorporación</Link>
                   <Link href="/traslados" className={mobileLinkClasses}>Traslados</Link>
