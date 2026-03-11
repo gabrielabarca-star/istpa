@@ -1,51 +1,99 @@
-// components/AccountingCareer.tsx
+"use client";
 
 import React from 'react';
-import InfoForm from './InfoForm'; // Asumiendo que este componente ya existe
+import { 
+  Calendar, 
+  Clock, 
+  BookOpen, 
+  Timer, 
+  CheckCircle2,
+  Calculator
+} from 'lucide-react';
+import InfoForm from './InfoForm'; 
 
-// --- Iconos SVG (Reutilizados) ---
-const CalendarIcon = ({ className }: { className?: string }) => ( <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2V5" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 2V5" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/><path d="M3.5 9.08984H20.5" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/><path d="M21 8.5V17C21 20 19.5 22 16.5 22H7.5C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 7.5 3.5H16.5C19.5 3.5 21 5.5 21 8.5Z" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/><path d="M11.9945 13.6992L10.3445 15.3492L8.5 13.5" stroke="#EF4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg> );
-const ClockIcon = ({ className }: { className?: string }) => ( <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 7V12L15 13.5" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg> );
-const BookIcon = ({ className }: { className?: string }) => ( <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 18.27V9.73C2 5.73 3.73 4 7.73 4H16.27C20.27 4 22 5.73 22 9.73V14.27C22 18.27 20.27 20 16.27 20H7.73C3.73 20 2 18.27 2 14.27V9.73" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 4V20" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg> );
-
-interface InfoCard { title: string; description: string; icon: React.ComponentType<{ className?: string }>; }
-const infoCards: InfoCard[] = [
-  { title: 'Inicio', description: 'Consultar Inicio', icon: CalendarIcon },
-  { title: 'Turno', description: 'Mañana / Tarde / Noche', icon: ClockIcon },
-  { title: 'Modalidad', description: 'Presencial', icon: BookIcon },
-  { title: 'Duración', description: '3 años', icon: CalendarIcon },
-];
+const COLORS = {
+  primary: "#1B355C", // Azul Profundo
+  gold: "#D8A24C",    // Dorado
+  accent: "#C8663E"   // Terracota
+};
 
 export default function AccountingCareer() {
-  const colors = { primaryText: '#0A2540', accent: '#EF4444' };
-
   return (
-    <section className="w-full bg-slate-100 py-16 sm:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <div className="w-full">
-            <div>
-                <h1 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-                    Contabilidad
-                </h1>
-                <div className="w-20 h-1.5 mt-4" style={{ backgroundColor: colors.accent }}></div>
+    <section className="w-full bg-[#F8FAFC] py-16 sm:py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* --- LADO IZQUIERDO: CONTENIDO --- */}
+          <div className="lg:col-span-7">
+            {/* Badge Superior */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C8663E]/10 mb-6">
+              <Calculator size={14} className="text-[#C8663E]" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-[#C8663E]">
+                Carrera Profesional
+              </span>
             </div>
-            <div className="mt-6 text-slate-600 text-lg space-y-4">
-                <p>¿Apasionado por las finanzas y el orden empresarial?</p>
-                <p>Te formamos como el profesional clave para la gestión financiera y tributaria de cualquier organización. Nuestro programa te sumerge en el análisis de costos, auditoría y el manejo de software contable de última generación.</p>
-                <p><strong style={{ color: colors.primaryText }}>Con la Carrera de Contabilidad</strong>, serás capaz de interpretar estados financieros, optimizar recursos y asegurar el cumplimiento normativo, abriendo tu camino en consultoras, bancos y la alta gerencia.</p>
+
+            {/* Título Principal Estilo Nursing */}
+            <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-[0.8] mb-8">
+              <span style={{ color: COLORS.primary }}>CONTABILIDAD</span> <br />
+              
+            </h1>
+
+            {/* Descripción */}
+            <p className="text-slate-500 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
+              Te formamos como el pilar estratégico de las finanzas. Domina la gestión tributaria y auditoría con una metodología <span className="font-black text-[#1B355C]">80% práctica</span> en laboratorios contables.
+            </p>
+
+            {/* Lista de Beneficios con Checkmarks */}
+            <div className="space-y-4 mb-12">
+              {[
+                "Certificaciones modulares progresivas",
+                "Manejo de software contable (SIAF, SISCONT)",
+                "Convenios con estudios contables y bancos",
+                "Bolsa de trabajo con alta demanda laboral"
+              ].map((benefit, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <CheckCircle2 size={20} className="text-[#C8663E]" />
+                  <span className="text-slate-700 font-bold">{benefit}</span>
+                </div>
+              ))}
             </div>
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {infoCards.map((card, index) => (
-                    <div key={index} className="bg-white rounded-2xl p-6 text-center flex flex-col items-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <card.icon className="w-12 h-12 mb-4" />
-                        <h3 className="text-lg font-bold" style={{ color: colors.primaryText }}>{card.title}</h3>
-                        <p className="text-slate-500 mt-1">{card.description}</p>
-                    </div>
-                ))}
+
+            {/* Grid de Info Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { label: 'INICIO', value: 'Abril 2026', icon: Calendar },
+                { label: 'TURNOS', value: 'Mañana / Tarde / Noche', icon: Clock },
+                { label: 'MODALIDAD', value: '100% Presencial', icon: BookOpen },
+                { label: 'DURACIÓN', value: '3 años (6 Ciclos)', icon: Timer },
+              ].map((item, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col gap-3">
+                  <item.icon size={20} className="text-blue-500" />
+                  <div>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{item.label}</p>
+                    <p className="text-[13px] font-black leading-tight text-[#1B355C]">{item.value}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-        </div>
-        <div className="w-full lg:sticky lg:top-10">
-            <InfoForm />
+          </div>
+
+          {/* --- LADO DERECHO: FORMULARIO --- */}
+          <div className="lg:col-span-5 relative">
+            <div className="absolute -inset-4 bg-slate-200/50 rounded-[4rem] blur-3xl -z-10"></div>
+            
+            <div className="bg-white rounded-[3.5rem] shadow-2xl p-4 md:p-6 border border-slate-100">
+              
+              
+
+              {/* Contenedor del Formulario */}
+              <div className="px-4 pb-8">
+                <InfoForm />
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

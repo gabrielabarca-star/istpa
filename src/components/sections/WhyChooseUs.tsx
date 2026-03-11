@@ -1,109 +1,121 @@
-// components/WhyChooseUs.tsx
+"use client";
 
 import React from 'react';
+import { Users, Clock, GraduationCap, Microscope, CheckCircle2, ArrowUpRight } from 'lucide-react';
 
-// --- Iconos SVG personalizados como componentes de React ---
-const TeachersIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 40V29.3333C16 26.9333 17.6 25.3333 20 25.3333H29.3333" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M26.6667 40V28C26.6667 26.5333 27.8667 25.3333 29.3333 25.3333H40" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M32 20C34.9426 20 37.3333 17.6093 37.3333 14.6667C37.3333 11.724 34.9426 9.33333 32 9.33333C29.0573 9.33333 26.6667 11.724 26.6667 14.6667C26.6667 17.6093 29.0573 20 32 20Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M21.3333 54.6667V49.3333C21.3333 46.9333 23.2 45.3333 25.3333 45.3333H38.6667C40.8 45.3333 42.6667 46.9333 42.6667 49.3333V54.6667" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-// --- NUEVO ÍCONO para Horarios Flexibles ---
-const FlexibleHoursIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 52C43.0457 52 52 43.0457 52 32C52 20.9543 43.0457 12 32 12C20.9543 12 12 20.9543 12 32C12 43.0457 20.9543 52 32 52Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M24 32L29.3333 37.3333L42.6667 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-);
-
-const ThreeYearsIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32 52C43.0457 52 52 43.0457 52 32C52 20.9543 43.0457 12 32 12C20.9543 12 12 20.9543 12 32C12 43.0457 20.9543 52 32 52Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M32 21.3333V32H42.6667" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const LabsIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M45.3333 18.6667H18.6667C15.6267 18.6667 13.3333 20.96 13.3333 24V48C13.3333 50.9333 15.6267 53.3333 18.6667 53.3333H45.3333C48.3733 53.3333 50.6667 50.9333 50.6667 48V24C50.6667 20.96 48.3733 18.6667 45.3333 18.6667Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M24 18.6667V13.3333C24 11.8667 25.2 10.6667 26.6667 10.6667H37.3333C38.8 10.6667 40 11.8667 40 13.3333V18.6667" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-// --- Definición de Tipos ---
-interface Feature {
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-// --- Contenido de las 4 tarjetas ---
-const features: Feature[] = [
+const features = [
   {
     title: 'Docentes Especializados',
-    description: 'Nuestra plana docente está conformada por profesionales expertos y activos en su campo laboral.',
-    icon: TeachersIcon,
+    description: 'Expertos activos en el campo laboral que transforman la teoría en experiencia real.',
+    icon: Users,
+    tag: 'Mentoría'
   },
   {
     title: 'Horarios Flexibles',
-    description: 'Estudia en nuestros 3 horarios mañana ,tarde y noche.',
-    icon: FlexibleHoursIcon,
+    description: 'Flexibilidad total con turnos mañana, tarde y noche para que nada detenga tu progreso.',
+    icon: Clock,
+    tag: 'Accesibilidad'
   },
   {
-    title: 'Termina tu carrera en 3 años',
-    description: 'Optimiza tu tiempo con nuestros programas de estudio intensivos y enfócate en tu futuro profesional.',
-    icon: ThreeYearsIcon,
+    title: 'Carreras de 3 años',
+    description: 'Programas intensivos diseñados para una inserción laboral rápida y efectiva.',
+    icon: GraduationCap,
+    tag: 'Eficacia'
   },
   {
-    title: 'Laboratorios equipados',
-    description: 'Aprende en entornos prácticos con tecnología de punta que simulan el ambiente laboral real.',
-    icon: LabsIcon,
+    title: 'Laboratorios Top',
+    description: 'Tecnología de punta y entornos prácticos que simulan desafíos reales de la industria.',
+    icon: Microscope,
+    tag: 'Tecnología'
   },
 ];
 
-// --- Componente Principal ---
 export default function WhyChooseUs() {
-  const colors = {
-    primaryText: '#0A2540',
-    accent: '#08D3C4',
-    background: '#F8FAFC',
-  };
-
   return (
-    <section className="w-full py-16 sm:py-24" style={{ backgroundColor: colors.background }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* --- Cabecera de la Sección --- */}
-        <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-            <span style={{ color: colors.accent }}>¿Por qué</span> elegirnos?
-          </h2>
-          <div className="w-20 h-1.5 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
+    <section className="w-full py-24 bg-[#F8FAFC] relative overflow-hidden group/section">
+      {/* Elementos cinéticos de fondo */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-[10%] right-[5%] w-96 h-96 bg-[#C8663E]/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[10%] left-[5%] w-[30rem] h-[30rem] bg-[#1B355C]/5 rounded-full blur-[150px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        {/* Cabecera con Layout "Split" */}
+        <div className="grid lg:grid-cols-2 gap-8 items-end mb-20">
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-12 h-[2px] bg-[#C8663E]" />
+              <span className="text-[#C8663E] font-black uppercase tracking-[0.4em] text-[10px]">
+                Ventaja Competitiva
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-[#1B355C] tracking-tighter leading-[0.9]">
+              ¿POR QUÉ <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1B355C] to-slate-400">
+                ELEGIRNOS?
+              </span>
+            </h2>
+          </div>
+          <div className="lg:pb-2">
+            <p className="text-slate-500 font-medium text-lg max-w-md lg:ml-auto lg:text-right leading-snug">
+              Unimos la excelencia académica con la tecnología para formar los líderes técnicos que la región necesita.
+            </p>
+          </div>
         </div>
 
-        {/* --- Grid de Tarjetas --- */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Grid de Tarjetas con Hover de Inversión */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="group bg-white rounded-2xl p-8 text-center flex flex-col items-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-in-out hover:bg-[#002a5d]"
+              className="group relative bg-white rounded-[3rem] p-10 shadow-[0_20px_50px_-20px_rgba(27,53,92,0.1)] transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_40px_80px_-20px_rgba(27,53,92,0.2)] overflow-hidden flex flex-col h-full border border-slate-50"
             >
-              <div className="w-24 h-24 flex items-center justify-center rounded-full mb-6 bg-blue-50 transition-colors duration-500 group-hover:bg-blue-900/50">
-                <feature.icon className="w-12 h-12 text-sky-400 transition-colors duration-500 group-hover:text-white" />
+              {/* Capa de color que sube en hover */}
+              <div className="absolute inset-0 bg-[#1B355C] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)]" />
+
+              <div className="relative z-10 flex flex-col h-full">
+                {/* Icono animado */}
+                <div className="w-16 h-16 rounded-[1.5rem] bg-slate-50 flex items-center justify-center mb-10 transition-all duration-500 group-hover:bg-[#C8663E] group-hover:rotate-[15deg] group-hover:scale-110">
+                  <feature.icon size={32} className="text-[#1B355C] transition-colors duration-500 group-hover:text-white" />
+                </div>
+
+                <div className="mb-4">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#C8663E] group-hover:text-white/60 transition-colors">
+                    {feature.tag}
+                  </span>
+                  <h3 className="text-2xl font-black text-[#1B355C] tracking-tighter mt-1 group-hover:text-white transition-colors duration-500">
+                    {feature.title}
+                  </h3>
+                </div>
+
+                <p className="text-slate-500 font-medium leading-relaxed group-hover:text-slate-300 transition-colors duration-500 flex-grow">
+                  {feature.description}
+                </p>
+
+                {/* Footer de la tarjeta */}
+                <div className="mt-10 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 size={16} className="text-[#C8663E]" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-white">Certificado</span>
+                  </div>
+                  <ArrowUpRight size={20} className="text-[#C8663E]" />
+                </div>
               </div>
-
-              <h3 className="text-lg font-bold text-slate-800 transition-colors duration-500 group-hover:text-white">
-                {feature.title}
-              </h3>
-
-              <p className="text-sm text-slate-500 transition-all duration-500 ease-in-out opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 group-hover:mt-2 group-hover:text-slate-300">
-                {feature.description}
-              </p>
             </div>
           ))}
+        </div>
+
+        {/* Call to Action Sutil al final */}
+        <div className="mt-20 flex flex-col md:flex-row items-center justify-center gap-8 py-8 border-y border-slate-200/60">
+           <div className="flex -space-x-3">
+              {[1,2,3].map(i => (
+                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200" />
+              ))}
+           </div>
+           <p className="text-[#1B355C] font-bold text-sm tracking-tight text-center md:text-left">
+             Únete a los más de <span className="text-[#C8663E] font-black italic underline decoration-2 underline-offset-4">500 alumnos</span> que ya transformaron su vida.
+           </p>
         </div>
       </div>
     </section>

@@ -1,127 +1,115 @@
-// components/PharmacyModulesSection.tsx
+"use client";
 
 import React from 'react';
+import { Activity, Pill, FlaskConical, Clock, ChevronRight, Award } from 'lucide-react';
 
-// --- Iconos SVG Personalizados ---
-
-// Módulo 1: Urgencias (Cruz médica)
-const UrgencyIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M8 12H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M12 8V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-// Módulo 2: Dispensación (Píldora/Medicamento)
-const PillIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10.5 20.5L19 12L12 5L3.5 13.5L10.5 20.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M8.5 8.5L15.5 15.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-// Módulo 3: Elaboración (Matraz/Química)
-const FlaskIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 2V8L4.76 17.6C4.33 18.36 4.96 19.31 5.83 19.31H18.17C19.04 19.31 19.67 18.36 19.24 17.6L14 8V2H10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M10 5H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M8.5 14H15.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-// --- Datos de los Módulos ---
 const modules = [
   {
-    number: 1,
+    number: "01",
     title: 'Atención de Urgencias y Administración',
-    subtitle: 'de una Oficina Farmacéutica',
+    subtitle: 'OFICINA FARMACÉUTICA',
     hours: 250,
-    icon: UrgencyIcon,
-    description: 'Desarrolla capacidades para brindar primeros auxilios, atención inmediata en situaciones de emergencia y gestiona eficientemente los procesos administrativos de un establecimiento farmacéutico.'
+    icon: Activity,
+    description: 'Capacidades críticas en primeros auxilios, atención inmediata y gestión administrativa estratégica de establecimientos farmacéuticos.',
+    color: 'border-blue-100'
   },
   {
-    number: 2,
+    number: "02",
     title: 'Dispensación de Medicamentos',
-    subtitle: 'y Atención en Farmacia',
+    subtitle: 'ATENCIÓN EN FARMACIA',
     hours: 280,
-    icon: PillIcon,
-    description: 'Aprende las técnicas correctas de dispensación, interpretación de recetas médicas, buenas prácticas de almacenamiento y atención al cliente con calidad y calidez.'
+    icon: Pill,
+    description: 'Dominio de técnicas de dispensación, interpretación de recetas y cumplimiento de buenas prácticas de almacenamiento (BPA).',
+    color: 'border-emerald-100'
   },
   {
-    number: 3,
+    number: "03",
     title: 'Elaboración y Comercialización',
-    subtitle: 'de Productos Farmacéuticos y Afines',
+    subtitle: 'PRODUCTOS FARMACÉUTICOS',
     hours: 330,
-    icon: FlaskIcon,
-    description: 'Domina los procesos de farmacotecnia para la elaboración de preparados magistrales y oficinales, así como estrategias de marketing farmacéutico.'
+    icon: FlaskConical,
+    description: 'Procesos avanzados de farmacotecnia para preparados magistrales y estrategias modernas de marketing farmacéutico.',
+    color: 'border-orange-100'
   }
 ];
 
 export default function PharmacyModulesSection() {
-  const colors = {
-    primaryText: '#002A5D',
-    accent: '#08D3C4',
-    bgSection: '#F0F7FF',
-  };
-
   return (
-    <section className="w-full py-16 sm:py-24" style={{ backgroundColor: colors.bgSection }}>
-      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+    <section className="w-full py-24 bg-[#F8FAFC] relative overflow-hidden">
+      {/* Decoración de fondo: Números grandes difuminados */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-[0.03] select-none">
+        <span className="absolute -top-10 -left-10 text-[20rem] font-black">01</span>
+        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-black">02</span>
+        <span className="absolute -bottom-10 -right-10 text-[20rem] font-black">03</span>
+      </div>
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
         
-        {/* Cabecera */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-            Módulos Profesionales
-          </h2>
-          <div className="w-16 h-1 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
-          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-            Nuestra malla curricular está organizada en módulos que certifican tus competencias progresivamente.
+        {/* Cabecera Editorial */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-12 h-px bg-[#C8663E]" />
+              <span className="text-[#C8663E] font-black uppercase tracking-[0.3em] text-xs">Plan de Estudios</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-[#1B355C] tracking-tighter leading-[0.85]">
+              MÓDULOS <br />
+              <span className="text-slate-400">PROFESIONALES</span>
+            </h2>
+          </div>
+          <p className="text-slate-500 font-medium max-w-xs text-right leading-tight">
+            Nuestra currícula está diseñada para que obtengas certificaciones que aceleren tu inserción laboral.
           </p>
         </div>
 
-        {/* Grid de Módulos */}
+        {/* Grid de Módulos Estilo "Step" */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {modules.map((mod) => (
+          {modules.map((mod, idx) => (
             <div 
-              key={mod.number} 
-              className="bg-white rounded-3xl p-8 shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
+              key={idx} 
+              className={`group bg-white rounded-[2.5rem] p-10 shadow-sm border-2 ${mod.color} hover:shadow-2xl hover:border-[#1B355C] transition-all duration-500 flex flex-col h-full relative overflow-hidden`}
             >
-              {/* Encabezado de la Tarjeta */}
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center text-[#002A5D] group-hover:bg-[#002A5D] group-hover:text-white transition-colors duration-300">
-                  <mod.icon className="w-8 h-8" />
+              {/* Badge de Horas Flotante */}
+              <div className="absolute top-8 right-8 flex items-center gap-1.5 bg-slate-50 px-4 py-2 rounded-full border border-slate-100 group-hover:bg-[#1B355C] group-hover:text-white transition-colors duration-500">
+                <Clock size={14} className="text-[#C8663E] group-hover:text-white" />
+                <span className="text-[10px] font-black uppercase tracking-widest">{mod.hours} HRS</span>
+              </div>
+
+              {/* Icono y Número */}
+              <div className="mb-12">
+                <div className="w-16 h-16 rounded-2xl bg-[#1B355C]/5 flex items-center justify-center text-[#1B355C] mb-6 group-hover:bg-[#C8663E] group-hover:text-white transition-all duration-500 group-hover:rotate-[10deg]">
+                  <mod.icon size={32} />
                 </div>
-                <div className="text-right">
-                  <span className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Módulo</span>
-                  <span className="text-3xl font-black text-[#08D3C4]">0{mod.number}</span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-sm font-black text-[#C8663E] uppercase tracking-tighter">Módulo</span>
+                  <span className="text-5xl font-black text-[#1B355C] tracking-tighter">{mod.number}</span>
                 </div>
               </div>
 
-              {/* Título */}
-              <h3 className="text-xl font-bold text-[#002A5D] mb-1 leading-tight">
-                {mod.title}
-              </h3>
-              <p className="text-sm font-semibold text-[#08D3C4] mb-4 uppercase tracking-wide">
-                {mod.subtitle}
-              </p>
+              {/* Contenido Texto */}
+              <div className="flex-grow">
+                <h3 className="text-2xl font-black text-[#1B355C] mb-2 leading-none uppercase italic">
+                  {mod.title}
+                </h3>
+                <p className="text-[10px] font-black text-[#C8663E] mb-6 tracking-[0.2em]">
+                  {mod.subtitle}
+                </p>
+                <p className="text-slate-500 font-medium leading-relaxed text-sm">
+                  {mod.description}
+                </p>
+              </div>
 
-              {/* Descripción */}
-              <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
-                {mod.description}
-              </p>
-
-              {/* Footer de la Tarjeta (Horas) */}
-              <div className="pt-6 border-t border-slate-100 mt-auto">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-400 uppercase">Duración</span>
-                  <span className="text-lg font-bold text-[#002A5D]">{mod.hours} Horas</span>
+              {/* Footer de Tarjeta */}
+              <div className="mt-10 pt-8 border-t border-slate-50 flex items-center justify-between group-hover:border-[#1B355C]/10 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Award size={18} className="text-[#C8663E]" />
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#1B355C]">Certificación Oficial</span>
                 </div>
+                <ChevronRight className="text-slate-300 group-hover:text-[#C8663E] group-hover:translate-x-2 transition-all" />
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

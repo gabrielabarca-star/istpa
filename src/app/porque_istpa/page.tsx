@@ -27,18 +27,17 @@ export default function NosotrosPage() {
 
        
       
-    <section>
+    
     <WhyChooseUs />
-    </section>
-    <section>
+    
+   
     <ProfessionalAccordion/>
-    </section>
-    <section>
+    
+    
     <HealthCampaigns/>
-    </section>
-    <section>
-    <Testimonials2/>
-    </section>
+    
+    <Testimonials2/> 
+    
       </main>
       <Footer />
     </div>

@@ -1,85 +1,117 @@
-// components/NursingCareer.tsx (o CareerInfoSection.tsx)
+"use client";
 
 import React from 'react';
-import InfoForm from './InfoForm'; // Importamos el nuevo componente del formulario
+import { Calendar, Clock, BookOpen, Timer, GraduationCap, CheckCircle2 } from 'lucide-react';
+import InfoForm from './InfoForm';
 
-// --- Iconos SVG (sin cambios) ---
-const CalendarIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 2V5" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M16 2V5" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M3.5 9.08984H20.5" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M21 8.5V17C21 20 19.5 22 16.5 22H7.5C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 7.5 3.5H16.5C19.5 3.5 21 5.5 21 8.5Z" stroke="#0A2540" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M11.9945 13.6992L10.3445 15.3492L8.5 13.5" stroke="#EF4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-);
-const ClockIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M12 7V12L15 13.5" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-);
-const BookIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 18.27V9.73C2 5.73 3.73 4 7.73 4H16.27C20.27 4 22 5.73 22 9.73V14.27C22 18.27 20.27 20 16.27 20H7.73C3.73 20 2 18.27 2 14.27V9.73" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M12 4V20" stroke="#0A2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-);
+// --- Configuración de Colores ---
+const BRAND_COLOR = "#C8663E";
+const DARK_BLUE = "#1B355C";
 
-// --- Datos para las tarjetas de información ---
-interface InfoCard {
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-const infoCards: InfoCard[] = [
-  { title: 'Inicio', description: 'Consultar Inicio', icon: CalendarIcon },
-  { title: 'Turno', description: 'Mañana / Tarde / Noche', icon: ClockIcon },
-  { title: 'Modalidad', description: 'Presencial', icon: BookIcon },
-  { title: 'Duración', description: '3 años', icon: CalendarIcon },
+const infoCards = [
+  { title: 'Inicio', description: 'Abril 2026', icon: Calendar, color: 'text-blue-600' },
+  { title: 'Turnos', description: 'Mañana / Tarde / Noche', icon: Clock, color: 'text-emerald-600' },
+  { title: 'Modalidad', description: '100% Presencial', icon: BookOpen, color: 'text-purple-600' },
+  { title: 'Duración', description: '3 años (6 Ciclos)', icon: Timer, color: `text-[${BRAND_COLOR}]` }, 
 ];
 
-// --- Componente Principal Modificado ---
 export default function NursingCareer() {
-  const colors = {
-    primaryText: '#0A2540',
-    accent: '#EF4444',
-  };
-
   return (
-    <section className="w-full bg-slate-100 py-16 sm:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <section className="w-full bg-[#F8FAFC] py-20 lg:py-32 relative overflow-hidden">
+      {/* Decoración de fondo sutil */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-slate-200/50 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-10">
         
-        {/* --- Columna Izquierda: Información de la Carrera --- */}
-        <div className="w-full">
-            <div>
-                <h1 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-                    Enfermería Técnica
-                </h1>
-                <div className="w-20 h-1.5 mt-4" style={{ backgroundColor: colors.accent }}></div>
-            </div>
+        {/* --- Columna Izquierda: Contenido Académico --- */}
+        <div className="lg:col-span-7">
+          {/* Badge de Categoría con el nuevo color */}
+          <div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" 
+            style={{ backgroundColor: `${BRAND_COLOR}15`, color: BRAND_COLOR }}
+          >
+            <GraduationCap size={18} />
+            <span className="text-xs font-black uppercase tracking-widest">Carrera Profesional</span>
+          </div>
 
-            <div className="mt-6 text-slate-600 text-lg space-y-4">
-                <p>¿Quieres estudiar una carrera técnica en salud con alta demanda laboral?</p>
-                <p>Te preparamos para ser un profesional esencial en el cuidado de la salud. Nuestra formación técnica en enfermería combina aprendizaje práctico, tecnología de vanguardia y la guía de docentes expertos.</p>
-                <p><strong style={{ color: colors.primaryText }}>Con la Carrera de Enfermería Técnica</strong>, no solo obtienes un título reconocido, sino que desarrollas una vocación con impacto real y excelentes oportunidades de empleabilidad.</p>
-            </div>
+          <h1 className={`text-5xl md:text-7xl font-black tracking-tighter leading-[0.85] mb-8 text-[${DARK_BLUE}]`}>
+            ENFERMERÍA <br />
+            <span style={{ color: BRAND_COLOR }}>TÉCNICA</span>
+          </h1>
 
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {infoCards.map((card, index) => (
-                    <div key={index} className="bg-white rounded-2xl p-6 text-center flex flex-col items-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <card.icon className="w-12 h-12 mb-4" />
-                        <h3 className="text-lg font-bold" style={{ color: colors.primaryText }}>{card.title}</h3>
-                        <p className="text-slate-500 mt-1">{card.description}</p>
-                    </div>
-                ))}
-            </div>
+          <div className="prose prose-lg text-slate-600 mb-12">
+            <p className="text-xl leading-relaxed font-medium">
+              Formamos los pilares del sistema de salud. Prepárate con una metodología 
+              <span className="font-bold" style={{ color: DARK_BLUE }}> 80% práctica </span> 
+              en nuestros laboratorios especializados.
+            </p>
+            
+            <ul className="mt-8 space-y-4">
+              {['Certificaciones progresivas', 'Convenios con clínicas y hospitales', 'Bolsa de trabajo exclusiva'].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-slate-700 font-semibold">
+                  <CheckCircle2 style={{ color: BRAND_COLOR }} size={20} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Grid Bento de Información */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+            {infoCards.map((card, index) => (
+              <div 
+                key={index} 
+                className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <card.icon 
+                    size={24} 
+                    className={index === 3 ? "" : card.color} 
+                    style={index === 3 ? { color: BRAND_COLOR } : {}}
+                  />
+                </div>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">
+                  {card.title}
+                </h3>
+                <p className={`text-sm font-black leading-tight text-[${DARK_BLUE}]`}>
+                  {card.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* --- Columna Derecha: Formulario de Contacto --- */}
-        <div className="w-full lg:sticky lg:top-10">
-            <InfoForm />
+        {/* --- Columna Derecha: Formulario --- */}
+        <div className="lg:col-span-5 w-full lg:sticky lg:top-24">
+          <div className="relative">
+            {/* Resplandor decorativo con mezcla de marca */}
+            <div 
+              className="absolute -inset-4 blur-3xl rounded-[3rem] opacity-25" 
+              style={{ background: `linear-gradient(to top right, ${BRAND_COLOR}, ${DARK_BLUE})` }}
+            />
+            
+            <div className="relative bg-white rounded-[2.5rem] shadow-2xl border border-white p-2">
+              
+              <div className="p-4">
+                <InfoForm />
+              </div>
+            </div>
+          </div>
+          
+          {/* Footer de confianza */}
+          <div className="mt-8 flex items-center justify-center gap-6 opacity-40 grayscale hover:grayscale-0 transition-all">
+             <div className="flex flex-col items-center">
+                <span className="text-[10px] font-black uppercase tracking-tighter">Licenciados por</span>
+                <span className={`text-sm font-bold text-[${DARK_BLUE}]`}>MINEDU</span>
+             </div>
+             <div className="w-px h-8 bg-slate-300" />
+             <div className="flex flex-col items-center">
+                <span className="text-[10px] font-black uppercase tracking-tighter">Sede</span>
+                <span className={`text-sm font-bold text-[${DARK_BLUE}]`}>PUNO</span>
+             </div>
+          </div>
         </div>
+
       </div>
     </section>
   );

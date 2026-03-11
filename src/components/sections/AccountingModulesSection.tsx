@@ -1,135 +1,144 @@
-// components/AccountingModulesSection.tsx
+"use client";
 
 import React from 'react';
+import { Award, CheckCircle2, ArrowRight } from 'lucide-react';
 
-// --- Iconos SVG Personalizados para Contabilidad ---
-
-// Módulo 1: Procesos Contables (Calculadora/Documento)
+// --- Iconos SVG Adaptados ---
 const AccountingProcessIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M16 2H8C4.5 2 2 4.5 2 8V20C2 21.1 2.9 22 4 22H16C19.5 22 22 19.5 22 16V8C22 4.5 19.5 2 16 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M8 8H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M8 12H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M8 16H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M19 14V18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M17 16H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
-// Módulo 2: Pública y Privada (Edificio/Institución)
 const PublicPrivateIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2 22H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M12 2L2 7V22H22V7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M10 22V10H14V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M6 14H6.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M18 14H18.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
-// Módulo 3: Análisis Financiero (Gráfico de barras/Tendencia)
 const FinancialAnalysisIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M3 21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M7 17V10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M12 17V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M17 17V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M7 7L12 3L17 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
-// --- Datos de los Módulos ---
 const modules = [
   {
     number: 1,
     title: 'Procesos Contables',
     subtitle: 'Gestión y Registro',
-    hours: 265,
     icon: AccountingProcessIcon,
-    description: 'Desarrolla habilidades para organizar, registrar y controlar las operaciones contables básicas de una empresa, aplicando normas vigentes y utilizando herramientas informáticas para el procesamiento de la información.'
+    description: 'Organiza y controla operaciones contables básicas aplicando normas vigentes y herramientas informáticas de última generación.'
   },
   {
     number: 2,
     title: 'Contabilidad Pública y Privada',
     subtitle: 'Normativa y Aplicación',
-    hours: 290,
     icon: PublicPrivateIcon,
-    description: 'Capacita en la gestión contable específica para entidades del sector público y privado, abarcando tributación, planillas, y el manejo de sistemas gubernamentales y empresariales.'
+    description: 'Gestión contable especializada para el sector público y privado, abarcando tributación, planillas y sistemas gubernamentales.'
   },
   {
     number: 3,
     title: 'Análisis Financiero',
     subtitle: 'Toma de Decisiones',
-    hours: 300,
     icon: FinancialAnalysisIcon,
-    description: 'Prepara para interpretar estados financieros, evaluar la situación económica de la organización, realizar auditorías y proponer estrategias financieras para la optimización de recursos.'
+    description: 'Interpretación de estados financieros, auditoría y propuestas estratégicas para la optimización de recursos económicos.'
   }
 ];
 
-export default function AccountingModulesSection() {
-  const colors = {
-    primaryText: '#002A5D', // Azul Institucional
-    accent: '#08D3C4',     // Turquesa Institucional
-    bgSection: '#F0F7FF', // Celeste muy suave de fondo
-  };
+const COLORS = {
+  primary: "#1B355C",
+  gold: "#D8A24C",
+  accent: "#C8663E"
+};
 
+export default function AccountingModulesSection() {
   return (
-    <section className="w-full py-16 sm:py-24" style={{ backgroundColor: colors.bgSection }}>
-      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+    <section className="w-full py-24 bg-[#F8FAFC] relative overflow-hidden">
+      {/* Decoración de Fondo */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-[0.03] pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#1B355C] rounded-full blur-[120px]"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Cabecera */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-            Módulos Profesionales
-          </h2>
-          <div className="w-16 h-1 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
-          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-            Formación técnica organizada en módulos progresivos para certificar tus competencias en contabilidad y finanzas.
-          </p>
+        {/* Cabecera Estilo Nursing */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+          <div className="max-w-2xl">
+            <span className="font-black uppercase tracking-[0.3em] text-xs mb-4 block" style={{ color: COLORS.accent }}>
+              Plan de Estudios Modular
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none" style={{ color: COLORS.primary }}>
+              MÓDULOS <br />
+              <span className="text-slate-300">PROFESIONALES</span>
+            </h2>
+          </div>
+          <div className="hidden md:block pb-2">
+            <div className="w-24 h-2 rounded-full" style={{ backgroundColor: COLORS.gold }}></div>
+          </div>
         </div>
 
         {/* Grid de Módulos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {modules.map((mod) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {modules.map((mod, idx) => (
             <div 
-              key={mod.number} 
-              className="bg-white rounded-3xl p-8 shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
+              key={idx} 
+              className="group relative bg-white rounded-[3rem] p-10 shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
             >
-              {/* Encabezado de la Tarjeta */}
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center text-[#002A5D] group-hover:bg-[#002A5D] group-hover:text-white transition-colors duration-300">
-                  <mod.icon className="w-8 h-8" />
-                </div>
-                <div className="text-right">
-                  <span className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Módulo</span>
-                  <span className="text-3xl font-black text-[#08D3C4]">0{mod.number}</span>
-                </div>
+              {/* Número de Módulo Flotante */}
+              <span className="absolute top-8 right-10 text-6xl font-black opacity-[0.05] group-hover:opacity-10 transition-opacity" style={{ color: COLORS.primary }}>
+                0{mod.number}
+              </span>
+
+              {/* Icono */}
+              <div 
+                className="w-20 h-20 rounded-[2rem] flex items-center justify-center mb-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg"
+                style={{ backgroundColor: COLORS.primary, color: 'white' }}
+              >
+                <mod.icon className="w-10 h-10" />
               </div>
 
-              {/* Título */}
-              <h3 className="text-xl font-bold text-[#002A5D] mb-1 leading-tight">
-                {mod.title}
-              </h3>
-              <p className="text-sm font-semibold text-[#08D3C4] mb-4 uppercase tracking-wide">
-                {mod.subtitle}
-              </p>
+              {/* Contenido */}
+              <div className="flex-grow">
+                <p className="text-xs font-black uppercase tracking-widest mb-2" style={{ color: COLORS.gold }}>
+                  Módulo {mod.number}
+                </p>
+                <h3 className="text-2xl font-black leading-tight mb-4 uppercase tracking-tighter" style={{ color: COLORS.primary }}>
+                  {mod.title}
+                </h3>
+                <p className="text-slate-500 leading-relaxed text-sm mb-8 font-medium">
+                  {mod.description}
+                </p>
+              </div>
 
-              {/* Descripción */}
-              <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
-                {mod.description}
-              </p>
-
-              {/* Footer de la Tarjeta (Horas) */}
-              <div className="pt-6 border-t border-slate-100 mt-auto">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-400 uppercase">Duración Aprox.</span>
-                  <span className="text-lg font-bold text-[#002A5D]">{mod.hours} Horas</span>
+              {/* Footer de Tarjeta Simplificado */}
+              <div className="pt-8 border-t border-slate-50 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={16} style={{ color: COLORS.accent }} />
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Módulo Académico</span>
+                </div>
+                
+                <div 
+                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-[#C8663E] group-hover:text-white"
+                  style={{ backgroundColor: `${COLORS.accent}10`, color: COLORS.accent }}
+                >
+                  <ArrowRight size={20} />
                 </div>
               </div>
             </div>
           ))}
         </div>
 
+        
+        
       </div>
     </section>
   );
