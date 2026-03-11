@@ -1,162 +1,99 @@
-// components/AdmissionModalities.tsx
+"use client";
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight, CheckCircle2, GraduationCap } from 'lucide-react';
 
-// --- Iconos SVG personalizados ---
-const InfoIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-        <path d="M12 16V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <circle cx="12" cy="8" r="1" fill="currentColor"/>
-    </svg>
-);
+const colors = {
+  primary: '#1B355C',
+  accent: '#C8663E',
+  background: '#F8FAFC',
+};
 
-const ReEntryIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-        <path d="M12 7V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-);
-
-const TransferIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-        <path d="M8 12H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <path d="M13 9L16 12L13 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-);
-
-// --- Fondos geométricos ---
-const BgPattern1 = () => (
-    <svg className="absolute top-0 right-0 h-full w-auto opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <polygon points="0,0 100,0 100,100" fill="#00529B"/>
-    </svg>
-);
-const BgPattern2 = () => (
-    <svg className="absolute top-0 right-0 h-full w-auto opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <polygon points="0,0 100,0 100,100" fill="#002A5D"/>
-    </svg>
-);
-const BgPattern3 = () => (
-    <svg className="absolute top-0 right-0 h-full w-auto opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <polygon points="0,0 100,0 100,100" fill="#08D3C4"/>
-    </svg>
-);
-
-// --- Datos ---
-interface ModalityCard {
-  title: string;
-  description: string;
-  imageUrl: string;
-  buttonLink: string;
-  Icon: React.ComponentType<{ className?: string }>;
-  BgPattern: React.ComponentType;
-  buttonBgColor: string;
-  buttonHoverBgColor: string;
-}
-
-const modalitiesData: ModalityCard[] = [
-  {
-    title: 'Admisión',
-    description: 'Para todos los interesados en nuestras carreras.',
-    imageUrl: '/img/admision.png',
-    buttonLink: '/admision',
-    Icon: InfoIcon,
-    BgPattern: BgPattern1,
-    buttonBgColor: 'bg-[#00529B]',
-    buttonHoverBgColor: 'hover:bg-[#00417A]',
-  },
-  {
-    title: 'Reincorporación',
-    description: 'Facilidades para quienes quieren retomar sus estudios.',
-    imageUrl: '/img/reincorporacion.png',
-    buttonLink: '/reincorporacion',
-    Icon: ReEntryIcon,
-    BgPattern: BgPattern2,
-    buttonBgColor: 'bg-[#002A5D]',
-    buttonHoverBgColor: 'hover:bg-[#001F44]',
-  },
-  {
-    title: 'Traslados',
-    description: 'Promociones especiales para quienes vienen de otras instituciones.',
-    imageUrl: '/img/traslado.png',
-    buttonLink: '/traslados',
-    Icon: TransferIcon,
-    BgPattern: BgPattern3,
-    buttonBgColor: 'bg-[#08D3C4]',
-    buttonHoverBgColor: 'hover:bg-[#06A99D]',
-  },
-];
-
-export default function AdmissionModalities() {
-  const colors = {
-    primaryText: '#002A5D',
-    accent: '#08D3C4',
-  };
-
+export default function AdmissionModern() {
   return (
-    <section className="w-full bg-slate-50 py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
-        {/* --- Cabecera --- */}
-        <div className="text-center mb-20">
-          <p className="font-semibold text-lg" style={{ color: colors.accent }}>Elige una de nuestras</p>
-          <h2 className="text-5xl sm:text-6xl font-extrabold" style={{ color: colors.primaryText }}>
-            Modalidades de ingreso
-          </h2>
-          <div className="w-20 h-1.5 mt-5 mx-auto" style={{ backgroundColor: colors.accent }}></div>
-          <p className="mt-6 text-lg text-slate-600">Conviértete en un profesional de acción.</p>
-        </div>
+    <section className="relative w-full py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: colors.background }}>
+      
+      {/* Decoración de Fondo (Acentos Geométricos) */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#1B355C]/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-64 h-64 bg-[#C8663E]/10 rounded-full blur-[100px] pointer-events-none" />
 
-        {/* --- Grid de Tarjetas --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-10">
-          {modalitiesData.map((card, index) => (
-            <div key={index} className="bg-white rounded-3xl shadow-xl flex flex-col relative group mt-12 h-full">
-              
-              {/* 1. Fondo Geométrico */}
-              <div className="absolute top-0 left-0 w-full h-64 rounded-t-3xl overflow-hidden z-0">
-                 <card.BgPattern />
-              </div>
-
-              {/* 2. Imagen */}
-              <div className="relative h-72 -mt-20 z-10 w-full px-4 flex justify-center items-end">
-                <div className="relative w-full h-full">
-                  <Image
-                    src={card.imageUrl}
-                    alt={`Imagen para ${card.title}`}
-                    layout="fill"
-                    objectFit="contain" 
-                    objectPosition="bottom" 
-                    className="drop-shadow-2xl transition-transform duration-500 group-hover:scale-115 scale-110"
-                  />
-                </div>
-              </div>
-
-              {/* 3. Contenido (Texto y Botón) */}
-              <div className="px-8 pb-12 pt-6 text-center flex-grow flex flex-col relative z-10">
-                
-                <h3 className="text-3xl font-bold mb-3" style={{ color: colors.primaryText }}>
-                  {card.title}
-                </h3>
-                
-                {/* --- CAMBIO AQUÍ: Agregado 'flex flex-col justify-center' para centrado vertical --- */}
-                <p className="text-slate-500 flex-grow text-lg leading-relaxed flex flex-col justify-center">
-                  {card.description}
-                </p>
-                
-                <div className="mt-8">
-                  <Link href={card.buttonLink}>
-                    <button className={`group w-full flex items-center justify-center gap-3 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 ${card.buttonBgColor} ${card.buttonHoverBgColor} text-lg`}>
-                      <card.Icon className="w-7 h-7 transition-transform duration-300 group-hover:rotate-12" />
-                      <span>Información</span>
-                    </button>
-                  </Link>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          
+          {/* Columna de Imagen: Formato Pop-out con Frame */}
+          <div className="w-full lg:w-1/2 relative group">
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#1B355C] to-[#C8663E] rounded-[3rem] rotate-3 scale-95 opacity-10 group-hover:rotate-6 transition-transform duration-700"></div>
+            
+            <div className="relative rounded-[2.5rem] overflow-hidden bg-white shadow-2xl border-8 border-white">
+              <div className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5]">
+                <Image
+                  src="/img/admision.png"
+                  alt="Proceso de Admisión ISTPA"
+                  fill
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                  priority
+                />
+                {/* Badge Flotante */}
+                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-6 py-3 rounded-2xl shadow-xl flex items-center gap-3">
+                  <div className="bg-[#C8663E] p-2 rounded-lg text-white">
+                    <GraduationCap size={20} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-tighter text-slate-400 leading-none">Inicia tu futuro</p>
+                    <p className="font-bold text-[#1B355C]">Admisión 2026</p>
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Columna de Contenido */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <span className="text-[#C8663E] font-black uppercase tracking-[0.4em] text-xs mb-4 block">Proceso Abierto</span>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8" style={{ color: colors.primary }}>
+              ADMISIÓN <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1B355C] to-[#4A90E2]">ORDINARIA</span>
+            </h2>
+            
+            <p className="text-xl text-slate-500 font-medium mb-10 max-w-xl">
+              Diseñado para estudiantes que culminaron su educación secundaria y buscan una formación técnica de excelencia en solo 3 años.
+            </p>
+
+            {/* Lista de beneficios/requisitos rápidos */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+              {[
+                "Certificado de estudios",
+                "DNI vigente",
+                "Vaucher de pago",
+                "Fotos tamaño carné"
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-slate-100 group hover:border-[#C8663E] transition-colors">
+                  <CheckCircle2 className="text-[#C8663E] w-5 h-5" />
+                  <span className="text-slate-700 font-bold text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
+              <Link href="/admision" className="w-full sm:w-auto">
+                <button 
+                  className="group w-full flex items-center justify-center gap-4 text-white font-black py-5 px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
+                  style={{ backgroundColor: colors.accent }}
+                >
+                  <span>POSTULAR AHORA</span>
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+                </button>
+              </Link>
+              
+              <Link href="https://wa.me/51912503627" className="text-[#1B355C] font-bold flex items-center gap-2 hover:opacity-70 transition-opacity">
+                <span>¿Tienes dudas? Habla con un asesor</span>
+              </Link>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

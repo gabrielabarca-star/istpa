@@ -1,175 +1,143 @@
-// components/CompanyInfo.tsx
+"use client";
 
 import React from 'react';
 
-// --- Iconos SVG (sin cambios) ---
-const MissionIcon = ({ className }: { className?: string }) => (
-  <svg className={className} width="64" height="64" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+// --- Iconos con los nuevos colores ---
+const MissionIcon = ({ color }: { color: string }) => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="9"></circle>
-    <circle cx="12" cy="12" r="5"></circle>
-    <line x1="12" y1="3" x2="12" y2="7"></line>
-    <line x1="12" y1="17" x2="12" y2="21"></line>
-    <line x1="3" y1="12" x2="7" y2="12"></line>
-    <line x1="17" y1="12" x2="21" y2="12"></line>
+    <circle cx="12" cy="12" r="2"></circle>
+    <path d="M12 7v2M12 15v2M7 12h2M15 12h2"></path>
   </svg>
-);
-const VisionIcon = ({ className }: { className?: string }) => (
-  <svg className={className} width="64" height="64" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M9 12a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-    <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
-    <path d="M9 16.05V19a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-2.95"></path>
-    <path d="M12 16.05l0 -4.05"></path>
-  </svg>
-);
-const ValuesIcon = ({ className }: { className?: string }) => (
-  <svg className={className} width="64" height="64" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
-  </svg>
-);
-const PrinciplesIcon = ({ className }: { className?: string }) => (
-    <svg className={className} width="64" height="64" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"></path>
-    </svg>
 );
 
-// --- Interfaz genérica (sin cambios) ---
+const VisionIcon = ({ color }: { color: string }) => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+    <circle cx="12" cy="12" r="3"></circle>
+  </svg>
+);
+
+const ValuesIcon = ({ color }: { color: string }) => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l8.42 8.42 8.42-8.42a5.4 5.4 0 0 0 0-7.65Z"></path>
+  </svg>
+);
+
+const PrinciplesIcon = ({ color }: { color: string }) => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+  </svg>
+);
+
 interface TitledDescription {
   title: string;
   description: string;
 }
 
-// --- Datos (sin cambios) ---
 const valores: TitledDescription[] = [
-    { title: 'Respeto', description: 'Se promueve en las relaciones entre los miembros de la comunidad educativa, garantizando un clima institucional basado en la convivencia armónica, la tolerancia y el reconocimiento de la diversidad.' },
-    { title: 'Responsabilidad', description: 'Se manifiesta en el cumplimiento de las funciones, deberes y compromisos asumidos por los distintos actores institucionales en el desarrollo de sus actividades académicas y administrativas.' },
-    { title: 'Honestidad', description: 'Se integra en la gestión institucional mediante prácticas éticas, transparentes y coherentes con los principios de integridad y probidad.' },
-    { title: 'Solidaridad', description: 'Se expresa en la promoción del trabajo colaborativo, el apoyo mutuo y la participación activa de la comunidad educativa en acciones de responsabilidad social.' },
-    { title: 'Compromiso Institucional', description: 'Se evidencia en la identificación de los miembros de la comunidad educativa con la misión, visión y objetivos estratégicos del IES del Altiplano, contribuyendo al logro de los resultados institucionales.' },
-    
-];
-const principios: TitledDescription[] = [
-    { title: 'CALIDAD EDUCATIVA', description: 'Se concreta mediante la implementación de mecanismos de planificación, seguimiento y evaluación de los procesos institucionales, orientados a la mejora continua del servicio educativo y al cumplimiento de las Condiciones Básicas de Calidad.' },
-    { title: 'EQUIDAD E INCLUSIÓN', description: 'Se incorpora a través de políticas y servicios institucionales orientados a promover el acceso, la permanencia y la culminación de los estudios, incluyendo el Servicio de Asistencia Social, el Sistema Institucional de Tutoría y los servicios complementarios de bienestar, garantizando igualdad de oportunidades y atención a situaciones socioeconómicas o personales que puedan afectar la trayectoria formativa.' },
-    { title: 'PERTINENCIA', description: 'Se refleja en la articulación de la oferta formativa, los procesos académicos y las actividades institucionales con las demandas del entorno productivo regional y nacional, contribuyendo al desarrollo territorial.' },
-    { title: 'TRANSPARENCIA', description: 'Se integra en la gestión institucional mediante el cumplimiento del marco normativo vigente, la rendición de cuentas y el acceso a información relevante para la comunidad educativa.' },
-    { title: 'MEJORA CONTINUA', description: 'Se materializa a través de la evaluación permanente de los procesos institucionales y la implementación de acciones de mejora orientadas al fortalecimiento de la calidad del servicio educativo.' },
-    { title: 'ENFOQUE DE GESTIÓN DE PROCESOS', description: 'El IES Privado del Altiplano  orienta su gestión académica y administrativa considerando la interrelación de sus procesos institucionales, incluyendo los procesos académicos misionales como las Experiencias Formativas en Situaciones Reales de Trabajo (EFSRT) y los procesos de soporte como el Servicio de Asistencia Social y los servicios de bienestar estudiantil, los cuales cuentan con responsables definidos y mecanismos de seguimiento, contribuyendo al aseguramiento de la calidad y la mejora continua del servicio educativo.' }
+  { title: 'Respeto', description: 'Promovemos relaciones basadas en la convivencia armónica y el reconocimiento de la diversidad.' },
+  { title: 'Responsabilidad', description: 'Cumplimiento íntegro de funciones y compromisos académicos y administrativos.' },
+  { title: 'Honestidad', description: 'Gestión transparente y coherente con principios éticos y de probidad.' },
+  { title: 'Solidaridad', description: 'Trabajo colaborativo y participación activa en responsabilidad social.' },
+  { title: 'Compromiso', description: 'Identificación plena con la misión y visión del IES del Altiplano.' },
 ];
 
-// --- Colores (sin cambios) ---
+const principios: TitledDescription[] = [
+  { title: 'Calidad Educativa', description: 'Mejora continua orientada al cumplimiento de condiciones básicas.' },
+  { title: 'Equidad e Inclusión', description: 'Garantizamos igualdad de oportunidades para toda nuestra comunidad.' },
+  { title: 'Pertinencia', description: 'Articulación con las demandas del entorno productivo regional.' },
+  { title: 'Transparencia', description: 'Acceso a información relevante y rendición de cuentas permanente.' },
+];
+
 const colors = {
-  primaryText: '#0A2540',
-  secondaryText: '#525F7F',
-  accent: '#08D3C4',
-  dot: '#F5365C',
-  background: '#F8FAFC',
-  icon: '#94A3B8',
+  primary: '#1B355C', // Azul Institucional
+  gold: '#D8A24C',    // Dorado Institucional
+  accent: '#C8663E',  // Naranja Institucional
+  bg: '#F8FAFC',
 };
 
-// --- Componente de Tarjeta (sin cambios) ---
-const InfoCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <div className={`bg-white rounded-2xl p-8 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] ${className}`}>
-    {children}
-  </div>
-);
-
-// --- Componente Principal ---
 export default function CompanyInfo() {
   return (
-    <div className="min-h-screen w-full font-sans p-4 sm:p-8" style={{ backgroundColor: colors.background }}>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8">
+    <div className="min-h-screen w-full py-16 px-6 font-sans" style={{ backgroundColor: colors.bg }}>
+      <div className="max-w-7xl mx-auto">
         
-        {/* --- Columna Izquierda --- */}
-        <div className="lg:col-span-2 flex flex-col gap-8">
-          
-          <InfoCard>
-            <div className="flex justify-between items-start">
-              <div>
-                <h2 className="text-3xl font-bold" style={{ color: colors.primaryText }}>Misión</h2>
-                <div className="w-12 h-1 mt-1" style={{ backgroundColor: colors.accent }}></div>
-              </div>
-              <MissionIcon className="w-12 h-12" style={{ color: colors.icon }} />
-            </div>
-            <p className="mt-4 text-base" style={{ color: colors.secondaryText }}>
-            Somos un Instituto de Educación Superior que brinda un servicio educativo de calidad, 
-            inclusivo y pertinente, orientado al desarrollo de competencias para la inserción laboral, el emprendimiento y 
-            la contribución al desarrollo productivo de la región Puno y del país, en coherencia con las 
-            demandas del entorno y el marco normativo vigente.
-
-            </p>
-          </InfoCard>
-
-          <InfoCard>
-            <div className="flex justify-between items-start">
-              <div>
-                <h2 className="text-3xl font-bold" style={{ color: colors.primaryText }}>Visión</h2>
-                <div className="w-12 h-1 mt-1" style={{ backgroundColor: colors.accent }}></div>
-              </div>
-              <VisionIcon className="w-12 h-12" style={{ color: colors.icon }} />
-            </div>
-            <p className="mt-4 text-base" style={{ color: colors.secondaryText }}>
-            Al 2032, ser un Instituto de Educación Superior licenciado, reconocido en la 
-            región Puno por brindar un servicio educativo de calidad, pertinente y orientado a la productividad, 
-            que contribuya al desarrollo económico y social regional y nacional, formando profesionales con valores democráticos,
-             compromiso ético y responsabilidad social.
-
-            </p>
-          </InfoCard>
-
-          <InfoCard>
-            <div className="flex justify-between items-start">
-                <div>
-                    <h2 className="text-3xl font-bold" style={{ color: colors.primaryText }}>Principios</h2>
-                    <div className="w-12 h-1 mt-1" style={{ backgroundColor: colors.accent }}></div>
-                </div>
-                <PrinciplesIcon className="w-12 h-12" style={{ color: colors.icon }} />
-            </div>
-            <div className="mt-4 space-y-4">
-              {principios.map((principle) => (
-                <div key={principle.title}>
-                  <p className="flex items-center font-bold text-sm uppercase" style={{ color: colors.primaryText }}>
-                    <span className="w-2 h-2 rounded-full mr-2" style={{backgroundColor: colors.dot}}></span>
-                    <span>{principle.title}</span>
-                  </p>
-                  <p className="mt-1 text-base" style={{ color: colors.secondaryText }}>
-                    {principle.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </InfoCard>
-
+        {/* Título de Sección */}
+        <div className="mb-16 text-center">
+          <h1 className="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tight" style={{ color: colors.primary }}>
+            Identidad <span style={{ color: colors.accent }}>Institucional</span>
+          </h1>
+          <div className="w-24 h-1.5 mx-auto rounded-full" style={{ backgroundColor: colors.gold }}></div>
         </div>
 
-        {/* --- Columna Derecha --- */}
-        <div className="lg:col-span-3">
-          {/* --- MODIFICACIÓN: Se eliminó la clase "h-full" de InfoCard --- */}
-          <InfoCard>
-            <div className="flex justify-between items-start">
-              <div>
-                <h2 className="text-3xl font-bold" style={{ color: colors.primaryText }}>Valores</h2>
-                <div className="w-12 h-1 mt-1" style={{ backgroundColor: colors.accent }}></div>
+        {/* Grid Estilo Bento */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          {/* MISIÓN - Card destacada */}
+          <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-shadow duration-500">
+            <div>
+              <div className="p-3 w-fit rounded-2xl mb-6 shadow-inner" style={{ backgroundColor: `${colors.accent}15` }}>
+                <MissionIcon color={colors.accent} />
               </div>
-              <ValuesIcon className="w-12 h-12" style={{ color: colors.icon }}/>
+              <h2 className="text-3xl font-black mb-4" style={{ color: colors.primary }}>Misión</h2>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                Somos un Instituto de Educación Superior que brinda un servicio educativo de calidad, inclusivo y pertinente, 
+                orientado al desarrollo de competencias para la inserción laboral y el emprendimiento en la región Puno.
+              </p>
             </div>
-            <div className="mt-6 space-y-4">
-              {valores.map((valor) => (
-                <div key={valor.title}>
-                  <p className="flex items-center font-bold text-sm uppercase" style={{ color: colors.primaryText }}>
-                    <span className="w-2 h-2 rounded-full mr-2" style={{backgroundColor: colors.dot}}></span>
-                    <span>{valor.title}</span>
-                  </p>
-                  <p className="mt-1 text-base" style={{ color: colors.secondaryText }}>
-                    {valor.description}
-                  </p>
+          </div>
+
+          {/* VISIÓN - Card destacada */}
+          <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-shadow duration-500">
+            <div>
+              <div className="p-3 w-fit rounded-2xl mb-6 shadow-inner" style={{ backgroundColor: `${colors.gold}15` }}>
+                <VisionIcon color={colors.gold} />
+              </div>
+              <h2 className="text-3xl font-black mb-4" style={{ color: colors.primary }}>Visión</h2>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                Al 2032, ser un Instituto de Educación Superior licenciado, referente en calidad y productividad, 
+                contribuyendo al desarrollo económico y social nacional con profesionales éticos.
+              </p>
+            </div>
+          </div>
+
+          {/* PRINCIPIOS - Lista moderna */}
+          <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 md:col-span-2 lg:col-span-1 flex flex-col hover:shadow-xl transition-shadow duration-500">
+            <div className="flex items-center gap-4 mb-8">
+              <PrinciplesIcon color={colors.primary} />
+              <h2 className="text-2xl font-black" style={{ color: colors.primary }}>Principios</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-4 overflow-y-auto pr-2">
+              {principios.map((p, idx) => (
+                <div key={idx} className="group p-4 rounded-2xl border border-transparent hover:border-slate-100 hover:bg-slate-50 transition-all">
+                  <h4 className="font-bold text-sm uppercase tracking-widest mb-1" style={{ color: colors.accent }}>{p.title}</h4>
+                  <p className="text-sm text-slate-500">{p.description}</p>
                 </div>
               ))}
             </div>
-          </InfoCard>
+          </div>
+
+          {/* VALORES - Horizontal Wide Card */}
+          <div className="md:col-span-2 lg:col-span-3 bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500">
+            <div className="flex flex-col lg:flex-row gap-12">
+              <div className="lg:w-1/3">
+                <div className="p-3 w-fit rounded-2xl mb-6 shadow-inner" style={{ backgroundColor: `${colors.primary}15` }}>
+                  <ValuesIcon color={colors.primary} />
+                </div>
+                <h2 className="text-4xl font-black mb-4" style={{ color: colors.primary }}>Nuestros Valores</h2>
+                <p className="text-slate-500 italic">Los pilares que guían nuestro comportamiento ético y académico.</p>
+              </div>
+              <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {valores.map((v, idx) => (
+                  <div key={idx} className="relative pl-6 border-l-2" style={{ borderColor: colors.gold }}>
+                    <h4 className="font-black text-lg mb-1" style={{ color: colors.primary }}>{v.title}</h4>
+                    <p className="text-sm text-slate-600 leading-snug">{v.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

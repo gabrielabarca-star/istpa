@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 import { Award, Briefcase, Users, HeartHandshake, Wallet, ScrollText } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -10,77 +12,90 @@ interface Benefit {
 
 const benefits: Benefit[] = [
   { icon: Award, title: "Calidad Educativa", description: "Docentes altamente capacitados y con experiencia profesional." },
-  { icon: Briefcase, title: "Laboratorios modernos", description: "Laboratorios equipados con herramientas modernas." },
+  { icon: Briefcase, title: "Laboratorios modernos", description: "Laboratorios equipados con herramientas modernas de última generación." },
   { icon: Users, title: "Trayectoria", description: "Instituto con trayectoria y reconocimiento de 33 años en la región." },
-  { icon: HeartHandshake, title: "Triunfa en 3 Años", description: "Termina tu carrera técnica profesional en 3 años." },
-  // Nuevos beneficios agregados
-  { icon: Wallet, title: "Pensiones y Becas", description: "Pensiones accesibles y becas al mérito académico." },
-  { icon: ScrollText, title: "Título Oficial", description: "Título a Nombre de la Nación válido en todo el país." },
+  { icon: HeartHandshake, title: "Triunfa en 3 Años", description: "Termina tu carrera técnica profesional con éxito en solo 3 años." },
+  { icon: Wallet, title: "Pensiones y Becas", description: "Pensiones accesibles y programas de becas al mérito académico." },
+  { icon: ScrollText, title: "Título Oficial", description: "Título a Nombre de la Nación válido y reconocido en todo el país." },
 ];
 
-const FlippableCard = ({ benefit }: { benefit: Benefit }) => {
+const colors = {
+  primary: '#1B355C', // Azul Institucional
+  accent: '#C8663E',  // Naranja Institucional
+};
+
+const BenefitCard = ({ benefit, align }: { benefit: Benefit, align: 'left' | 'right' }) => {
   const Icon = benefit.icon;
   return (
-    <div className="group h-48 w-full [perspective:1000px]">
-      <div className="relative h-full w-full rounded-lg shadow-lg transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-        {/* Front */}
-        <div className="absolute flex h-full w-full flex-col items-center justify-center rounded-lg bg-card p-4 [backface-visibility:hidden]">
-          <div className="mb-4 rounded-full bg-secondary p-3">
-            <Icon className="h-8 w-8 text-secondary-foreground" />
-          </div>
-          <h3 className="text-center font-headline text-lg font-semibold text-primary">{benefit.title}</h3>
-        </div>
-        {/* Back */}
-        <div className="absolute h-full w-full rounded-lg bg-primary p-4 text-primary-foreground [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <div className="flex h-full flex-col items-center justify-center">
-            <p className="text-center text-sm">{benefit.description}</p>
-          </div>
+    <div className={`group relative p-6 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-${colors.primary}/10 border border-transparent hover:border-slate-100 flex flex-col ${align === 'right' ? 'lg:items-end lg:text-right' : 'lg:items-start lg:text-left'} items-center text-center`}>
+      <div className="mb-4 relative">
+        <div className="absolute inset-0 bg-slate-200 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20"></div>
+        <div className="relative bg-white shadow-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-500">
+          <Icon className="h-8 w-8" style={{ color: colors.accent }} />
         </div>
       </div>
+      <h3 className="text-xl font-black mb-2" style={{ color: colors.primary }}>{benefit.title}</h3>
+      <p className="text-slate-500 text-sm leading-relaxed font-medium">
+        {benefit.description}
+      </p>
     </div>
   );
 };
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="bg-card py-16 sm:py-24">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            ¿Por qué elegir ISTPA?
+    <section id="why-us" className="bg-[#F8FAFC] py-24 relative overflow-hidden">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="mx-auto max-w-3xl text-center mb-20">
+          <span className="text-[#C8663E] font-black uppercase tracking-[0.4em] text-xs mb-4 block">Diferenciales</span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter" style={{ color: colors.primary }}>
+            ¿Por qué elegir <span className="text-[#C8663E]">ISTPA</span>?
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Descubre las ventajas que nos convierten en tu mejor opción para un futuro exitoso.
-          </p>
+          <div className="w-24 h-1.5 bg-[#1B355C] mx-auto mt-6 rounded-full"></div>
         </div>
         
-        <div className="mt-12 grid grid-cols-1 items-center gap-8 lg:grid-cols-3 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           
-          {/* Columna Izquierda (3 items) */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1">
-            <FlippableCard benefit={benefits[0]} />
-            <FlippableCard benefit={benefits[1]} />
-            <FlippableCard benefit={benefits[4]} /> {/* Pensiones */}
+          {/* Columna Izquierda */}
+          <div className="space-y-4 md:space-y-8 order-2 lg:order-1">
+            <BenefitCard benefit={benefits[0]} align="left" />
+            <BenefitCard benefit={benefits[1]} align="left" />
+            <BenefitCard benefit={benefits[4]} align="left" />
           </div>
 
-          {/* Columna Central (Imagen) */}
-          {/* Se cambió h-96 por h-full y min-h para que se adapte a las 3 tarjetas laterales */}
-          <div className="relative order-first w-full lg:order-none h-96 lg:h-full lg:min-h-[40rem]">
-            <Image
-              src="/img/poeque_elegiristpa.png"
-              alt="por que elegir ISTPA"
-              width={300}
-              height={700} // Aumentado para mantener proporción
-              className="mx-auto h-full w-auto rounded-lg object-cover"
-              data-ai-hint="smiling student"
-            />
+          {/* Columna Central - Imagen Estilizada */}
+          <div className="order-1 lg:order-2 relative group flex justify-center">
+            <div className="absolute inset-0 bg-gradient-to-b from-[#1B355C] to-[#C8663E] rounded-[4rem] rotate-3 scale-95 opacity-10 group-hover:rotate-6 transition-transform duration-700"></div>
+            <div className="relative rounded-[3.5rem] overflow-hidden border-[12px] border-white shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
+              <Image
+                src="/img/poeque_elegiristpa.png"
+                alt="Excelencia académica ISTPA"
+                width={400}
+                height={600}
+                className="object-cover"
+              />
+              {/* Overlay sutil */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1B355C]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            
+            {/* Badge Flotante */}
+            <div className="absolute -bottom-6 bg-white px-8 py-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce">
+              <span className="text-3xl">🚀</span>
+              <div className="leading-none">
+                <p className="text-[10px] font-black uppercase text-slate-400">Garantía</p>
+                <p className="font-black text-[#1B355C]">Éxito Laboral</p>
+              </div>
+            </div>
           </div>
 
-          {/* Columna Derecha (3 items) */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1">
-            <FlippableCard benefit={benefits[2]} />
-            <FlippableCard benefit={benefits[3]} />
-            <FlippableCard benefit={benefits[5]} /> {/* Título */}
+          {/* Columna Derecha */}
+          <div className="space-y-4 md:space-y-8 order-3">
+            <BenefitCard benefit={benefits[2]} align="right" />
+            <BenefitCard benefit={benefits[3]} align="right" />
+            <BenefitCard benefit={benefits[5]} align="right" />
           </div>
 
         </div>
