@@ -24,9 +24,9 @@ export default function NosotrosPage() {
             </h1>
           </div>
         </section>
-            <section>
+            
             <ReincorporationSection/>
-            </section>
+            
           </main>
               <Footer />
             </div>

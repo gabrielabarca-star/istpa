@@ -1,39 +1,24 @@
-// components/StudentsStatsSection.tsx
-
 "use client";
 
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { 
+  UserPlus, 
+  Users, 
+  GraduationCap, 
+  BarChart3 
+} from 'lucide-react';
 
-// --- Iconos SVG ---
-const UserPlusIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M20 8V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M23 11H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
+// --- Paleta Institucional ---
+const COLORS = {
+  primary: "#1B355C", // Azul Profundo
+  gold: "#D8A24C",    // Dorado (Matriculados)
+  accent: "#C8663E",  // Terracota (Egresados)
+  bgLight: "#F8FAFC"
+};
 
-const UsersIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const GraduationCapIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M22 10V16C22 17.1046 21.1046 18 20 18H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M22 10L12 5L2 10L12 15L22 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M6 12V17C6 17.5523 6.44772 18 7 18H17C17.5523 18 18 17.5523 18 17V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-// --- Tipos de Datos ---
+// --- Tipos y Data (Se mantiene la lógica de datos original) ---
 type SemesterKey = '2023-I' | '2023-II' | '2024-I' | '2024-II' | '2025-I'| '2025-II';
 
 interface CareerStats {
@@ -43,7 +28,6 @@ interface CareerStats {
   egresados: number;
 }
 
-// --- DATA (Puedes editar los números aquí) ---
 const statsData: Record<SemesterKey, CareerStats[]> = {
   '2023-I': [
     { name: 'Computación e Informática', ingresantes: 67, matriculados: 67, egresados: 11 },
@@ -77,77 +61,60 @@ const statsData: Record<SemesterKey, CareerStats[]> = {
     { name: 'Prótesis Dental', ingresantes: 10, matriculados: 10, egresados: 7 },
     { name: 'Secretariado Ejecutivo', ingresantes: 0, matriculados: 1, egresados: 1 },
   ],
-  '2025-I': [ // Solo las carreras indicadas para 2025
+  '2025-I': [
     { name: 'Computación e Informática', ingresantes: 15, matriculados: 15, egresados: 13 },
     { name: 'Contabilidad', ingresantes: 194, matriculados: 194, egresados: 27 },
     { name: 'Enfermería Técnica', ingresantes: 363, matriculados: 363, egresados: 61 },
     { name: 'Farmacia', ingresantes: 230, matriculados: 230, egresados: 41 },
     { name: 'Prótesis Dental', ingresantes: 0, matriculados: 1, egresados: 1 },
   ],
-  '2025-II': [ // Solo las carreras indicadas para 2025
-    
+  '2025-II': [
     { name: 'Contabilidad', ingresantes: 194, matriculados: 194, egresados: 27 },
     { name: 'Enfermería Técnica', ingresantes: 363, matriculados: 363, egresados: 61 },
     { name: 'Farmacia', ingresantes: 230, matriculados: 230, egresados: 41 },
-    
   ]
 };
 
+// --- Sub-componente: Métrica Individual ---
+const StatCircle = ({ label, value, color, icon: Icon, inView, delay = 0 }: any) => (
+  <div className="flex flex-col items-center">
+    <div 
+      className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-sm transition-transform group-hover:scale-110"
+      style={{ backgroundColor: `${color}15`, color: color }}
+    >
+      <Icon size={20} strokeWidth={2} />
+    </div>
+    <div 
+      className="w-16 h-16 rounded-full border-2 flex items-center justify-center bg-white shadow-inner mb-2"
+      style={{ borderColor: `${color}40` }}
+    >
+      <span className="text-lg font-black tracking-tighter" style={{ color: COLORS.primary }}>
+        {inView ? <CountUp end={value} duration={2.5} delay={delay} /> : 0}
+      </span>
+    </div>
+    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 text-center leading-tight">
+      {label}
+    </p>
+  </div>
+);
+
 // --- Componente de Tarjeta de Carrera ---
 const CareerStatCard = ({ data }: { data: CareerStats }) => {
-  // Hook para detectar cuándo la tarjeta entra en pantalla y disparar la animación
-  const { ref, inView } = useInView({
-    triggerOnce: true, // La animación solo ocurre una vez
-    threshold: 0.2,    // Se activa cuando el 20% del elemento es visible
-  });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <div ref={ref} className="bg-white rounded-3xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow duration-300">
-      <h3 className="text-lg font-bold text-[#002A5D] mb-6 text-center border-b border-slate-100 pb-2">
+    <div 
+      ref={ref} 
+      className="group bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100 hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 hover:-translate-y-2"
+    >
+      <h3 className="text-sm font-black text-center uppercase tracking-[0.15em] mb-8 pb-4 border-b border-slate-50 italic" style={{ color: COLORS.primary }}>
         {data.name}
       </h3>
       
-      <div className="grid grid-cols-3 gap-2">
-        
-        {/* Ingresantes */}
-        <div className="flex flex-col items-center">
-          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-[#002A5D] mb-2">
-            <UserPlusIcon className="w-6 h-6" />
-          </div>
-          <div className="w-14 h-14 rounded-full border-4 border-[#08D3C4] flex items-center justify-center bg-white shadow-sm mb-1">
-             <span className="text-sm font-bold text-[#002A5D]">
-                {inView ? <CountUp end={data.ingresantes} duration={2} /> : 0}
-             </span>
-          </div>
-          <p className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wide text-center">Ingresantes</p>
-        </div>
-
-        {/* Matriculados */}
-        <div className="flex flex-col items-center">
-          <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-[#E65100] mb-2">
-            <UsersIcon className="w-6 h-6" />
-          </div>
-          <div className="w-16 h-16 rounded-full border-4 border-[#FBBF24] flex items-center justify-center bg-white shadow-sm mb-1 transform -translate-y-2">
-             <span className="text-base font-bold text-[#002A5D]">
-                {inView ? <CountUp end={data.matriculados} duration={2.5} /> : 0}
-             </span>
-          </div>
-          <p className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wide text-center -mt-2">Matriculados</p>
-        </div>
-
-        {/* Egresados */}
-        <div className="flex flex-col items-center">
-          <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-[#166534] mb-2">
-            <GraduationCapIcon className="w-6 h-6" />
-          </div>
-          <div className="w-14 h-14 rounded-full border-4 border-[#22c55e] flex items-center justify-center bg-white shadow-sm mb-1">
-             <span className="text-sm font-bold text-[#002A5D]">
-                {inView ? <CountUp end={data.egresados} duration={2} /> : 0}
-             </span>
-          </div>
-          <p className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wide text-center">Egresados</p>
-        </div>
-
+      <div className="grid grid-cols-3 gap-4">
+        <StatCircle label="Ingresos" value={data.ingresantes} color={COLORS.primary} icon={UserPlus} inView={inView} />
+        <StatCircle label="Matrícula" value={data.matriculados} color={COLORS.gold} icon={Users} inView={inView} delay={0.2} />
+        <StatCircle label="Egresos" value={data.egresados} color={COLORS.accent} icon={GraduationCap} inView={inView} delay={0.4} />
       </div>
     </div>
   );
@@ -155,46 +122,44 @@ const CareerStatCard = ({ data }: { data: CareerStats }) => {
 
 export default function StudentsStatsSection() {
   const [activeSemester, setActiveSemester] = useState<SemesterKey>('2025-II');
-  
-  const colors = {
-    primaryText: '#002A5D',
-    accent: '#08D3C4',
-    bgSection: '#F0F7FF',
-  };
-
   const semesters: SemesterKey[] = ['2023-I', '2023-II', '2024-I', '2024-II', '2025-I', '2025-II'];
 
   return (
-    <section className="w-full py-16 sm:py-24" style={{ backgroundColor: colors.bgSection }}>
-      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+    <section className="w-full py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: COLORS.bgLight }}>
+      <div className="container mx-auto px-6 max-w-7xl">
         
-        {/* Cabecera */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-            Nuestra Comunidad en Cifras
+        {/* Cabecera Editorial */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+            <BarChart3 size={14} style={{ color: COLORS.gold }} />
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Data Institucional</span>
+          </div>
+          <h2 className="text-5xl lg:text-7xl font-black tracking-tighter leading-[0.85] uppercase mb-6" style={{ color: COLORS.primary }}>
+            Nuestra comunidad <br />
+            <span className="text-slate-300 italic font-light">en cifras</span>
           </h2>
-          <div className="w-20 h-1.5 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
-          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-            Transparencia y crecimiento constante. Conoce el número de estudiantes que confían en nosotros semestre a semestre.
-          </p>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-[#D8A24C] to-transparent mx-auto mt-8 opacity-50" />
         </div>
 
-        {/* Tabs de Semestres */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {semesters.map((sem) => (
-            <button
-              key={sem}
-              onClick={() => setActiveSemester(sem)}
-              className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300
-                ${activeSemester === sem
-                  ? 'bg-[#002A5D] text-white shadow-lg scale-105'
-                  : 'bg-white text-[#002A5D] border border-slate-200 hover:bg-slate-50'
-                }
-              `}
-            >
-              {sem}
-            </button>
-          ))}
+        {/* Selector de Semestres Estilizado */}
+        <div className="flex flex-wrap justify-center gap-3 mb-20">
+          <div className="p-1.5 bg-white rounded-full shadow-xl border border-slate-100 flex flex-wrap justify-center gap-1">
+            {semesters.map((sem) => (
+              <button
+                key={sem}
+                onClick={() => setActiveSemester(sem)}
+                className={`px-6 py-2.5 rounded-full font-black text-[11px] uppercase tracking-widest transition-all duration-300
+                  ${activeSemester === sem
+                    ? 'text-white shadow-lg shadow-blue-900/20'
+                    : 'text-slate-400 hover:text-[#1B355C] hover:bg-slate-50'
+                  }
+                `}
+                style={{ backgroundColor: activeSemester === sem ? COLORS.primary : 'transparent' }}
+              >
+                {sem}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Grid de Estadísticas */}
@@ -204,6 +169,12 @@ export default function StudentsStatsSection() {
           ))}
         </div>
 
+        {/* Footer de Sección */}
+        <div className="mt-20 flex justify-center">
+           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em] text-center max-w-lg leading-relaxed">
+             * Cifras oficiales proporcionadas por la Oficina de Registros Académicos y la Unidad de Bienestar.
+           </p>
+        </div>
       </div>
     </section>
   );

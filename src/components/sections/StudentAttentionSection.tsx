@@ -1,3 +1,4 @@
+// components/StudentAttentionSection.tsx
 import React from 'react';
 import { 
   Phone, 
@@ -7,137 +8,159 @@ import {
   FileText, 
   Clock, 
   Headset,
-  CalendarCheck,
-  Laptop // 1. IMPORTAMOS EL NUEVO ÍCONO
+  Laptop,
+  HeartHandshake 
 } from 'lucide-react';
+
+const COLORS = {
+  primary: '#1B355C',   
+  gold: '#D8A24C',      
+  terracotta: '#C8663E', 
+};
 
 const services = [
   {
-    icon: <MessageCircle className="w-8 h-8" />,
+    icon: <MessageCircle className="w-7 h-7" />,
     title: "Chat en Línea",
-    description: "Conversa con nuestros asesores en tiempo real vía WhatsApp.",
+    description: "Consultas generales y orientación rápida vía WhatsApp.",
     action: "Iniciar Chat",
     href: "https://wa.me/51912503627?text=Hola,%20tengo%20una%20consulta%20general..." 
   },
   {
-    icon: <Phone className="w-8 h-8" />,
+    icon: <HeartHandshake className="w-7 h-7" />,
+    title: "Bienestar y Empleabilidad",
+    description: "Apoyo emocional, becas y oportunidades laborales.",
+    action: "Contactar Área",
+    href: "https://wa.me/51987845442?text=Hola,%20deseo%20comunicarme%20con%20Bienestar%20y%20Empleabilidad" 
+  },
+  {
+    icon: <Phone className="w-7 h-7" />,
     title: "Call Center",
-    description: "Llámanos para consultas académicas y financieras.",
+    description: "Llamadas para consultas académicas y administrativas.",
     action: "(051) 357708",
     href: "tel:051357708"
   },
   {
-    icon: <FileText className="w-8 h-8" />,
+    icon: <FileText className="w-7 h-7" />,
     title: "Trámites",
-    description: "Gestiona certificados, constancias y solicitudes.",
+    description: "Certificados, constancias y solicitudes virtuales.",
     action: "Ir a Trámites",
     href: "https://forms.gle/GBX93q8E1WYfK8sD7"
   },
-  // --- 2. NUEVA TARJETA DE SOPORTE TECNOLÓGICO ---
   {
-    icon: <Laptop className="w-8 h-8" />,
-    title: "Soporte Tecnológico",
-    description: "Ayuda técnica con tu Correo Institucional y acceso a Intranet.",
+    icon: <Laptop className="w-7 h-7" />,
+    title: "Soporte Técnico",
+    description: "Ayuda con tu Correo Institucional e Intranet.",
     action: "Soporte WhatsApp",
-    // Enlace con mensaje personalizado para soporte técnico
     href: "https://wa.me/51965818204?text=Hola,%20necesito%20ayuda%20con%20mi%20Correo%20Institucional%20e%20Intranet."
   },
 ];
 
 const contactInfo = [
   {
-    icon: <Mail className="w-5 h-5" />,
+    icon: <Mail className="w-5 h-5 text-[#D8A24C]" />,
     text: "secretaria.academica@iest.edu.pe"
   },
   {
-    icon: <Clock className="w-6 h-5" />,
-    text: "Lun - Vie: 9:00 am - 7:00pm"
+    icon: <Clock className="w-5 h-5 text-[#D8A24C]" />,
+    text: "Lun - Vie: 9:00 am - 7:00 pm"
   },
   {
-    icon: <MapPin className="w-5 h-5" />,
+    icon: <MapPin className="w-5 h-5 text-[#D8A24C]" />,
     text: "Jr. Lambayeque N° 416, Puno"
   }
 ];
 
 export default function StudentAttentionSection() {
   return (
-    <section className="w-full py-16 bg-slate-50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="w-full py-20 bg-[#F8FAFC]">
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         
-        {/* Encabezado de la Sección */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-2 bg-blue-100 rounded-full mb-4">
-            <Headset className="w-5 h-5 text-[#002a5d] mr-2" />
-            <span className="text-[#002a5d] font-semibold text-sm uppercase tracking-wide">
+        {/* Encabezado */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full mb-6 border-2" style={{ borderColor: `${COLORS.gold}40`, backgroundColor: `${COLORS.gold}10` }}>
+            <Headset className="w-4 h-4 mr-2" style={{ color: COLORS.primary }} />
+            <span className="font-black text-xs uppercase tracking-[0.2em]" style={{ color: COLORS.primary }}>
               Centro de Ayuda
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#002a5d] mb-4">
-            Atención al Estudiante
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter" style={{ color: COLORS.primary }}>
+            Atención al <span style={{ color: COLORS.terracotta }}>Estudiante</span>
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-            Estamos aquí para apoyarte en cada paso de tu vida universitaria. 
-            Elige el canal de atención que prefieras.
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed">
+            Estamos aquí para apoyarte en cada paso de tu formación profesional. 
           </p>
         </div>
 
-        {/* Grid de Tarjetas de Servicio - Centrado con Flex */}
-        <div className="flex flex-wrap justify-center gap-6 mb-16">
+        {/* Grid de Tarjetas */}
+        <div className="flex flex-wrap justify-center gap-6 mb-20">
           {services.map((service, index) => (
             <a 
               key={index}
               href={service.href}
-              // Abre en nueva pestaña solo si es un link externo (WhatsApp o Forms)
               target={service.href.startsWith('http') ? "_blank" : undefined}
               rel={service.href.startsWith('http') ? "noopener noreferrer" : undefined}
-              className="w-full max-w-[300px] lg:max-w-[280px] xl:max-w-[300px] group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-[#002a5d] hover:bg-[#002a5d] hover:-translate-y-1 cursor-pointer overflow-hidden block"
+              className="w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33.33%-1.5rem)] xl:w-[calc(20%-1.5rem)] group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent cursor-pointer overflow-hidden block"
             >
-              {/* Decoración de fondo en hover */}
-              <div className="absolute top-0 right-0 -mr-8 -mt-8 w-24 h-24 rounded-full bg-[#002a5d]/5 group-hover:bg-white/10 transition-colors" />
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: `linear-gradient(135deg, ${COLORS.primary} 0%, #25477d 100%)` }}
+              />
 
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-xl bg-[#002a5d] flex items-center justify-center text-white mb-6 shadow-lg group-hover:bg-[#C8663E] transition-all duration-300">
+                <div 
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-8 shadow-xl transition-all duration-500 group-hover:bg-white group-hover:text-[#1B355C]" 
+                  style={{ backgroundColor: COLORS.primary }}
+                >
                   {service.icon}
                 </div>
                 
-                <h3 className="text-xl font-bold text-[#002a5d] mb-2 group-hover:text-white transition-colors">
+                <h3 className="text-xl font-black mb-3 group-hover:text-white transition-colors leading-tight" style={{ color: COLORS.primary }}>
                   {service.title}
                 </h3>
                 
-                <p className="text-slate-500 text-sm mb-6 leading-relaxed group-hover:text-blue-100 transition-colors">
+                <p className="text-slate-500 text-sm mb-8 leading-relaxed group-hover:text-blue-50/80 transition-colors">
                   {service.description}
                 </p>
 
-                <span className="inline-flex items-center text-sm font-semibold text-[#002a5d] group-hover:text-[#C8663E] group-hover:underline decoration-2 underline-offset-4 transition-colors">
+                <div 
+                  className="inline-flex items-center text-xs font-black uppercase tracking-widest transition-all duration-300 group-hover:text-[#D8A24C]" 
+                  style={{ color: COLORS.terracotta }}
+                >
                   {service.action}
-                  <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
-                </span>
+                </div>
               </div>
             </a>
           ))}
         </div>
 
-        {/* Barra Inferior de Información Rápida */}
-        <div className="bg-[#002a5d] rounded-2xl p-8 md:p-10 shadow-2xl text-white relative overflow-hidden">
-          {/* Círculos decorativos de fondo */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl" />
+        {/* Barra Inferior Progresiva */}
+        <div 
+          className="rounded-[2.5rem] p-8 md:p-12 shadow-2xl text-white relative overflow-hidden"
+          style={{ backgroundColor: COLORS.primary }}
+        >
+          <div 
+            className="absolute top-0 right-0 w-32 h-32 opacity-10"
+            style={{ borderRight: `20px solid ${COLORS.gold}`, borderTop: `20px solid ${COLORS.gold}`, borderRadius: '0 0 0 100%' }}
+          />
 
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold mb-2">¿Necesitas ayuda adicional?</h3>
-              <p className="text-blue-100/80">Nuestro equipo está disponible para resolver tus dudas.</p>
+          <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between gap-10">
+            <div className="text-center xl:text-left">
+              <h3 className="text-3xl font-black mb-3">¿Dudas adicionales?</h3>
+              <p className="text-blue-100/70 text-lg">Nuestro equipo administrativo está listo para asistirte.</p>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6 md:gap-12 w-full md:w-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full xl:w-auto">
               {contactInfo.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors cursor-default">
-                  <div className="text-blue-200">
+                <div key={idx} className="flex items-center gap-4 bg-white/5 px-6 py-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 overflow-hidden">
+                  <div className="flex-shrink-0">
                     {item.icon}
                   </div>
-                  <span className="font-medium text-sm md:text-base">
+                  {/* CORRECCIÓN AQUÍ: break-all y font-bold text-sm */}
+                  <span className="font-bold text-sm leading-tight break-all">
                     {item.text}
                   </span>
                 </div>
@@ -145,7 +168,6 @@ export default function StudentAttentionSection() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

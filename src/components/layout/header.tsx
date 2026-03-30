@@ -209,6 +209,9 @@ export default function Header() {
                 <Link href="/topico" className="w-full cursor-pointer focus:text-[#C8663E]">Tópico</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
+                <Link href="/topico" className="w-full cursor-pointer focus:text-[#C8663E]">Psicopedagógico</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
                 <Link href="/biblioteca" className="w-full cursor-pointer focus:text-[#C8663E]">Biblioteca</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -344,6 +347,7 @@ export default function Header() {
                   <Link href="/bienestar" className={mobileLinkClasses}>Bienestar y Empleabilidad</Link>
                   <Link href="/topico" className={mobileLinkClasses}>Tópico</Link>
                   <Link href="/biblioteca" className={mobileLinkClasses}>Biblioteca</Link>
+                  <Link href="/biblioteca" className={mobileLinkClasses}>Psicopedagogía</Link>
                   <Link href="/atencion_estudiante" className={mobileLinkClasses}>Atención al estudiante</Link>
                   <Link href="https://iestpa.jedu.pe/alumno/entrar" target="_blank" rel="noopener noreferrer" className={mobileLinkClasses}>
                     Bolsa de Trabajo

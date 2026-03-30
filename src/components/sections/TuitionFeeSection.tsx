@@ -1,108 +1,147 @@
+"use client";
+
 import React from 'react';
+import { 
+  UserPlus2, 
+  Users2, 
+  UserCheck2, 
+  Wallet2, 
+  CreditCard,
+  Info
+} from 'lucide-react';
 
-// --- Iconos SVG Personalizados ---
-const MoneyIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M12 15H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const UserPlusIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M20 8V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M23 11H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const UsersIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
+// --- Paleta Institucional Exacta ---
+const COLORS = {
+  primary: "#1B355C", // Azul Profundo
+  gold: "#D8A24C",    // Dorado
+  accent: "#C8663E",  // Terracota
+  bgLight: "#F8FAFC"
+};
 
 export default function TuitionFeeSection() {
-  const colors = {
-    primaryText: '#002A5D', // Azul Institucional
-    accent: '#08D3C4',      // Turquesa Institucional
-    bgSection: '#F0F7FF',   // Celeste muy suave de fondo
-  };
+  const fees = [
+    {
+      type: 'Ingresantes',
+      semester: 'I Semestre',
+      amount: '200.00',
+      icon: UserPlus2,
+      tag: 'Nuevos'
+    },
+    {
+      type: 'Regulares',
+      semester: 'II a V Semestre',
+      amount: '200.00',
+      icon: Users2,
+      tag: 'Continuantes'
+    },
+    {
+      type: 'Egresantes',
+      semester: 'VI Semestre',
+      amount: '180.00',
+      icon: UserCheck2,
+      tag: 'Final'
+    }
+  ];
 
   return (
-    <section className="w-full py-16 sm:py-24" style={{ backgroundColor: colors.bgSection }}>
-      <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
+    <section className="w-full py-20 lg:py-32 relative overflow-hidden" style={{ backgroundColor: COLORS.bgLight }}>
+      
+      {/* Decoración de fondo */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#1B355C]/5 rounded-full blur-3xl -mr-48 -mt-48" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#C8663E]/5 rounded-full blur-3xl -ml-36 -mb-36" />
+
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
         
         {/* --- Cabecera --- */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-extrabold" style={{ color: colors.primaryText }}>
-            Tarifario de Matrícula
+        <div className="text-center mb-16 lg:mb-24">
+          <span 
+            className="font-black uppercase tracking-[0.4em] text-xs mb-4 block"
+            style={{ color: COLORS.accent }}
+          >
+            Inversión Educativa
+          </span>
+          <h2 
+            className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.9]"
+            style={{ color: COLORS.primary }}
+          >
+            TARIFARIO DE <br />
+            <span className="text-slate-300 italic">MATRÍCULA</span>
           </h2>
-          <div className="w-16 h-1 mt-4 mx-auto" style={{ backgroundColor: colors.accent }}></div>
-          <p className="mt-4 text-slate-600">
-            Costos vigentes para el proceso de matrícula por semestre académico.
-          </p>
+          <div 
+            className="w-24 h-2 mt-8 mx-auto rounded-full"
+            style={{ backgroundColor: COLORS.gold }}
+          />
         </div>
 
-        {/* --- Cuadro de Tarifas --- */}
-        <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100">
+        {/* --- Grid de Tarifas --- */}
+        <div className="bg-white rounded-[3.5rem] shadow-2xl shadow-slate-200 border border-slate-100 overflow-hidden">
           
-          {/* Header del Cuadro */}
-          <div className="bg-[#002A5D] p-6 text-white text-center">
-             <div className="flex items-center justify-center gap-2 mb-2 text-[#08D3C4]">
-                <MoneyIcon className="w-8 h-8" />
-             </div>
-             <h3 className="text-xl font-bold uppercase tracking-wide">Derechos de Pago</h3>
+          {/* Banner Superior */}
+          <div className="bg-[#1B355C] p-8 text-center relative">
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 flex items-center justify-center overflow-hidden pointer-events-none">
+                <Wallet2 size={200} className="rotate-12" />
+            </div>
+            <h3 className="text-white font-black uppercase tracking-[0.2em] text-sm mb-1">Derechos de Pago Oficiales</h3>
+            <p className="text-white/60 text-xs font-bold uppercase tracking-widest">Semestre Académico 2024</p>
           </div>
 
-          {/* Cuerpo del Cuadro - Ajustado a 3 columnas para centrado */}
-          <div className="p-8 grid grid-cols-1 sm:grid-cols-3 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
-            
-            {/* Item 1: Ingresantes */}
-            <div className="flex flex-col items-center text-center px-4">
-              <div className="w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center text-[#002A5D] mb-4">
-                 <UserPlusIcon className="w-6 h-6" />
-              </div>
-              <h4 className="font-bold text-[#002A5D] text-lg mb-2">Ingresantes</h4>
-              <p className="text-sm text-slate-500 mb-3">I Semestre</p>
-              <span className="text-2xl font-extrabold text-[#08D3C4]">S/. 200.00</span>
-            </div>
+          {/* Cuerpo de Precios */}
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+            {fees.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="p-10 lg:p-14 flex flex-col items-center text-center group transition-colors hover:bg-slate-50">
+                  <div 
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+                    style={{ backgroundColor: `${COLORS.primary}10`, color: COLORS.primary }}
+                  >
+                    <Icon size={32} strokeWidth={1.5} />
+                  </div>
+                  
+                  <span className="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-3" style={{ backgroundColor: `${COLORS.gold}20`, color: COLORS.gold }}>
+                    {item.tag}
+                  </span>
 
-            {/* Item 2: Regulares II - V */}
-            <div className="flex flex-col items-center text-center px-4 pt-8 sm:pt-0">
-              <div className="w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center text-[#002A5D] mb-4">
-                 <UsersIcon className="w-6 h-6" />
-              </div>
-              <h4 className="font-bold text-[#002A5D] text-lg mb-2">Regulares</h4>
-              <p className="text-sm text-slate-500 mb-3">II a V Semestre</p>
-              <span className="text-2xl font-extrabold text-[#08D3C4]">S/. 200.00</span>
-            </div>
-
-            {/* Item 3: Regular VI */}
-            <div className="flex flex-col items-center text-center px-4 pt-8 sm:pt-0">
-              <div className="w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center text-[#002A5D] mb-4">
-                 <UsersIcon className="w-6 h-6" />
-              </div>
-              <h4 className="font-bold text-[#002A5D] text-lg mb-2">Regular</h4>
-              <p className="text-sm text-slate-500 mb-3">VI Semestre</p>
-              <span className="text-2xl font-extrabold text-[#08D3C4]">S/. 180.00</span>
-            </div>
-
+                  <h4 className="text-xl font-black mb-1" style={{ color: COLORS.primary }}>{item.type}</h4>
+                  <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-6">{item.semester}</p>
+                  
+                  <div className="relative inline-block">
+                    <span className="text-sm font-black align-top mr-1" style={{ color: COLORS.accent }}>S/.</span>
+                    <span className="text-5xl font-black tracking-tighter" style={{ color: COLORS.primary }}>{item.amount}</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Footer del Cuadro */}
-          <div className="bg-slate-50 p-4 text-center border-t border-slate-100">
-             <p className="text-sm text-slate-600 font-medium">
-                BBVA: <span className="font-bold font-mono text-[#002A5D]">0011-0229-0100095691-20</span>
-             </p>
+          {/* Footer Informativo (BBVA) */}
+          <div className="bg-slate-50 p-8 border-t border-slate-100">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#1B355C]">
+                  <CreditCard size={20} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Canal de Pago BBVA</p>
+                  <p className="font-mono font-bold text-[#1B355C] tracking-tighter text-lg">0011-0229-0100095691-20</p>
+                </div>
+              </div>
+
+              <div className="hidden md:block w-px h-10 bg-slate-200" />
+
+              <div className="flex items-center gap-2 text-slate-500 italic text-sm">
+                <Info size={16} className="text-[#D8A24C]" />
+                <span>Indicar nombre completo y DNI al realizar el depósito.</span>
+              </div>
+            </div>
           </div>
 
         </div>
+
+        {/* Nota Final */}
+        <p className="text-center mt-12 text-slate-400 text-xs font-bold uppercase tracking-[0.3em]">
+          * Los costos no incluyen moras ni trámites administrativos adicionales.
+        </p>
 
       </div>
     </section>

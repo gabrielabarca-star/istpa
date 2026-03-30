@@ -1,12 +1,7 @@
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Image from "next/image";
-import LibrarySection from "@/components/sections/LibrarySection";
-
-import AudienceSectionLibrary from "@/components/sections/AudienceSectionLibrary";
-import LibraryScheduleSection from "@/components/sections/LibraryScheduleSection";
-
-
+import PsicopedagogiaSection from "@/components/sections/PsicopedagogiaSection";
 
 
 export default function NosotrosPage() {
@@ -16,7 +11,7 @@ export default function NosotrosPage() {
       <main className="flex-1">
         <section className="relative h-80 bg-primary">
           <Image
-            src="/img/cabeceras/biblioteca.png"
+            src="/img/cabeceras/reincorporacion.png"
             alt="Campus del instituto"
             fill
             className="object-cover"
@@ -24,26 +19,15 @@ export default function NosotrosPage() {
           />
           <div className="relative flex h-full items-center justify-center">
             <h1 className="font-headline text-4xl font-bold text-primary-foreground md:text-6xl">
-              Biblioteca
+            Servicio Psicopedagógico
             </h1>
           </div>
         </section>
-        
-        <LibrarySection/>
-        
-      
-        
-        <AudienceSectionLibrary/>
-        <LibraryScheduleSection/>
-       
-        
-        
-      
-        
-       
-
-      </main>
-      <Footer />
-    </div>
-  );
-}
+            
+            <PsicopedagogiaSection/>
+            
+          </main>
+              <Footer />
+            </div>
+          );
+        }
