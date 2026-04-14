@@ -209,10 +209,16 @@ export default function Header() {
                 <Link href="/topico" className="w-full cursor-pointer focus:text-[#C8663E]">Tópico</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
+                <Link href="/asistencia_social" className="w-full cursor-pointer focus:text-[#C8663E]">Asistencia Social</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
                 <Link href="/topico" className="w-full cursor-pointer focus:text-[#C8663E]">Psicopedagógico</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/biblioteca" className="w-full cursor-pointer focus:text-[#C8663E]">Biblioteca</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/empleabilidad_seguimiento" className="w-full cursor-pointer focus:text-[#C8663E]">Empleabilidad y Seguimiento al Egresado</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/atencion_estudiante" className="w-full cursor-pointer focus:text-[#C8663E]">Atención al estudiante</Link>
@@ -346,7 +352,9 @@ export default function Header() {
                   </h3>
                   <Link href="/bienestar" className={mobileLinkClasses}>Bienestar y Empleabilidad</Link>
                   <Link href="/topico" className={mobileLinkClasses}>Tópico</Link>
+                  <Link href="/asistencia_social" className={mobileLinkClasses}>Asistencia Social</Link>
                   <Link href="/biblioteca" className={mobileLinkClasses}>Biblioteca</Link>
+                  <Link href="/empleabilidad_seguimiento" className={mobileLinkClasses}>Empleabilidad y Seguimiento al Egresado</Link>
                   <Link href="/biblioteca" className={mobileLinkClasses}>Psicopedagogía</Link>
                   <Link href="/atencion_estudiante" className={mobileLinkClasses}>Atención al estudiante</Link>
                   <Link href="https://iestpa.jedu.pe/alumno/entrar" target="_blank" rel="noopener noreferrer" className={mobileLinkClasses}>

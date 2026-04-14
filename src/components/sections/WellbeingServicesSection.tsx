@@ -99,7 +99,7 @@ const servicesData: Service[] = [
     title: 'Asistencia Social',
     description: 'Soporte y evaluación para el bienestar familiar y socioeconómico del estudiante.',
     icon: AsistenciaSocialIcon,
-    href: '/asistencia-social',
+    href: '/asistencia_social',
   },
   {
     title: 'Tópico de Salud',
@@ -117,7 +117,7 @@ const servicesData: Service[] = [
     title: 'Empleabilidad y Egresados',
     description: 'Seguimiento, redes de contacto y fortalecimiento profesional para graduados.',
     icon: EgresadoIcon,
-    href: '/egresados',
+    href: '/empleabilidad_seguimiento',
   },
   {
     title: 'Biblioteca',

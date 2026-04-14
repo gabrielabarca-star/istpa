@@ -13,13 +13,13 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { id: 1, name: 'Esteban Isidro Leon Apaza', position: 'Director General', photoUrl: '/img/administrativo/maximo.jpg', phone: '951083279', email: 'esteban.leon@iest.edu.pe' },
+  { id: 1, name: 'Esteban Isidro Leon Apaza', position: 'Director General', photoUrl: '/img/administrativo/Estevan.png', phone: '951083279', email: 'esteban.leon@iest.edu.pe' },
   { id: 2, name: 'Carlos Murillo', position: 'Jefe de Unidad Administrativa', photoUrl: '/img/administrativo/carlos-1.jpg', phone: '965801705', email: 'carlos.murillo@iest.edu.pe' },
   { id: 3, name: 'Ruth Trujillo', position: 'Secretaria Académica', photoUrl: '/img/administrativo/ruth.jpg', phone: '912503627', email: 'ruth.trujillo@iest.edu.pe' },
   { id: 4, name: 'Lizbet Choquejahua', position: 'Jefe de Bienestar y Empleabilidad', photoUrl: '/img/administrativo/liz.jpg', phone: '950956442', email: 'liz.choquejahua@iest.edu.pe' },
   { id: 5, name: 'Rosa Aragón', position: 'Jefe de Unidad Académica', photoUrl: '/img/administrativo/rosa-final.jpg', phone: '965689692', email: 'rosa.aragon@iest.edu.pe' },
-  { id: 6, name: 'Sonia Anapan Ulloa', position: 'COORDINADOR DE ÁREA DE CALIDAD', photoUrl: '/img/administrativo/sonia.napan.jpg', phone: '922309224', email: 'sonia.anapan@iest.edu.pe' },
-  { id: 7, name: 'Braddy Gabriel Abarca Aranibar', position: 'Responsable de Tecnologías de la Información', photoUrl: '/img/administrativo/default.jpg', phone: '965818204', email: 'gabriel.abarca@iest.edu.pe' },
+  { id: 6, name: 'Sonia Anapan Ulloa', position: 'COORDINADOR DE ÁREA DE CALIDAD', photoUrl: '/img/administrativo/Sonia1.png', phone: '922309224', email: 'sonia.anapan@iest.edu.pe' },
+  { id: 7, name: 'Braddy Gabriel Abarca Aranibar', position: 'Responsable de Tecnologías de la Información', photoUrl: '/img/administrativo/Gabriel1.png', phone: '965818204', email: 'gabriel.abarca@iest.edu.pe' },
   { id: 8, name: 'Martin Lorenzo Samo', position: 'Coordinador del Área de Estudios de Contabilidad', photoUrl: '/img/docentes/martin-lorenzo.png', phone: '971000026', email: 'martin.lorenzo@iest.edu.pe' },
   { id: 9, name: 'Liz Zuñiga Gonzales', position: 'Coordinador del Área de Estudios de Farmacia', photoUrl: '/img/docentes/liz-zuñiga.png', phone: '951526054', email: 'liz.zuniga@iest.edu.pe' },
   { id: 10, name: 'Eliana Aguirre Yucra', position: 'Coordinador del Área de Estudios de Enfermería', photoUrl: '/img/docentes/eliana-aguirre.jpg', phone: '921806360', email: 'eliana.maquera@iest.edu.pe' },

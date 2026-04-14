@@ -1,7 +1,7 @@
 // components/LibrarySection.tsx
 import React from 'react';
 import Image from 'next/image';
-import { BookOpen, Monitor, Users, Search, Globe, FileVideo } from 'lucide-react';
+import { BookOpen, Search, Globe, FileVideo, Smartphone, Cloud } from 'lucide-react';
 
 const COLORS = {
   primary: '#1B355C',   // Azul
@@ -24,13 +24,13 @@ export default function LibrarySection() {
                   className="px-4 py-1 rounded-md text-xs font-black uppercase tracking-[0.2em] text-white"
                   style={{ backgroundColor: COLORS.gold }}
                 >
-                  Recursos Académicos
+                  Recursos Digitales
                 </span>
                 <div className="flex-grow h-px bg-slate-100"></div>
               </div>
 
               <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter" style={{ color: COLORS.primary }}>
-                BIBLIOTECA <span style={{ color: COLORS.terracotta }}>CENTRAL Y VIRTUAL</span>
+                BIBLIOTECA <span style={{ color: COLORS.terracotta }}>VIRTUAL</span>
               </h2>
 
               {/* Bloque de texto con barra lateral institucional */}
@@ -42,9 +42,11 @@ export default function LibrarySection() {
                 
                 <div className="space-y-6 text-lg text-slate-700 leading-relaxed font-medium">
                   <p>
-                    Nuestra biblioteca es el eje fundamental para el aprendizaje. Además de nuestra colección física, 
-                    contamos con una <strong>Biblioteca Virtual de vanguardia</strong>, permitiendo el acceso a miles de 
-                    títulos desde cualquier lugar.
+                    Ponemos a tu disposición nuestra <strong>Biblioteca Virtual de vanguardia</strong>, el eje fundamental para tu aprendizaje e investigación. 
+                    Accede a miles de títulos, libros especializados y recursos académicos de primer nivel desde cualquier lugar.
+                  </p>
+                  <p className="text-base text-slate-500">
+                    Nuestra plataforma eLibro permite la lectura en línea, descarga de textos y herramientas de búsqueda avanzada diseñadas para potenciar tu éxito profesional.
                   </p>
                 </div>
               </div>
@@ -74,13 +76,13 @@ export default function LibrarySection() {
                 </a>
               </div>
 
-              {/* Mini Grid de servicios rápidos */}
+              {/* Mini Grid de servicios rápidos (Enfocado a lo Virtual) */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-100">
                 {[
-                  { icon: <BookOpen />, label: "Libros Virtuales" },
-                  
-                  { icon: <Users />, label: "Trabajo grupal en tiempo real" },
-                  { icon: <Search />, label: "Asesoría" }
+                  { icon: <BookOpen />, label: "Libros Digitales" },
+                  { icon: <Smartphone />, label: "Multi-dispositivo" },
+                  { icon: <Cloud />, label: "Lectura Offline" },
+                  { icon: <Search />, label: "Búsqueda Avanzada" }
                 ].map((item, i) => (
                   <div key={i} className="flex flex-col items-center text-center group">
                     <div 
@@ -89,7 +91,7 @@ export default function LibrarySection() {
                     >
                       {React.cloneElement(item.icon as React.ReactElement, { size: 20 })}
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-tight text-slate-500 group-hover:text-[#1B355C]">
+                    <span className="text-[10px] font-black uppercase tracking-tight text-slate-500 group-hover:text-[#1B355C]">
                       {item.label}
                     </span>
                   </div>
@@ -110,7 +112,7 @@ export default function LibrarySection() {
               <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-50">
                 <Image
                   src="/img/biblioteca.png" 
-                  alt="Estudiantes en la biblioteca del instituto"
+                  alt="Acceso a la biblioteca virtual institucional"
                   fill
                   className="object-cover"
                 />
@@ -122,7 +124,7 @@ export default function LibrarySection() {
                 className="absolute -top-4 -left-4 px-6 py-3 rounded-xl shadow-xl text-white font-black text-sm uppercase tracking-widest"
                 style={{ backgroundColor: COLORS.primary }}
               >
-                Servicio 24/7 Virtual
+                Acceso 24/7
               </div>
             </div>
           </div>
