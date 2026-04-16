@@ -23,31 +23,31 @@ const documents = [
   {
     title: 'Manual de Perfil de Puestos',
     description: 'Describe las funciones, responsabilidades y requisitos de los diferentes roles institucionales.',
-    href: '/docs/MANUAL DE PERFIL DE PUESTOS.pdf',
+    href: '/docs/MV4-PROPUESTA DE MPP.pdf',
     icon: Users,
   },
   {
     title: 'Reglamento Interno',
     description: 'Normas y disposiciones que regulan la convivencia y las relaciones laborales académicas.',
-    href: '/docs/REGLAMENTO INTERNO.pdf',
+    href: '/docs/MV3-PROPUESTA DE RI.pdf',
     icon: FileText,
   },
   {
     title: 'Plan Anual de Trabajo',
     description: 'Instrumento de gestión a corto plazo que operativiza los objetivos estratégicos anuales.',
-    href: '/docs/PLAN ANUAL DE TRABAJO.pdf',
+    href: '/docs/MV2-PROPUESTA PAT.pdf',
     icon: CalendarDays,
   },
   {
     title: 'Proyecto Educativo Institucional',
     description: 'Nuestra brújula estratégica que orienta el proceso educativo a mediano y largo plazo.',
-    href: '/docs/PROYECTO EDUCATIVO INSTITUCIONAL.pdf',
+    href: '/docs/MV1-PROPUESTA PEI.pdf',
     icon: School,
   },
   {
     title: 'Manual de Procesos Académicos',
     description: 'Establece los flujos y lineamientos detallados para el desarrollo de la actividad educativa.',
-    href: '/docs/MANUAL DE PROCESOS ACADEMICOS.pdf',
+    href: '/docs/MV5-PROPUESTA DE MPA.pdf',
     icon: Layers,
   },
 ];
