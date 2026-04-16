@@ -68,7 +68,7 @@ export default function AsistenciaSocialSection() {
               
               <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-100">
                 <Image
-                  src="/img/asistencia-social.png" // Reemplazar con tu imagen vertical
+                  src="/img/psicopedagogia.png" // Reemplazar con tu imagen vertical
                   alt="Servicio de Asistencia Social"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"

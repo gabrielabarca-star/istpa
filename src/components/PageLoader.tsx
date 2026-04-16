@@ -37,7 +37,7 @@ export default function PageLoader() {
       <div className="relative w-48 h-48 sm:w-64 sm:h-64 animate-heartbeat">
       
         <Image
-          src="/img/loader.png" 
+          src="/img/loader1.png" 
           alt="Cargando..."
           layout="fill"
           objectFit="contain"

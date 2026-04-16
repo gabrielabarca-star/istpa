@@ -1,8 +1,7 @@
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import WhyUs from '@/components/sections/why-us';
-import DegreeOptions from '@/components/sections/degree-options';
-import Specializations from '@/components/sections/specializations';
+
 
 import Contact from '@/components/sections/contact';
 import CarruselN from '@/components/sections/CarruselN';

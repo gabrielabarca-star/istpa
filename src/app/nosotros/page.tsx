@@ -8,24 +8,48 @@ import InstitutionalOrgChart from "@/components/sections/InstitutionalOrgChart";
 
 
 
+const COLORS = {
+  primary: '#1B355C',   // Azul Institucional
+  gold: '#D8A24C',      // Dorado
+  terracotta: '#C8663E', // Terracota
+  bgLight: '#F8FAFC'
+};
+
 export default function NosotrosPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-neutral-textDark">
+    <div className="flex min-h-screen flex-col bg-white">
       <Header />
+      
       <main className="flex-1">
-        {/* Banner Hero */}
-        <section className="relative h-80 bg-primary">
+        {/* Banner Hero con Overlay Mejorado */}
+        <section className="relative h-[450px] w-full overflow-hidden">
           <Image
             src="/img/cabeceras/nosotros.png"
-            alt="nosotros"
+            alt="Nosotros - IES Privado del Altiplano"
             fill
-            className="object-cover "
+            className="object-cover"
             priority
           />
-          <div className="relative flex h-full items-center justify-center">
-            <h1 className="font-headline text-4xl font-bold text-primary-foreground md:text-6xl">
-              Sobre Nosotros
-            </h1>
+          {/* Overlay de gradiente para legibilidad */}
+          <div 
+            className="absolute inset-0 opacity-70" 
+            style={{ background: `linear-gradient(to right, ${COLORS.primary}, transparent)` }}
+          />
+          
+          <div className="container relative mx-auto flex h-full items-center px-6">
+            <div className="max-w-2xl">
+              <span 
+                className="inline-block px-4 py-1 mb-4 text-xs font-black uppercase tracking-[0.3em] text-white rounded-full"
+                style={{ backgroundColor: COLORS.terracotta }}
+              >
+                Trayectoria y Valores
+              </span>
+              <h1 className="text-5xl md:text-7xl font-black text-white leading-tight uppercase">
+                Sobre <br />
+                <span style={{ color: COLORS.gold }}>Nosotros</span>
+              </h1>
+              <div className="mt-6 w-20 h-2 rounded-full" style={{ backgroundColor: COLORS.gold }} />
+            </div>
           </div>
         </section>
 
