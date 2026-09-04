@@ -154,7 +154,9 @@ export default function Header() {
               <DropdownMenuItem asChild>
                 <Link href="/libro_reclamaciones" className="w-full cursor-pointer focus:text-[#C8663E]">Libro de reclamaciones</Link>
               </DropdownMenuItem>
-              
+              <DropdownMenuItem asChild>
+                <Link href="/licencia" className="w-full cursor-pointer focus:text-[#C8663E]">Licencia</Link>
+              </DropdownMenuItem>
               
             </DropdownMenuContent>
           </DropdownMenu>
@@ -181,12 +183,8 @@ export default function Header() {
               <DropdownMenuItem asChild>
                 <Link href="/tupa" className="w-full cursor-pointer focus:text-[#C8663E]">TUPA</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/tupa" className="w-full cursor-pointer focus:text-[#C8663E]">TUPA</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/licencia" className="w-full cursor-pointer focus:text-[#C8663E]">Licencia</Link>
-              </DropdownMenuItem>
+             
+             
              
             </DropdownMenuContent>
           </DropdownMenu>
@@ -336,6 +334,7 @@ export default function Header() {
                   <Link href="/indicadores_academicos" className={mobileLinkClasses}>Indicadores Académicos</Link>
                   <Link href="/beca" className={mobileLinkClasses}>Recursos Económicos</Link>
                   <Link href="/libro_reclamaciones" className={mobileLinkClasses}>Libro de reclamaciones</Link>
+                  <Link href="/licencia" className={mobileLinkClasses}>Licencia</Link>
                 </div>
 
                 <div className="flex flex-col gap-1">
