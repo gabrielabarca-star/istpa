@@ -72,7 +72,7 @@ export default function ScholarshipRequirementsSection() {
               {/* BOTÓN DE DESCARGA PREMIUM */}
               <div className="mt-10">
                 <a 
-                  href="/docs/resolucion becas por rendimiento academico_0001.pdf" 
+                  href="/docs/Resolucion_Directoral_038-2026.pdf" 
                   download
                   className="inline-flex items-center gap-6 p-1 bg-slate-50 border rounded-2xl transition-all hover:shadow-xl group"
                   style={{ borderColor: `${COLORS.primary}15` }}
@@ -82,7 +82,7 @@ export default function ScholarshipRequirementsSection() {
                   </div>
                   <div className="pr-8 py-2">
                     <span className="block text-[10px] font-black uppercase tracking-widest opacity-60">Resolución Directoral</span>
-                    <span className="block text-sm font-bold" style={{ color: COLORS.primary }}>Descargar N° 090-2025-I.S.T.P.A</span>
+                    <span className="block text-sm font-bold" style={{ color: COLORS.primary }}>Descargar N° 038-2026-I.S.T.P.A</span>
                   </div>
                 </a>
               </div>

@@ -1,10 +1,60 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { FileText, ExternalLink } from 'lucide-react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { FileText, ExternalLink, Search, Clock, CircleDollarSign } from 'lucide-react';
+
+const tariffData = [
+  // Trámites de Admisión y Matrícula
+  { process: 'Admisión', price: 'S/ 100.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'Matrícula (De I a VI Semestre*)', price: 'S/ 200.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'I Semestre - Contabilidad (5 cuotas)', price: 'S/ 290.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'I Semestre - Enfermería Técnica (5 cuotas)', price: 'S/ 360.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'II a V Semestre - Contabilidad (5 cuotas)', price: 'S/ 270.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'II a V Semestre - Enfermería Técnica (5 cuotas)', price: 'S/ 340.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'II a V Semestre - Técnica en Farmacia (5 cuotas)', price: 'S/ 320.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'VI Semestre - Todos los programas (5 cuotas)', price: 'S/ 270.00', time: 'Inmediato', category: 'Matrícula & Pensión' },
+  { process: 'Reserva de matrícula o Licencia', price: 'S/ 250.00', time: '5 días', category: 'Matrícula & Pensión' },
+  { process: 'Licencia de fuerza mayor', price: 'S/ 20.00', time: '5 días', category: 'Matrícula & Pensión' },
+  { process: 'Retorno por semestre', price: 'S/ 250.00', time: '2 días', category: 'Matrícula & Pensión' },
+  
+  // Académicos y Evaluación
+  { process: 'Crédito adicional (cada uno, hasta 8 créditos)', price: 'S/ 15.00', time: 'Inmediato', category: 'Académico' },
+  { process: 'Convalidación por curso', price: 'S/ 50.00', time: '7 días', category: 'Académico' },
+  { process: 'Evaluación ordinaria', price: 'Gratis', time: 'Inmediato', category: 'Académico' },
+  { process: 'Evaluación extraordinaria (Subsanación)', price: 'S/ 50.00', time: 'Inmediato', category: 'Académico' },
+  { process: 'Traslado externo', price: 'S/ 350.00', time: '5 días', category: 'Académico' },
+  { process: 'Traslado interno', price: 'S/ 350.00', time: '5 días', category: 'Académico' },
+  { process: 'Retiros', price: 'Gratuito', time: 'Inmediato', category: 'Académico' },
+  { process: 'Cambio de lugar de prácticas', price: 'S/ 20.00', time: '2 días', category: 'Académico' },
+  { process: 'Curso de inglés básico', price: 'S/ 310.00', time: '-', category: 'Académico' },
+  { process: 'Curso Informática', price: 'S/ 310.00', time: '-', category: 'Académico' },
+
+  // Titulación y Certificados
+  { process: 'Título por trabajo de aplicación profesional', price: 'S/ 2400.00', time: '30 a 90 días', category: 'Titulación & Certificaciones' },
+  { process: 'Título por examen de suficiencia profesional', price: 'S/ 3500.00', time: '30 a 90 días', category: 'Titulación & Certificaciones' },
+  { process: 'Certificado modular C/U', price: 'S/ 50.00', time: '10 días', category: 'Titulación & Certificaciones' },
+  { process: 'Certificado de estudios', price: 'S/ 150.00', time: '10 días', category: 'Titulación & Certificaciones' },
+  { process: 'Diploma de egresado', price: 'S/ 120.00', time: '7 días', category: 'Titulación & Certificaciones' },
+  { process: 'Duplicado de título', price: 'S/ 2000.00', time: '30 a 90 días', category: 'Titulación & Certificaciones' },
+  { process: 'Certificado idiomas/informática', price: 'S/ 100.00', time: '-', category: 'Titulación & Certificaciones' },
+  { process: 'Carta de presentación por c/u módulo (Sólo egresados)', price: 'S/ 50.00', time: '3 días', category: 'Titulación & Certificaciones' },
+
+  // Documentos y Constancias
+  { process: 'Ficha de notas duplicado (Ingresantes antes del 2018)', price: 'S/ 20.00', time: '3 días', category: 'Trámites & Documentos' },
+  { process: 'Rectificación de nombres o apellidos', price: 'S/ 60.00', time: '3 días', category: 'Trámites & Documentos' },
+  { process: 'Constancia (Varios)', price: 'S/ 30.00', time: '3 días', category: 'Trámites & Documentos' },
+  { process: 'Duplicado de Carta de presentación', price: 'S/ 20.00', time: '2 días', category: 'Trámites & Documentos' },
+  { process: 'Duplicado de carpeta', price: 'S/ 10.00', time: 'Inmediato', category: 'Trámites & Documentos' },
+  { process: 'Sílabos', price: 'S/ 130.00', time: '10 días', category: 'Trámites & Documentos' },
+  { process: 'Duplicado de Resolución', price: 'S/ 30.00', time: '2 días', category: 'Trámites & Documentos' },
+  { process: 'FUT Virtual', price: 'Gratuito', time: 'Inmediato', category: 'Trámites & Documentos' },
+  { process: 'Fedateo de Documentos', price: 'S/ 10.00', time: '2 días', category: 'Trámites & Documentos' }
+];
 
 const TupaSection = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
 
   useEffect(() => {
     setIsMounted(true);
@@ -17,12 +67,24 @@ const TupaSection = () => {
     text: '#334155'       
   };
 
+  const categories = ['Todos', 'Matrícula & Pensión', 'Académico', 'Titulación & Certificaciones', 'Trámites & Documentos'];
+
+  const filteredTariffs = useMemo(() => {
+    return tariffData.filter((item) => {
+      const matchesSearch = item.process.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === 'Todos' || item.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory]);
+
   if (!isMounted) return null;
 
   return (
     <section className="py-20 bg-white font-sans" id="tupa">
       <div className="container mx-auto px-6 max-w-6xl">
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        
+        {/* --- Sección TUPA Principal --- */}
+        <div className="flex flex-col md:flex-row items-center gap-12 mb-20">
           
           {/* Visualización del TUPA */}
           <div className="w-full md:w-1/2 flex justify-center">
@@ -50,7 +112,7 @@ const TupaSection = () => {
             </div>
           </div>
 
-          {/* Contenido */}
+          {/* Contenido TUPA */}
           <div className="w-full md:w-1/2 text-center md:text-left">
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-orange-50 text-[#C8663E] font-bold text-xs uppercase tracking-widest">
               <span className="w-2 h-2 rounded-full bg-[#C8663E]"></span>
@@ -70,7 +132,7 @@ const TupaSection = () => {
 
             <div className="flex justify-center md:justify-start">
               <a 
-                href="https://docs.google.com/spreadsheets/d/12kIi-qw3d3SRyl1oHFSuGSZ1HGWSigJy/edit?gid=1473404564#gid=1473404564"
+                href="https://docs.google.com/document/d/1UoQ-_-wBAaJDbGb9WrP4RFNB0KBuTWCNlP_SAzz0IDc/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center gap-3 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg no-underline"
@@ -89,6 +151,105 @@ const TupaSection = () => {
           </div>
 
         </div>
+
+        {/* --- Sección Tarifario (Anexo N°01) --- */}
+        <div className="mt-16 pt-12 border-t border-slate-200">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 bg-slate-100 rounded-full text-slate-500 inline-block mb-3">
+              Anexo N°01
+            </span>
+            <h3 className="text-3xl font-extrabold tracking-tight" style={{ color: colors.primary }}>
+              Tarifario de Trámites y Servicios
+            </h3>
+            <p className="text-slate-500 mt-2 text-sm">
+              Consulta los precios oficiales y tiempos aproximados de atención de cada procedimiento institucional.
+            </p>
+          </div>
+
+          {/* Filtros y Buscador */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+            {/* Buscador */}
+            <div className="relative w-full md:w-72">
+              <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Buscar procedimiento..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-slate-400"
+              />
+            </div>
+
+            {/* Categorías */}
+            <div className="flex flex-wrap gap-2 w-full md:w-auto justify-center md:justify-end">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                    selectedCategory === cat
+                      ? 'text-white shadow-sm'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                  style={{
+                    backgroundColor: selectedCategory === cat ? colors.primary : undefined
+                  }}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tabla de Tarifas */}
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-500">
+                  <th className="py-4 px-6">Proceso / Trámite</th>
+                  <th className="py-4 px-6 text-right">Precio (Soles)</th>
+                  <th className="py-4 px-6 text-center">Tiempo de Respuesta</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-sm font-medium text-slate-700">
+                {filteredTariffs.length > 0 ? (
+                  filteredTariffs.map((item, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                      <td className="py-4 px-6 font-semibold text-slate-800">
+                        {item.process}
+                      </td>
+                      <td className="py-4 px-6 text-right font-bold text-slate-900">
+                        <span className={`inline-flex items-center gap-1 ${item.price === 'Gratis' || item.price === 'Gratuito' ? 'text-emerald-600' : ''}`}>
+                          {item.price !== 'Gratis' && item.price !== 'Gratuito' && <CircleDollarSign size={14} className="text-slate-400" />}
+                          {item.price}
+                        </span>
+                      </td>
+                      <td className="py-4 px-6 text-center">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs bg-slate-100 text-slate-600 font-semibold">
+                          <Clock size={12} className="text-slate-400" />
+                          {item.time}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={3} className="py-8 text-center text-slate-400 font-medium">
+                      No se encontraron trámites con ese nombre.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="mt-4 text-right">
+            <span className="text-xs text-slate-400 italic">
+              * Precios sujetos a actualización según normatividad vigente.
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
   );

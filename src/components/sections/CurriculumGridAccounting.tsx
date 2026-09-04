@@ -136,7 +136,12 @@ export default function CurriculumGridAccounting() {
             </p>
           </div>
           
-          <a href="/pdf/malla-contabilidad.pdf" download className="group flex items-center gap-4 bg-white border-2 border-slate-200 p-2 pr-8 rounded-[2rem] hover:shadow-xl transition-all duration-300 hover:border-[#C8663E]/30">
+          {/* Botón adaptado a la ruta /doc/ */}
+          <a 
+            href="/docs/Plan_de_estudios_contabilidad.pdf" 
+            download 
+            className="group flex items-center gap-4 bg-white border-2 border-slate-200 p-2 pr-8 rounded-[2rem] hover:shadow-xl transition-all duration-300 hover:border-[#C8663E]/30 cursor-pointer"
+          >
             <div className="w-14 h-14 rounded-full flex items-center justify-center text-white transition-transform group-hover:rotate-12" style={{ backgroundColor: COLORS.accent }}>
               <Download size={24} />
             </div>

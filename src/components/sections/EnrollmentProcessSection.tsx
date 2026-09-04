@@ -7,7 +7,8 @@ import {
   Stethoscope, 
   Users2, 
   GraduationCap,
-  ArrowRight
+  Calculator,
+  HeartPulse
 } from 'lucide-react';
 
 // --- Paleta Institucional Exacta ---
@@ -65,13 +66,42 @@ export default function EnrollmentProcessSection() {
           >
             Guía Paso a Paso
           </span>
+          
           <h2 
-            className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.9]"
+            className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-6"
             style={{ color: COLORS.primary }}
           >
             PROCESO DE <br />
             <span className="text-slate-300 italic">MATRÍCULA</span>
           </h2>
+
+          {/* Badge informativo de Programas de Estudio */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-white px-6 py-3 rounded-full shadow-md border border-slate-100 max-w-2xl mx-auto">
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              Proceso válido para:
+            </span>
+            
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}15`, color: COLORS.primary }}>
+                <Calculator size={14} />
+              </div>
+              <span className="text-xs font-black uppercase tracking-tight" style={{ color: COLORS.primary }}>
+                Contabilidad
+              </span>
+            </div>
+
+            <span className="text-slate-300">•</span>
+
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${COLORS.accent}15`, color: COLORS.accent }}>
+                <HeartPulse size={14} />
+              </div>
+              <span className="text-xs font-black uppercase tracking-tight" style={{ color: COLORS.accent }}>
+                Enfermería Técnica
+              </span>
+            </div>
+          </div>
+
           <div 
             className="w-24 h-2 mt-8 mx-auto rounded-full"
             style={{ backgroundColor: COLORS.gold }}
@@ -152,8 +182,6 @@ export default function EnrollmentProcessSection() {
           </div>
         </div>
 
-        
-        
       </div>
     </section>
   );

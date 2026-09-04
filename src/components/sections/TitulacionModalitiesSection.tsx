@@ -48,7 +48,7 @@ export default function TitulacionModalitiesSection() {
             title="Examen de Suficiencia"
             subtitle="Ruta Individual de Alta Exigencia"
             icon={<GraduationCap className="w-10 h-10" />}
-            cost="2,800.00"
+            cost="3,500.00"
             mode="Individual"
             accentColor={COLORS.gold}
           >
@@ -74,7 +74,7 @@ export default function TitulacionModalitiesSection() {
               </ul>
             </Section>
 
-            <Section title="Flujo del Proceso" icon={<Clock size={18} />}>
+        <Section title="Flujo del Proceso" icon={<Clock size={18} />}>
               <ol className="list-decimal ml-4 space-y-1">
                 <li>Solicitud en Secretaría Académica.</li>
                 <li>Validación de aptitud (5 días útiles).</li>

@@ -75,7 +75,7 @@ export default function AdmissionSection() {
                   </div>
                   <div>
                     <p className="font-black text-lg leading-tight" style={{ color: COLORS.primary }}>Vacantes Limitadas</p>
-                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Semestre 2024-II</p>
+                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Semestre 2026-II</p>
                   </div>
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function AdmissionSection() {
                 
                 <h3 className="text-3xl font-black text-white mb-6 leading-tight">
                   BROCHURE <br />
-                  <span style={{ color: COLORS.gold }}>2024</span>
+                  <span style={{ color: COLORS.gold }}>2026-II</span>
                 </h3>
                 
                 <p className="text-slate-300 text-xs font-bold leading-relaxed mb-10 uppercase tracking-widest opacity-80">

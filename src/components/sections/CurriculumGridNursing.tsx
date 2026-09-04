@@ -134,12 +134,17 @@ export default function CurriculumGridNursing() {
             </p>
           </div>
           
-          <button className="group flex items-center gap-4 bg-white border-2 border-slate-200 p-2 pr-8 rounded-[2rem] hover:shadow-xl transition-all duration-300 hover:border-[#C8663E]/30">
+          {/* Botón de descarga adaptado con enlace direct a /doc/ */}
+          <a 
+            href="/docs/Plan_de_estudios_enfermeria.pdf" 
+            download 
+            className="group flex items-center gap-4 bg-white border-2 border-slate-200 p-2 pr-8 rounded-[2rem] hover:shadow-xl transition-all duration-300 hover:border-[#C8663E]/30 cursor-pointer"
+          >
             <div className="w-14 h-14 rounded-full flex items-center justify-center text-white transition-transform group-hover:rotate-12" style={{ backgroundColor: COLORS.accent }}>
               <Download size={24} />
             </div>
             <span className="font-bold text-[#1B355C] uppercase tracking-wider text-sm">Descargar Malla PDF</span>
-          </button>
+          </a>
         </div>
 
         {/* --- Selector de Año --- */}

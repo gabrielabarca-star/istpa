@@ -102,7 +102,7 @@ export default function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className={dropDownButtonClasses}>
-                Carreras <ChevronDown className="h-4 w-4" />
+                Programas de Estudios <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-[#002a5d] text-white border-none shadow-xl p-2 min-w-[200px]">
@@ -154,6 +154,8 @@ export default function Header() {
               <DropdownMenuItem asChild>
                 <Link href="/libro_reclamaciones" className="w-full cursor-pointer focus:text-[#C8663E]">Libro de reclamaciones</Link>
               </DropdownMenuItem>
+              
+              
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -179,6 +181,13 @@ export default function Header() {
               <DropdownMenuItem asChild>
                 <Link href="/tupa" className="w-full cursor-pointer focus:text-[#C8663E]">TUPA</Link>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/tupa" className="w-full cursor-pointer focus:text-[#C8663E]">TUPA</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/licencia" className="w-full cursor-pointer focus:text-[#C8663E]">Licencia</Link>
+              </DropdownMenuItem>
+             
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -303,7 +312,7 @@ export default function Header() {
 
                 <div className="flex flex-col gap-1">
                   <h3 className="font-bold text-lg text-[#C8663E] mb-2 uppercase tracking-wide border-b border-white/10 pb-1">
-                    Carreras
+                    PROGRAMAS DE ESTUDIOS
                   </h3>
                   <Link href="/enfermeria" className={mobileLinkClasses}>Enfermería</Link>
                   <Link href="/contabilidad" className={mobileLinkClasses}>Contabilidad</Link>

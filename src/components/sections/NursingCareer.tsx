@@ -8,13 +8,6 @@ import InfoForm from './InfoForm';
 const BRAND_COLOR = "#C8663E";
 const DARK_BLUE = "#1B355C";
 
-const infoCards = [
-  { title: 'Inicio', description: 'Abril 2026', icon: Calendar, color: 'text-blue-600' },
-  { title: 'Turnos', description: 'Mañana / Tarde / Noche', icon: Clock, color: 'text-emerald-600' },
-  { title: 'Modalidad', description: '100% Presencial', icon: BookOpen, color: 'text-purple-600' },
-  { title: 'Duración', description: '3 años (6 Ciclos)', icon: Timer, color: `text-[${BRAND_COLOR}]` }, 
-];
-
 export default function NursingCareer() {
   return (
     <section className="w-full bg-[#F8FAFC] py-20 lg:py-32 relative overflow-hidden">
@@ -34,7 +27,7 @@ export default function NursingCareer() {
             <span className="text-xs font-black uppercase tracking-widest">Carrera Profesional</span>
           </div>
 
-          <h1 className={`text-5xl md:text-7xl font-black tracking-tighter leading-[0.85] mb-8 text-[${DARK_BLUE}]`}>
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.85] mb-8" style={{ color: DARK_BLUE }}>
             ENFERMERÍA <br />
             <span style={{ color: BRAND_COLOR }}>TÉCNICA</span>
           </h1>
@@ -57,27 +50,68 @@ export default function NursingCareer() {
           </div>
 
           {/* Grid Bento de Información */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-4">
-            {infoCards.map((card, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <card.icon 
-                    size={24} 
-                    className={index === 3 ? "" : card.color} 
-                    style={index === 3 ? { color: BRAND_COLOR } : {}}
-                  />
-                </div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">
-                  {card.title}
-                </h3>
-                <p className={`text-sm font-black leading-tight text-[${DARK_BLUE}]`}>
-                  {card.description}
-                </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            {/* Inicio */}
+            <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Calendar size={24} className="text-blue-600" />
               </div>
-            ))}
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">
+                Inicio
+              </h3>
+              <p className="text-sm font-black leading-tight" style={{ color: DARK_BLUE }}>
+                Abril 2026
+              </p>
+            </div>
+
+            {/* Turnos con Horarios */}
+            <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Clock size={24} className="text-emerald-600" />
+              </div>
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2">
+                Turnos y Horarios
+              </h3>
+              <div className="space-y-1.5">
+                <div className="text-xs font-bold leading-tight" style={{ color: DARK_BLUE }}>
+                  Mañana: <span className="font-medium text-slate-600 block sm:inline">7:30 am - 12:00 pm</span>
+                </div>
+                <div className="text-xs font-bold leading-tight" style={{ color: DARK_BLUE }}>
+                  Tarde: <span className="font-medium text-slate-600 block sm:inline">12:30 pm - 5:00 pm</span>
+                </div>
+                <div className="text-xs font-bold leading-tight" style={{ color: DARK_BLUE }}>
+                  Noche: <span className="font-medium text-slate-600 block sm:inline">5:30 pm - 10:00 pm</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Modalidad */}
+            <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <BookOpen size={24} className="text-purple-600" />
+              </div>
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">
+                Modalidad
+              </h3>
+              <p className="text-sm font-black leading-tight" style={{ color: DARK_BLUE }}>
+                100% Presencial
+              </p>
+            </div>
+
+            {/* Duración */}
+            <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Timer size={24} style={{ color: BRAND_COLOR }} />
+              </div>
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">
+                Duración
+              </h3>
+              <p className="text-sm font-black leading-tight" style={{ color: DARK_BLUE }}>
+                3 años (6 Ciclos)
+              </p>
+            </div>
+
           </div>
         </div>
 
@@ -91,7 +125,6 @@ export default function NursingCareer() {
             />
             
             <div className="relative bg-white rounded-[2.5rem] shadow-2xl border border-white p-2">
-              
               <div className="p-4">
                 <InfoForm />
               </div>
@@ -102,12 +135,12 @@ export default function NursingCareer() {
           <div className="mt-8 flex items-center justify-center gap-6 opacity-40 grayscale hover:grayscale-0 transition-all">
              <div className="flex flex-col items-center">
                 <span className="text-[10px] font-black uppercase tracking-tighter">Licenciados por</span>
-                <span className={`text-sm font-bold text-[${DARK_BLUE}]`}>MINEDU</span>
+                <span className="text-sm font-bold" style={{ color: DARK_BLUE }}>MINEDU</span>
              </div>
              <div className="w-px h-8 bg-slate-300" />
              <div className="flex flex-col items-center">
                 <span className="text-[10px] font-black uppercase tracking-tighter">Sede</span>
-                <span className={`text-sm font-bold text-[${DARK_BLUE}]`}>PUNO</span>
+                <span className="text-sm font-bold" style={{ color: DARK_BLUE }}>PUNO</span>
              </div>
           </div>
         </div>

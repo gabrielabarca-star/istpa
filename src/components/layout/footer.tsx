@@ -48,7 +48,7 @@ export default function Footer() {
           <h3 className="mb-4 text-lg font-semibold">Navegación</h3>
           <ul className="space-y-2">
             <li><Link href="/nosotros" className="text-sm hover:text-secondary">Nosotros</Link></li>
-            <li><Link href="#careers" className="text-sm hover:text-secondary">Carreras</Link></li>
+            <li><Link href="#careers" className="text-sm hover:text-secondary">Porgramas de Estudios</Link></li>
             <li><Link href="#news" className="text-sm hover:text-secondary">Noticias</Link></li>
             <li><Link href="#contact" className="text-sm hover:text-secondary">Contacto</Link></li>
           </ul>
